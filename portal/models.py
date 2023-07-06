@@ -22,6 +22,7 @@ class Student(models.Model):
 
 class Record(models.Model):
 
+    date = models.DateField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     original = models.BooleanField()
     photocopy = models.BooleanField()
