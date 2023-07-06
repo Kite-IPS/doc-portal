@@ -1,9 +1,8 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
   <title>Document Verification</title>
-  <link rel="stylesheet" href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="main2.css">
 </head>
 <body>
   <header class="header">
@@ -14,37 +13,37 @@
     <div class="search-bar">
       <input type=" number" id="receipt-number" class="search-input" placeholder="Search your RECEIPT NO here...">
       <button class="search-button" onclick="searchReceipt()">Search</button>
+      
     </div>
-  </form>
   </header>
   <div class="info">
     <form>
         <div class="form-row">
           <div class="form-column">
             <label for="name">NAME OF THE STUDENT:</label>
-            <input type="text" id="name_stu" name="name_stu">
+            <p>nsjnxuiasx</p>
           </div><br>
           <div class="form-column">
             <label for="receipt">ACK.RECEIPT NO:</label>
-            <input type="text" id="phone" name="receipt">
+            <p>wdbuiwqhnuwuiq</p>
           </div>
           <div class="form-column">
             <label for="name">NAME OF THE PARENT:</label>
-            <input type="text" id="name_prnt" name="name_prnt">
+            <p></p>
           </div>
           <div class="form-column">
             <label for="dept">DEPARMENT:</label>
-            <input type="text" id="dept" name="dept">
-          </div>
+            <p></p>
+        </div>
         </div>
         <div class="form-row">
           <div class="form-column">
            <label for="contact1">CONTACT INFO:<br>STUDENT:</label>
-            <input type="text" id="contact1" name="contact1"> 
+            <p></p>
           </div>
           <div class="form-column">
             <br><label for="contact2">PARENT:</label>
-            <input type="text" id="contact2" name="contact2">
+            <p></p>
           </div>
         </div>
           
@@ -56,10 +55,11 @@
             <input type="radio" id="govt" name="quota" value="govt">
             <label for="govt">GOVERNMENT</label>
           </div>
+          <button id="back" onclick="goBack()">Back</button>
         </div>
       </form>
-  </div>
-  <div class="doc_info" >
+</div>
+    <div class="doc_info" >
         <table>
           <tr>
             <th>S.no</th>
@@ -70,18 +70,13 @@
             <th>Quantity</th>
             
           </tr>
-          <tbody id="table-body">       
-          
-        </tbody>
-
-          
-          
+          <tbody id="table-body">
+            <!-- values are added dynamically -->
+          </tbody>
         </table>
-        <button id="submit">submit</button>
-      
     </div>
     <script>
-      // Generate serial number, documents, date, checkbox, and quantity columns
+      // Generate serial number, date, checkbox, and quantity columns
     function generateColumns() {
       var tableRows = document.getElementById('table-body').children;
       for (var i = 0; i < tableRows.length; i++) {
@@ -113,10 +108,7 @@
 
 
         var quantityCell = document.createElement('td');
-        var quantityInput = document.createElement('input');
-        quantityInput.type = 'number';
-        quantityInput.min = '0';
-        quantityInput.value = '0';
+        var quantityInput = document.createElement('p');
         quantityCell.appendChild(quantityInput);
         tableRows[i].appendChild(quantityCell);
         quantityCell.classList.add('cell4');
@@ -155,30 +147,14 @@
     //search function
     function searchReceipt() {
       var receiptNumber = document.getElementById("receipt-number").value;
-      // Here, you can perform additional validation or processing with the receipt number if needed
-
-      // Store the search value in session storage
-      sessionStorage.setItem('searchValue', receiptNumber);
-
       // Redirect the user to the next page
-      window.location.href = "next-page.html"; // Replace "next-page.html" with the actual URL of the next page
+      window.location.href = "template/next-page.html"; // Replace "next-page.html" with the actual URL of the next page
     }
-
-    function populateSearchValue() {
-      var searchValue = sessionStorage.getItem('searchValue');
-      if (searchValue) {
-        document.getElementById("receipt-number").value = searchValue;
-      }
+    //function that redirect to previous page
+    function goBack() {
+        window.location.href = "index.html";
     }
-
-    populateSearchValue();
 
       </script>
   </body>
   </html>
-
-
-
-
-
-  
