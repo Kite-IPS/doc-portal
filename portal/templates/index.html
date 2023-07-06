@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document Verification</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <header class="header">
+    <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
+    <h2>ADMINISTRATIVE OFFICE</h2>
+    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+  </header>
+  <div class="info">
+    <form>
+        <div class="form-row">
+          <div class="form-column">
+            <label for="name">NAME OF THE STUDENT:</label>
+            <input type="text" id="name_stu" name="name_stu">
+          </div><br>
+          <div class="form-column">
+            <label for="receipt">ACK.RECEIPT NO:</label>
+            <input type="text" id="phone" name="receipt">
+          </div>
+          <div class="form-column">
+            <label for="name">NAME OF THE PARENT:</label>
+            <input type="text" id="name_prnt" name="name_prnt">
+          </div>
+          <div class="form-column">
+            <label for="dept">DEPARMENT:</label>
+            <input type="text" id="dept" name="dept">
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="form-column">
+           <label for="contact1">CONTACT INFO:<br>STUDENT:</label>
+            <input type="text" id="contact1" name="contact1"> 
+          </div>
+          <div class="form-column">
+            <br><label for="contact2">PARENT:</label>
+            <input type="text" id="contact2" name="contact2">
+              </div>
+          </div>
+          
+          <div class="form-row">
+            <label for="quota">QUOTA:</label><br>
+            <input type="radio" id="mgmt" name="quota" value="mgmt">
+            <label for="mgmt">MANAGEMENT</label>
+            
+            <input type="radio" id="govt" name="quota" value="govt">
+            <label for="govt">GOVERNMENT</label>
+          
+          </div>
+        </div>
+      </form>
+</div>
+  <div class="doc_info">
+        <table>
+          <tr>
+            <th>S.no</th>
+            <th>Document</th>
+            <th>Date</th>
+            <th>Original</th>
+            <th>Photocopy</th>
+            <th>Quantity</th>
+            
+          </tr>
+          <tbody id="table-body">       
+          
+        </tbody>
+
+          
+          
+        </table>
+      
+    </div>
+    <script>
+      // Generate serial number, date, checkbox, and quantity columns
+    function generateColumns() {
+      var tableRows = document.getElementById('table-body').children;
+      for (var i = 0; i < tableRows.length; i++) {
+        var serialNumberCell = document.createElement('td');
+        serialNumberCell.textContent = i + 1;
+        tableRows[i].insertBefore(serialNumberCell, tableRows[i].firstChild);
+        
+
+        var dateCell = document.createElement('td');
+        var currentDate = new Date().toLocaleDateString();
+        dateCell.textContent = currentDate;
+        tableRows[i].appendChild(dateCell);
+
+        var checkboxCell = document.createElement('td');
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkboxCell.appendChild(checkbox);
+        tableRows[i].appendChild(checkboxCell);
+        checkboxCell.classList.add('cell1');
+        checkbox.classList.add('cell5');
+
+        var checkboxCell = document.createElement('td');
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkboxCell.appendChild(checkbox);
+        tableRows[i].appendChild(checkboxCell);
+        checkboxCell.classList.add('cell2');
+
+        var quantityCell = document.createElement('td');
+        var quantityInput = document.createElement('input');
+        quantityInput.type = 'number';
+        quantityInput.min = '0';
+        quantityInput.value = '0';
+        quantityCell.appendChild(quantityInput);
+        tableRows[i].appendChild(quantityCell);
+        quantityCell.classList.add('cell4');
+        quantityInput.classList.add('cell3');
+      }
+    }
+
+    // Example data for the table
+    var data = [
+      'ADMISSION APPLICATION FORMS',
+      'ALLOTMENT ORDER (FOR GQ STUDENTS)',
+      'SSLC MARKSHEET',
+      'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)',
+      'HSC-SECOND YEAR MARKSHEET',
+      'TRANSFER CERTIFICATE-12 th STD',
+      'AADHAR CARD',
+      'COMMUNITY CERTIFICATE',
+      'INCOME CERTIFICATE OF PARENT',
+      'NATIVITY/MIGRATION CERTIFICATE',
+      'STUDENT AND PARENT FORMAL PHOTO'
+    ];
+
+    // Generate table rows
+    var tableBody = document.getElementById('table-body');
+    for (var i = 0; i < data.length; i++) {
+      var row = document.createElement('tr');
+      var dataCell = document.createElement('td');
+      dataCell.textContent = data[i];
+      row.appendChild(dataCell);
+      tableBody.appendChild(row);
+    }
+
+    // Call the function to generate serial numbers, dates, checkboxes, and quantities
+    generateColumns();
+
+      </script>
+  </body>
+  </html>
+
+
+
+
+
+  
