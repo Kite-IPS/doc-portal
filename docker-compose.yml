@@ -1,0 +1,38 @@
+version: '3'
+
+
+services:
+
+  site:
+
+    build: .
+    container_name: doc-portal-server
+  
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - 5000:8000 
+
+  db:
+
+    image: mysql
+    container_name: doc-portal-db
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: doc-db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: doc-viewer
+    
+    volumes:
+      - storage:/var/lib/mysql
+
+    ports:
+      - 2000:3306
+
+
+volumes:
+  storage:
+    name: "doc-portal-data"
