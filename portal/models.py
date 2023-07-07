@@ -14,7 +14,11 @@ class Document(models.Model):
 class Student(models.Model):
 
     name = models.CharField(max_length=50)
-    roll_no = models.CharField(unique=True, max_length=20)
+    recipt_no= models.CharField(unique=True, max_length=20)
+    department = models.CharField(max_length=50)  
+    student_number = models.CharField(max_length=20)   
+    parent_name = models.CharField(max_length=50)  
+    parent_number = models.CharField(max_length=20) 
 
     def __str__(self):
         return f"{self.roll_no} - {self.name}"
@@ -27,3 +31,4 @@ class Record(models.Model):
     original = models.BooleanField()
     photocopy = models.BooleanField()
     count = models.IntegerField()
+    document= models.ForeignKey(Document, on_delete=models.CASCADE)

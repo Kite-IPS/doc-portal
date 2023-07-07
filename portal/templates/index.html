@@ -15,13 +15,12 @@
       <input type=" number" id="receipt-number" class="search-input" placeholder="Search your RECEIPT NO here...">
       <button class="search-button" onclick="searchReceipt()">Search</button>
     </div>
-  </form>
   </header>
+  <form action="{%  url 'home' %}" method="POST">
   <div class="info">
-    <form>
         <div class="form-row">
           <div class="form-column">
-            <label for="name">NAME OF THE STUDENT:</label>
+            <label for="name_stu">NAME OF THE STUDENT:</label>
             <input type="text" id="name_stu" name="name_stu">
           </div><br>
           <div class="form-column">
@@ -29,7 +28,7 @@
             <input type="text" id="phone" name="receipt">
           </div>
           <div class="form-column">
-            <label for="name">NAME OF THE PARENT:</label>
+            <label for="name_prnt">NAME OF THE PARENT:</label>
             <input type="text" id="name_prnt" name="name_prnt">
           </div>
           <div class="form-column">
@@ -57,9 +56,10 @@
             <label for="govt">GOVERNMENT</label>
           </div>
         </div>
-      </form>
+
   </div>
   <div class="doc_info" >
+          {% csrf_token %}
         <table>
           <tr>
             <th>S.no</th>
@@ -77,7 +77,8 @@
           
           
         </table>
-        <button id="submit">submit</button>
+      </form>
+        <input type="submit" class="button" value="submit">
       
     </div>
     <script>
