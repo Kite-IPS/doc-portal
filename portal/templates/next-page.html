@@ -7,60 +7,64 @@
   <script src="script.js"></script>
 </head>
 <body>
-  <header class="header">
-    <img src="https://gowthamrajvp.github.io/ICCPET22/img/KiTE%20Logo%20copy.png" alt="Logo" class="logo">
-    <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
-    <h2>ADMINISTRATIVE OFFICE</h2>
-    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
-    <div class="search-bar">
-      <input type=" number" id="receipt-number" class="search-input" placeholder="Search your RECEIPT NO here...">
-      <button class="search-button" onclick="searchReceipt()">Search</button>
-      
-    </div>
-  </header>
-  <div class="info">
-    <form>
-        <div class="form-row">
-          <div class="form-column">
-            <label for="name">NAME OF THE STUDENT:</label>
-            <p>nsjnxuiasx</p>
-          </div><br>
-          <div class="form-column">
-            <label for="receipt">ACK.RECEIPT NO:</label>
-            <p>wdbuiwqhnuwuiq</p>
-          </div>
-          <div class="form-column">
-            <label for="name">NAME OF THE PARENT:</label>
-            <p></p>
-          </div>
-          <div class="form-column">
-            <label for="dept">DEPARMENT:</label>
-            <p></p>
-        </div>
-        </div>
-        <div class="form-row">
-          <div class="form-column">
-           <label for="contact1">CONTACT INFO:<br>STUDENT:</label>
-            <p></p>
-          </div>
-          <div class="form-column">
-            <br><label for="contact2">PARENT:</label>
-            <p></p>
-          </div>
-        </div>
-          
+  <div id="invoice">
+    <header class="header">
+      <img src="https://gowthamrajvp.github.io/ICCPET22/img/KiTE%20Logo%20copy.png" alt="Logo" class="logo">
+      <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
+      <h2>ADMINISTRATIVE OFFICE</h2>
+      <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+      <div class="search-bar">
+        <input type=" number" id="receipt-number" class="search-input" placeholder="Search your RECEIPT NO here...">
+        <button class="search-button" onclick="searchReceipt()">Search</button>
+        
+      </div>
+    </header>
+  </div>
+  <div id="invoice">
+    <div class="info">
+      <form>
           <div class="form-row">
-            <label for="quota">QUOTA:</label><br>
-            <input type="radio" id="mgmt" name="quota" value="mgmt">
-            <label for="mgmt">MANAGEMENT</label>
-            
-            <input type="radio" id="govt" name="quota" value="govt">
-            <label for="govt">GOVERNMENT</label>
+            <div class="form-column">
+              <label for="name">NAME OF THE STUDENT:</label>
+              <p>nsjnxuiasx</p>
+            </div><br>
+            <div class="form-column">
+              <label for="receipt">ACK.RECEIPT NO:</label>
+              <p>wdbuiwqhnuwuiq</p>
+            </div>
+            <div class="form-column">
+              <label for="name">NAME OF THE PARENT:</label>
+              <p>fgfrtgvcgvctg</p>
+            </div>
+            <div class="form-column">
+              <label for="dept">DEPARMENT:</label>
+              <p></p>
           </div>
-          <button id="back" onclick="goBack()">Back</button>
-        </div>
-      </form>
-</div>
+          </div>
+          <div class="form-row">
+            <div class="form-column">
+            <label for="contact1">CONTACT INFO:<br>STUDENT:</label>
+              <p></p>
+            </div>
+            <div class="form-column">
+              <br><label for="contact2">PARENT:</label>
+              <p></p>
+            </div>
+          </div>
+            
+            <div class="form-row">
+              <label for="quota">QUOTA:</label><br>
+              <input type="radio" id="mgmt" name="quota" value="mgmt">
+              <label for="mgmt">MANAGEMENT</label>
+              
+              <input type="radio" id="govt" name="quota" value="govt">
+              <label for="govt">GOVERNMENT</label>
+            </div>
+            <button id="back" onclick="goBack()">Back</button>
+            
+          </div>
+        </form>
+    </div>
     <div class="doc_info" >
         <table>
           <tr>
@@ -76,6 +80,7 @@
             <!-- values are added dynamically -->
           </tbody>
         </table>
+        
     </div>
   </div>
   <button onclick="generatePDF()">Download pdf</button>
@@ -159,6 +164,8 @@
         window.location.href = "index.html";
     }
 
+    
+  
       </script>
   </body>
   </html>

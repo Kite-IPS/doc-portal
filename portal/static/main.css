@@ -165,6 +165,13 @@ table td{
   .checkboxcell{
     padding: auto;
   }
+  .cell4{
+    padding-right: 30px;
+  }
+  .cell3{
+    width: 30%;
+    padding-right: 20px;
+  }
   #submit{
     margin-top: auto;
     width: 100%;
@@ -189,12 +196,12 @@ table td{
 }
 
 .cell3{
-  width:30px;
-  padding-left: 20px;
+  padding-left: auto;
+  width: 50%;
+  margin: 0 auto;
 }
 .cell4{
-  padding-left: 35px;
-  padding-right: 0px;
+  padding-left:auto;
 }
 .cell5{
   width: 40px;
@@ -213,13 +220,17 @@ table td{
   border-radius: 4px;
   margin-left: auto;
   margin-top: 5px; 
-  margin-right: 150px;
+  margin-right: 250px;
   transition: width 0.3s ease-in-out;
-  
-
 }
 
 #submit:hover {
     background-color: #007bff;
     color: #251367;
+  }
+  @media (max-width:2560px) {
+    #submit{
+      margin-right: 100px;
+    }
+    
   }

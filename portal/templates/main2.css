@@ -198,7 +198,8 @@ body {
     height: 40px;
     
   }
-  #back{
+  #back,
+  #pdf{
     display: block;
     width: 100px;
     padding: 10px;
@@ -215,7 +216,8 @@ body {
   
   }
   
-  #back:hover {
+  #back:hover,
+  #pdf:hover {
     background-color: #007bff;
     color: #251367;
     }
