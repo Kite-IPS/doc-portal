@@ -3,8 +3,11 @@
 <head>
   <title>Document Verification</title>
   <link rel="stylesheet" href="main2.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
 </head>
 <body>
+  <div id="invoice">
   <header class="header">
     <img src="https://gowthamrajvp.github.io/ICCPET22/img/KiTE%20Logo%20copy.png" alt="Logo" class="logo">
     <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
@@ -75,6 +78,8 @@
           </tbody>
         </table>
     </div>
+  </div>
+  <button onclick="generatePDF()">Download pdf</button>
     <script>
       // Generate serial number, date, checkbox, and quantity columns
     function generateColumns() {
