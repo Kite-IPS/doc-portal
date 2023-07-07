@@ -201,7 +201,7 @@ body {
   #back,
   #pdf{
     display: block;
-    width: 100px;
+    width: 150px;
     padding: 10px;
     border: none;
     background-color: #251367;
@@ -216,6 +216,10 @@ body {
   
   }
   
+  #back {
+    text-decoration: none;
+  }
+
   #back:hover,
   #pdf:hover {
     background-color: #007bff;

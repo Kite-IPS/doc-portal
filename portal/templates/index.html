@@ -3,11 +3,11 @@
 <html>
 <head>
   <title>Document Verification</title>
-  <link rel="stylesheet" href="{% static 'main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
   <header class="header">
-    <img src="https://gowthamrajvp.github.io/ICCPET22/img/KiTE%20Logo%20copy.png" alt="Logo" class="logo">
+    <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
     <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
     <h2>ADMINISTRATIVE OFFICE</h2>
     <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
@@ -162,7 +162,7 @@
       sessionStorage.setItem('searchValue', receiptNumber);
 
       // Redirect the user to the next page
-      window.location.href = "next-page.html"; // Replace "next-page.html" with the actual URL of the next page
+      window.location.href = "{% url 'summary' %}"; // Replace "next-page.html" with the actual URL of the next page
     }
 
     function populateSearchValue() {
