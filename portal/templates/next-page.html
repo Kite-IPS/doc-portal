@@ -3,10 +3,10 @@
 <head>
   <title>Document Verification</title>
   <link rel="stylesheet" href="main2.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="script.js"></script>
 </head>
-<body>
-  <div id="invoice">
+<body id="invoice">
     <header class="header">
       <img src="https://gowthamrajvp.github.io/ICCPET22/img/KiTE%20Logo%20copy.png" alt="Logo" class="logo">
       <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
@@ -15,11 +15,8 @@
       <div class="search-bar">
         <input type=" number" id="receipt-number" class="search-input" placeholder="Search your RECEIPT NO here...">
         <button class="search-button" onclick="searchReceipt()">Search</button>
-        
       </div>
     </header>
-  </div>
-  <div id="invoice">
     <div class="info">
       <form>
           <div class="form-row">
@@ -38,18 +35,18 @@
             <div class="form-column">
               <label for="dept">DEPARMENT:</label>
               <p></p>
-          </div>
-          </div>
-          <div class="form-row">
-            <div class="form-column">
-            <label for="contact1">CONTACT INFO:<br>STUDENT:</label>
-              <p></p>
-            </div>
-            <div class="form-column">
-              <br><label for="contact2">PARENT:</label>
-              <p></p>
             </div>
           </div>
+            <div class="form-row">
+              <div class="form-column">
+              <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+                <p></p>
+              </div>
+              <div class="form-column">
+                <br><label for="contact2">PARENT NO:</label>
+                <p></p>
+              </div>
+            </div>
             
             <div class="form-row">
               <label for="quota">QUOTA:</label><br>
@@ -64,7 +61,7 @@
           </div>
         </form>
     </div>
-    <div class="doc_info" >
+    <div class="doc_info">
         <table>
           <tr>
             <th>S.no</th>
@@ -79,9 +76,8 @@
             <!-- values are added dynamically -->
           </tbody>
         </table>
-        
     </div>
-  </div>
+  
   <button id="pdf" onclick="generatePDF()">Download PDF</button>
     <script>
       // Generate serial number, date, checkbox, and quantity columns
@@ -143,11 +139,13 @@
     var tableBody = document.getElementById('table-body');
     for (var i = 0; i < data.length; i++) {
       var row = document.createElement('tr');
+      row.id = 'row-' + i; // Assign a unique ID to each row
       var dataCell = document.createElement('td');
       dataCell.textContent = data[i];
       row.appendChild(dataCell);
       tableBody.appendChild(row);
     }
+    
 
     // Call the function to generate serial numbers, dates, checkboxes, and quantities
     generateColumns();
