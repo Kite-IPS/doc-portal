@@ -6,8 +6,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>document_info</title>
     <link rel="stylesheet" href="{% static 'doc_info.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </head>
-<body>
-    <h1></h1>
+<body id="invoice">
+    <style>
+        table {
+          border-collapse: collapse;
+          margin: auto;
+        }
+      
+        th, td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: center;
+        }
+        form {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 5px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        
+        }
+        
+        .form-column {
+            flex-basis: 50%;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+      </style>
+      <div class="info">
+        <form id="myForm">
+            <div class="form-row">
+              <div class="form-column">
+                <label for="name">NAME OF THE STUDENT:</label>
+                <p>nsjnxuiasx</p>
+              </div><br>
+              <div class="form-column">
+                <label for="receipt">ACK.RECEIPT NO:</label>
+                <p>wdbuiwqhnuwuiq</p>
+              </div>
+              <div class="form-column">
+                <label for="name">NAME OF THE PARENT:</label>
+                <p>fgfrtgvcgvctg</p>
+              </div>
+              <div class="form-column">
+                <label for="dept">DEPARMENT:</label>
+                <p></p>
+              </div>
+            </div>
+              <div class="form-row">
+                <div class="form-column">
+                <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+                  <p></p>
+                </div>
+                <div class="form-column">
+                  <br><label for="contact2">PARENT NO:</label>
+                  <p></p>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <label for="quota">QUOTA:</label><br>
+                <input type="radio" id="mgmt" name="quota" value="mgmt">
+                <label for="mgmt">MANAGEMENT</label>
+                
+                <input type="radio" id="govt" name="quota" value="govt">
+                <label for="govt">GOVERNMENT</label>
+              </div><br>
+              <hr size="5px" color="black">
+        <table>
+        <thead>
+          <tr>
+            <th rowspan="2">SNo</th>
+            <th rowspan="2">Document</th>
+            <th rowspan="2">Date</th>
+            <th colspan="2">Copies</th>
+            <th rowspan="2">Quantity</th>
+          </tr>
+          <tr>
+            <th>Original</th>
+            <th>Photocopy</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          
+        </tbody>
+      </table>
+    </form>
+    <button id="pdf" onclick="generatePDF()">Download PDF</button>
+
+    <script>
+        // Generate serial number, date, checkbox, and quantity columns
+      function generateColumns() {
+        var tableRows = document.getElementById('table-body').children;
+        for (var i = 0; i < tableRows.length; i++) {
+          var serialNumberCell = document.createElement('td');
+          serialNumberCell.textContent = i + 1;
+          tableRows[i].insertBefore(serialNumberCell, tableRows[i].firstChild);
+          
+  
+          var dateCell = document.createElement('td');
+          var currentDate = new Date().toLocaleDateString();
+          dateCell.textContent = currentDate;
+          tableRows[i].appendChild(dateCell);
+  
+          var checkboxCell = document.createElement('td');
+          var checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkboxCell.appendChild(checkbox);
+          tableRows[i].appendChild(checkboxCell);
+          checkboxCell.classList.add('checkboxcell');
+          checkbox.classList.add('cell5');
+  
+          var checkboxCell = document.createElement('td');
+          var checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkboxCell.appendChild(checkbox);
+          tableRows[i].appendChild(checkboxCell);
+          checkboxCell.classList.add('checkboxcell');
+          checkbox.classList.add('cell5');
+  
+  
+          var quantityCell = document.createElement('td');
+          var quantityInput = document.createElement('p');
+          quantityCell.appendChild(quantityInput);
+          tableRows[i].appendChild(quantityCell);
+          quantityCell.classList.add('cell4');
+          quantityInput.classList.add('cell3');
+        }
+      }
+  
+      // Example data for the table
+      var data = [
+        'ADMISSION APPLICATION FORMS',
+        'ALLOTMENT ORDER (FOR GQ STUDENTS)',
+        'SSLC MARKSHEET',
+        'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)',
+        'HSC-SECOND YEAR MARKSHEET',
+        'TRANSFER CERTIFICATE-12 th STD',
+        'AADHAR CARD',
+        'COMMUNITY CERTIFICATE',
+        'INCOME CERTIFICATE OF PARENT',
+        'NATIVITY/MIGRATION CERTIFICATE',
+        'STUDENT AND PARENT FORMAL PHOTO'
+      ];
+  
+      // Generate table rows
+      var tableBody = document.getElementById('table-body');
+      for (var i = 0; i < data.length; i++) {
+        var row = document.createElement('tr');
+        row.id = 'row-' + i; // Assign a unique ID to each row
+        var dataCell = document.createElement('td');
+        dataCell.textContent = data[i];
+        row.appendChild(dataCell);
+        tableBody.appendChild(row);
+      }
+      
+  
+      // Call the function to generate serial numbers, dates, checkboxes, and quantities
+      generateColumns();
+  
+      //search function
+      function searchReceipt() {
+        var receiptNumber = document.getElementById("receipt-number").value;
+        // Redirect the user to the next page
+        window.location.href = "template/next-page.html"; // Replace "next-page.html" with the actual URL of the next page
+      }
+    
+        </script> 
 </body>
 </html>
