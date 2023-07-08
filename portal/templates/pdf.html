@@ -194,19 +194,21 @@
         // Redirect the user to the next page
         window.location.href = 'template/next-page.html' // Replace "next-page.html" with the actual URL of the next page
       }
+
+      
       var sourceTable = document.getElementById('table-body');
-    var targetTable = document.getElementById('table-body1');
+      var targetTable = document.getElementById('table-body1');
 
-    for (var i = 0; i < sourceTable.rows.length; i++) {
-      var newRow = targetTable.insertRow();
-      for (var j = 0; j < sourceTable.rows[i].cells.length; j++) {
-        var cellContent = sourceTable.rows[i].cells[j].innerHTML;
-        var newCell = newRow.insertCell();
-        newCell.innerHTML = cellContent;
+      for (var i = 0; i < sourceTable.rows.length; i++) {
+        var newRow = targetTable.insertRow();
+        for (var j = 0; j < sourceTable.rows[i].cells.length; j++) {
+          var cellContent = sourceTable.rows[i].cells[j].innerHTML;
+          var newCell = newRow.insertCell();
+          newCell.innerHTML = cellContent;
+        }
       }
-    }
 
-    targetTable.className = sourceTable.className;
+      targetTable.className = sourceTable.className;
     </script>
   </body>
 </html>
