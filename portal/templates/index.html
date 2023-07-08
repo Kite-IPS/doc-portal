@@ -85,7 +85,13 @@
 
       // Adding date to the form fields
       var form = document.getElementsByTagName('form')[0];
-      var date_field = document.createElement("input", hidden=true, name='date', value=new Date().toLocaleDateString());
+      var date = new Date().toLocaleDateString();
+      console.log(date);
+
+      var date_field = document.createElement("input");
+      date_field.type="hidden";
+      date_field.name="date";
+      date_field.value=date;
       form.appendChild(date_field);
 
       // Generate serial number, documents, date, checkbox, and quantity columns
