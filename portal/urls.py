@@ -3,5 +3,5 @@ from .import views
 
 urlpatterns = [
     path("", views.home, name='home'),
-    path("next", views.next_page, name="next_page")
+    path("next/<receipt_no>", views.next_page, name="next_page")
 ]

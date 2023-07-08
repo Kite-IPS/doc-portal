@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from .models import Record, Document, Student
 from datetime import datetime
@@ -50,6 +50,6 @@ def home(request):
 
         return render(request, "index.html", {"file_names": file_names})
 
-def next_page(request):
-    student = Student.objects.all()[2]
+def next_page(request, receipt_no):
+    student = get_object_or_404(Student, recipt_no=receipt_no)
     return render(request, "next-page.html", {"student": student})
