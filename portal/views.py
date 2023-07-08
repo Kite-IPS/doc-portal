@@ -32,15 +32,15 @@ def home(request):
             doc = Document.objects.get(name = file)
 
             # Getting the info from post request
-            orignal = post_data[file+":original"] == 'on'
+            original = post_data[file+":original"] == 'on'
             photo_copy = post_data[file+":copy"] == 'on'
             count = int(post_data[file+":count"])
             
             Record(student=student, document=doc,
-                    orignal=orignal,
+                    original=original,
                     photocopy=photo_copy,
                     count=count,
-                    date=datetime.strptime(post_data["date"], "%d/%m/%Y"))
+                    date=datetime.strptime(post_data["date"], "%d/%m/%Y")).save()
 
         return HttpResponse("success")
     else:
