@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class Document(models.Model):
 
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=100)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -21,7 +21,7 @@ class Student(models.Model):
     parent_number = models.CharField(max_length=20) 
 
     def __str__(self):
-        return f"{self.roll_no} - {self.name}"
+        return f"{self.recipt_no} - {self.name}"
     
 
 class Record(models.Model):

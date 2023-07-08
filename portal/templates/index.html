@@ -33,16 +33,68 @@
           </div>
           <div class="form-column">
             <label for="dept">DEPARMENT:</label>
-            <input type="text" id="dept" name="dept">
+            <div class="dropdown">
+              <select id="dept" name="dept" >
+                <option disabled selected>Select department</option>
+                <option value="CSE">CSE</option>
+                <option value="AI&DS">AI&DS</option>
+                <option value="IT">IT</option>
+                <option value="ECE">ECE</option>
+                <option value="CSBS">CSBS</option>
+                <option value="MECH">MECH</option>
+              </select>
+              <span class="dropdown-icon"></span>
+              <style>
+                {% comment %} css for dept dropdown {% endcomment %}
+                .dropdown {
+                  position: relative;
+                  display: inline-block;
+                }
+            
+                .dropdown select {
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                  outline: none;
+                  border: 1px solid #ccc;
+                  padding: 8px 40px 8px 12px;
+                  font-size: 16px;
+                  border-radius: 4px;
+                  background-color: #fff;
+                  cursor: pointer;
+                  width: 200px;
+                }
+            
+                .dropdown select:hover,
+                .dropdown select:focus {
+                  border-color: #555;
+                }
+            
+                .dropdown-icon {
+                  position: absolute;
+                  top: 50%;
+                  right: 12px;
+                  transform: translateY(-50%);
+                  pointer-events: none;
+                }
+            
+                /* Custom styles for the dropdown arrow icon */
+                .dropdown-icon::after {
+                  content: '\25BC';
+                  font-size: 12px;
+                  color: #555;
+                }
+              </style>
+            </div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-column">
-           <label for="contact1">CONTACT INFO:<br>STUDENT:</label>
+           <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
             <input type="text" id="contact1" name="contact1"> 
           </div>
           <div class="form-column">
-            <br><label for="contact2">PARENT:</label>
+            <br><label for="contact2">PARENT NO:</label>
             <input type="text" id="contact2" name="contact2">
           </div>
         </div>
@@ -82,6 +134,30 @@
       
     </div>
     <script>
+
+    //for dept drop down box
+    var deptSelect = document.getElementById('dept');
+
+    deptSelect.addEventListener('change', function() {
+      var selectedOption = deptSelect.options[deptSelect.selectedIndex];
+      if (selectedOption.value !== '') {
+        console.log('Selected dept:', selectedOption.value);
+      }
+    });
+
+
+
+      // Adding date to the form fields
+      var form = document.getElementsByTagName('form')[0];
+      var date = new Date().toLocaleDateString();
+      console.log(date);
+
+      var date_field = document.createElement("input");
+      date_field.type="hidden";
+      date_field.name="date";
+      date_field.value=date;
+      form.appendChild(date_field);
+
       // Generate serial number, documents, date, checkbox, and quantity columns
     function generateColumns() {
       var tableRows = document.getElementById('table-body').children;

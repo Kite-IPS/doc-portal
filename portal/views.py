@@ -1,68 +1,50 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Record, Document, Student
+from datetime import datetime
 
 
 def home(request):
     if request.method == "POST":
-        print("requeest")
         print(request.POST)
-        date = request.POST["date"]
-        student = request.POST["student"]
-        original = request.POST.GET("orginal", False)
-        photocopy = request.POST.GET("photocopy", False)
-        count = request.POST["count"]
-        document_id = request.POST["document"]
-        """
-        # create a new record 
-        for data_item in data:
-            # Extract data from data_item
-            name = data_item['name']
-            receipt_no = data_item['receipt_no']
-            department = data_item['department']
-            student_number = data_item['student_number']
-            parent_name = data_item['parent_name']
-            documents = data_item['documents']
-            
-            
-            student = Student(
-                name=name,
-                receipt_no=receipt_no,
-                department=department,
-                student_number=student_number,
-                parent_name=parent_name,
-                parent_number=parent_number
-            )
-            student.save()
-            
-            for Document in data:
-                document= Document.objects.get(id=document_id)
-                record = Record(
-                    date=date,
-                    student=student,
-                    original=original,
-                    photocopy=photocopy,
-                    count=count,
-                    document=document,
-                )
-                record.save()
+        post_data = request.POST
 
-                return redirect('record_list')
-    """
+        # Saving the student info
+        student = Student(name=post_data['name_stu'],
+                          recipt_no=post_data['receipt'],
+                          parent_name=post_data['name_prnt'],
+                          department=post_data['dept'],
+                          student_number=post_data['contact1'],
+                          parent_number=post_data['contact2'])
+        student.save()
+
+        # Getting all filenames from the form
+        file_names = [[*name.split(':')] for name in post_data.keys() if ":" in name]
+        clean_names = {}
+        for name in file_names:
+            if name[0] in clean_names:
+                clean_names[name[0]].append(name[1])
+            else:
+                clean_names[name[0]] = [name[1]]
+        
+        # Saving the file data
+        for file in clean_names:
+            doc = Document.objects.get(name = file)
+
+            # Getting the info from post request
+            orignal = post_data[file+":original"] == 'on'
+            photo_copy = post_data[file+":copy"] == 'on'
+            count = int(post_data[file+":count"])
+            
+            Record(student=student, document=doc,
+                    orignal=orignal,
+                    photocopy=photo_copy,
+                    count=count,
+                    date=datetime.strptime(post_data["date"], "%d/%m/%Y"))
+
+        return HttpResponse("success")
     else:
 
-        file_names= [
-            "ADMISSION -1-2-3-4 APPLICATION FORMS",
-            "ALLOTMENT ORDER (FOR GQ STUDENTS)",
-            "SSLC MARKSHEET",
-            "HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)",
-            "HSC-SECOND YEAR MARKSHEET",
-            "TRANSFER CERTIFICATE-12 th STD",
-            "AADHAR CARD",
-            "COMMUNITY CERTIFICATE",
-            "INCOME CERTIFICATE OF PARENT",
-            "NATIVITY/MIGRATION CERTIFICATE",
-            "STUDENT AND PARENT FORMAL PHOTO",
-        ]
+        file_names= [document.name for document in Document.objects.all()]
 
         return render(request, "index.html", {"file_names": file_names})
