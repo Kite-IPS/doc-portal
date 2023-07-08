@@ -1,13 +1,225 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>document_info</title>
-    <link rel="stylesheet" href="{% static 'doc_info.css' %}">
-</head>
-<body>
-    <h1></h1>
-</body>
+  </head>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin: auto;
+    }
+    
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    form {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    form{
+        max-width: 21cm;
+        max-height: 27.7cm;
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .form-column {
+      flex-basis: 50%;
+      padding: 0 5px;
+      box-sizing: border-box;
+    }
+    table {
+      border-collapse: collapse;
+      width: 21cm;
+    }
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    img{
+        margin-left: 700px;
+    }
+    h1,h2{
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+    
+  </style>
+  <body>
+    <form>
+        <h1>KGISL INSTITUTE OF TECHNOLOGY<h1>
+            <h2>ADMINSTRATION OFFICE</h2>
+                <h2>ACKNOLEDGMENT RECIPT</h2>
+    <hr size="2px" color="black">
+    <div class="form1">
+        <h3>STUDENT COPY</h3>
+        <table>
+        <thead>
+            <tr>
+            <th rowspan="2">Name of Student</th>
+            <th rowspan="2">ACK. Receipt No</th>
+            <th rowspan="2">Name of Parent</th>
+            <th rowspan="2">Department</th>
+            <th rowspan="2">Parent Number</th>
+            <th rowspan="2">Student Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>marudhu</td>
+            <td>22csb05</td>
+            <td>i don't know</td>
+            <td>cse</td>
+            <td>519911891811</td>
+            <td>4849848949</td>
+            </tr>
+        </tbody>
+        </table>
+        <table>
+        <thead>
+            <tr>
+            <th rowspan="2">SNo</th>
+            <th rowspan="2">Document</th>
+            <th rowspan="2">Date</th>
+            <th colspan="2">Copies</th>
+            <th rowspan="2">Quantity</th>
+            </tr>
+            <tr>
+            <th>Original</th>
+            <th>Photocopy</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+        </table>
+
+        <hr size="2px" color="black">
+        <h3>OFFICE COPY</h3>
+        <table>
+        <thead>
+            <tr>
+            <th rowspan="2">Name of Student</th>
+            <th rowspan="2">ACK. Receipt No</th>
+            <th rowspan="2">Name of Parent</th>
+            <th rowspan="2">Department</th>
+            <th rowspan="2">Parent Number</th>
+            <th rowspan="2">Student Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>marudhu</td>
+            <td>22csb05</td>
+            <td>i don't know</td>
+            <td>cse</td>
+            <td>519911891811</td>
+            <td>4849848949</td>
+            </tr>
+        </tbody>
+        </table>
+        <table>
+        <thead>
+            <tr>
+            <th rowspan="2">SNo</th>
+            <th rowspan="2">Document</th>
+            <th rowspan="2">Date</th>
+            <th colspan="2">Copies</th>
+            <th rowspan="2">Quantity</th>
+            </tr>
+            <tr>
+            <th>Original</th>
+            <th>Photocopy</th>
+            </tr>
+        </thead>
+        <tbody id="table-body1"></tbody>
+        </table>
+    </div> 
+</form>
+    <script>
+      // Generate serial number, date, checkbox, and quantity columns
+      function generateColumns() {
+        var tableRows = document.getElementById('table-body').children
+        for (var i = 0; i < tableRows.length; i++) {
+          var serialNumberCell = document.createElement('td')
+          serialNumberCell.textContent = i + 1
+          tableRows[i].insertBefore(serialNumberCell, tableRows[i].firstChild)
+      
+          var dateCell = document.createElement('td')
+          var currentDate = new Date().toLocaleDateString()
+          dateCell.textContent = currentDate
+          tableRows[i].appendChild(dateCell)
+      
+          var checkboxCell = document.createElement('td')
+          var checkbox = document.createElement('input')
+          checkbox.type = 'checkbox'
+          checkboxCell.appendChild(checkbox)
+          tableRows[i].appendChild(checkboxCell)
+          checkboxCell.classList.add('checkboxcell')
+          checkbox.classList.add('cell5')
+      
+          var checkboxCell = document.createElement('td')
+          var checkbox = document.createElement('input')
+          checkbox.type = 'checkbox'
+          checkboxCell.appendChild(checkbox)
+          tableRows[i].appendChild(checkboxCell)
+          checkboxCell.classList.add('checkboxcell')
+          checkbox.classList.add('cell5')
+      
+          var quantityCell = document.createElement('td')
+          var quantityInput = document.createElement('p')
+          quantityCell.appendChild(quantityInput)
+          tableRows[i].appendChild(quantityCell)
+          quantityCell.classList.add('cell4')
+          quantityInput.classList.add('cell3')
+        }
+      }
+      
+      // Example data for the table
+      var data = ['ADMISSION APPLICATION FORMS', 'ALLOTMENT ORDER (FOR GQ STUDENTS)', 'SSLC MARKSHEET', 'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)', 'HSC-SECOND YEAR MARKSHEET', 'TRANSFER CERTIFICATE-12 th STD', 'AADHAR CARD', 'COMMUNITY CERTIFICATE', 'INCOME CERTIFICATE OF PARENT', 'NATIVITY/MIGRATION CERTIFICATE', 'STUDENT AND PARENT FORMAL PHOTO']
+      
+      // Generate table rows
+      var tableBody = document.getElementById('table-body')
+      for (var i = 0; i < data.length; i++) {
+        var row = document.createElement('tr')
+        row.id = 'row-' + i // Assign a unique ID to each row
+        var dataCell = document.createElement('td')
+        dataCell.textContent = data[i]
+        row.appendChild(dataCell)
+        tableBody.appendChild(row)
+      }
+      
+      // Call the function to generate serial numbers, dates, checkboxes, and quantities
+      generateColumns()
+      
+      //search function
+      function searchReceipt() {
+        var receiptNumber = document.getElementById('receipt-number').value
+        // Redirect the user to the next page
+        window.location.href = 'template/next-page.html' // Replace "next-page.html" with the actual URL of the next page
+      }
+      var sourceTable = document.getElementById('table-body');
+    var targetTable = document.getElementById('table-body1');
+
+    for (var i = 0; i < sourceTable.rows.length; i++) {
+      var newRow = targetTable.insertRow();
+      for (var j = 0; j < sourceTable.rows[i].cells.length; j++) {
+        var cellContent = sourceTable.rows[i].cells[j].innerHTML;
+        var newCell = newRow.insertCell();
+        newCell.innerHTML = cellContent;
+      }
+    }
+
+    targetTable.className = sourceTable.className;
+    </script>
+  </body>
 </html>
