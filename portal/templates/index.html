@@ -21,20 +21,20 @@
         <div class="form-row">
           <div class="form-column">
             <label for="name_stu">NAME OF THE STUDENT:</label>
-            <input type="text" id="name_stu" name="name_stu">
+            <input type="text" id="name_stu" name="name_stu" required>
           </div><br>
           <div class="form-column">
             <label for="receipt">ACK.RECEIPT NO:</label>
-            <input type="text" id="phone" name="receipt">
+            <input type="text" id="phone" name="receipt" required>
           </div>
           <div class="form-column">
             <label for="name_prnt">NAME OF THE PARENT:</label>
-            <input type="text" id="name_prnt" name="name_prnt">
+            <input type="text" id="name_prnt" name="name_prnt" required>
           </div>
           <div class="form-column">
             <label for="dept">DEPARMENT:</label>
             <div class="dropdown">
-              <select id="dept" name="dept" >
+              <select id="dept" name="dept" required>
                 <option disabled selected>Select department</option>
                 <option value="CSE">CSE</option>
                 <option value="AI&DS">AI&DS</option>
@@ -91,20 +91,20 @@
         <div class="form-row">
           <div class="form-column">
            <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
-            <input type="text" id="contact1" name="contact1"> 
+            <input type="text" id="contact1" name="contact1" required> 
           </div>
           <div class="form-column">
             <br><label for="contact2">PARENT NO:</label>
-            <input type="text" id="contact2" name="contact2">
+            <input type="text" id="contact2" name="contact2"required>
           </div>
         </div>
           
           <div class="form-row">
             <label for="quota">QUOTA:</label><br>
-            <input type="radio" id="mgmt" name="quota" value="mgmt">
+            <input type="radio" id="mgmt" name="quota" value="mgmt" required>
             <label for="mgmt">MANAGEMENT</label>
             
-            <input type="radio" id="govt" name="quota" value="govt">
+            <input type="radio" id="govt" name="quota" value="govt"required>
             <label for="govt">GOVERNMENT</label>
           </div>
         </div>
@@ -130,7 +130,7 @@
           
         </table>
       </form>
-        <input type="submit" class="button" value="submit">
+        <input type="submit" class="button" id="submit" value="submit">
       
     </div>
     <script>
@@ -249,7 +249,7 @@
       sessionStorage.setItem('searchValue', receiptNumber);
 
       // Redirect the user to the next page
-      window.location.href = ""; // Replace "next-page.html" with the actual URL of the next page
+      window.location.href = "next/"+receiptNumber; // Replace "next-page.html" with the actual URL of the next page
     }
 
     function populateSearchValue() {
