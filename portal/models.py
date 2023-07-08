@@ -18,7 +18,8 @@ class Student(models.Model):
     department = models.CharField(max_length=50)  
     student_number = models.CharField(max_length=20)   
     parent_name = models.CharField(max_length=50)  
-    parent_number = models.CharField(max_length=20) 
+    parent_number = models.CharField(max_length=20)
+    quota = models.BooleanField()
 
     def __str__(self):
         return f"{self.recipt_no} - {self.name}"

@@ -8,14 +8,15 @@ def home(request):
     if request.method == "POST":
         print(request.POST)
         post_data = request.POST
-
+        quota = post_data['quota'] == 'govt'
         # Saving the student info
         student = Student(name=post_data['name_stu'],
                           recipt_no=post_data['receipt'],
                           parent_name=post_data['name_prnt'],
                           department=post_data['dept'],
                           student_number=post_data['contact1'],
-                          parent_number=post_data['contact2'])
+                          parent_number=post_data['contact2'],
+                          quota=quota)
         student.save()
 
         # Getting all filenames from the form
