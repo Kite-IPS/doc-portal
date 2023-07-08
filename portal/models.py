@@ -21,7 +21,7 @@ class Student(models.Model):
     parent_number = models.CharField(max_length=20) 
 
     def __str__(self):
-        return f"{self.roll_no} - {self.name}"
+        return f"{self.recipt_no} - {self.name}"
     
 
 class Record(models.Model):
