@@ -1,18 +1,19 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Record,Document,Student
+from .models import Record, Document, Student
 
-def home (request):
-    if request.method=="POST":
+
+def home(request):
+    if request.method == "POST":
         print("requeest")
         print(request.POST)
-        date = request.POST['date']
-        student = request.POST['student']
-        original = request.POST.GET('orginal',False)
-        photocopy = request.POST.GET('photocopy',False)
-        count = request.POST['count']
-        document_id = request.POST['document']
-        '''
+        date = request.POST["date"]
+        student = request.POST["student"]
+        original = request.POST.GET("orginal", False)
+        photocopy = request.POST.GET("photocopy", False)
+        count = request.POST["count"]
+        document_id = request.POST["document"]
+        """
         # create a new record 
         for data_item in data:
             # Extract data from data_item
@@ -47,12 +48,21 @@ def home (request):
                 record.save()
 
                 return redirect('record_list')
-    '''
+    """
     else:
-        records = Record.objects.all()
-        return render(request, 'index.html', {'records': records})
 
+        file_names= [
+            "ADMISSION -1-2-3-4 APPLICATION FORMS",
+            "ALLOTMENT ORDER (FOR GQ STUDENTS)",
+            "SSLC MARKSHEET",
+            "HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)",
+            "HSC-SECOND YEAR MARKSHEET",
+            "TRANSFER CERTIFICATE-12 th STD",
+            "AADHAR CARD",
+            "COMMUNITY CERTIFICATE",
+            "INCOME CERTIFICATE OF PARENT",
+            "NATIVITY/MIGRATION CERTIFICATE",
+            "STUDENT AND PARENT FORMAL PHOTO",
+        ]
 
-
-
-
+        return render(request, "index.html", {"file_names": file_names})

@@ -82,7 +82,22 @@
   <button id="pdf" onclick="generatePDF()">Download PDF</button>
     <script>
       // Generate serial number, date, checkbox, and quantity columns
-    function generateColumns() {
+    
+    // Example data for the table
+    var data = [
+      'ADMISSION APPLICATION FORMS',
+      'ALLOTMENT ORDER (FOR GQ STUDENTS)',
+      'SSLC MARKSHEET',
+      'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)',
+      'HSC-SECOND YEAR MARKSHEET',
+      'TRANSFER CERTIFICATE-12 th STD',
+      'AADHAR CARD',
+      'COMMUNITY CERTIFICATE',
+      'INCOME CERTIFICATE OF PARENT',
+      'NATIVITY/MIGRATION CERTIFICATE',
+      'STUDENT AND PARENT FORMAL PHOTO'
+    ];
+      function generateColumns() {
       var tableRows = document.getElementById('table-body').children;
       for (var i = 0; i < tableRows.length; i++) {
         var serialNumberCell = document.createElement('td');
@@ -106,6 +121,7 @@
         var checkboxCell = document.createElement('td');
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.name = names
         checkboxCell.appendChild(checkbox);
         tableRows[i].appendChild(checkboxCell);
         checkboxCell.classList.add('checkboxcell');
@@ -120,21 +136,6 @@
         quantityInput.classList.add('cell3');
       }
     }
-
-    // Example data for the table
-    var data = [
-      'ADMISSION APPLICATION FORMS',
-      'ALLOTMENT ORDER (FOR GQ STUDENTS)',
-      'SSLC MARKSHEET',
-      'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)',
-      'HSC-SECOND YEAR MARKSHEET',
-      'TRANSFER CERTIFICATE-12 th STD',
-      'AADHAR CARD',
-      'COMMUNITY CERTIFICATE',
-      'INCOME CERTIFICATE OF PARENT',
-      'NATIVITY/MIGRATION CERTIFICATE',
-      'STUDENT AND PARENT FORMAL PHOTO'
-    ];
 
     // Generate table rows
     var tableBody = document.getElementById('table-body');

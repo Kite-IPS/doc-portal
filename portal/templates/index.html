@@ -99,14 +99,32 @@
         var checkboxCell = document.createElement('td');
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.name = data[i] +':'+ "original";
+        
+        var checkboxhidden = document.createElement('input');
+        checkboxhidden.type = 'hidden';
+        checkboxhidden.name = data[i] +':'+ "original";
+        checkboxhidden.value = 'off';
+        
+        checkboxCell.appendChild(checkboxhidden);
         checkboxCell.appendChild(checkbox);
         tableRows[i].appendChild(checkboxCell);
         checkboxCell.classList.add('checkboxcell');
         checkbox.classList.add('cell5');
 
         var checkboxCell = document.createElement('td');
+        
+        
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.name = data[i] +':'+ "copy";
+
+        var checkboxhidden = document.createElement('input');
+        checkboxhidden.type = 'hidden';
+        checkboxhidden.name = data[i] +':'+ "copy";
+        checkboxhidden.value = 'off';
+
+        checkboxCell.appendChild(checkboxhidden);
         checkboxCell.appendChild(checkbox);
         tableRows[i].appendChild(checkboxCell);
         checkboxCell.classList.add('checkboxcell');
@@ -118,6 +136,7 @@
         quantityInput.type = 'number';
         quantityInput.min = '0';
         quantityInput.value = '0';
+        quantityInput.name = data[i] +':'+ "count";
         quantityCell.appendChild(quantityInput);
         tableRows[i].appendChild(quantityCell);
         quantityCell.classList.add('cell4');
@@ -127,17 +146,9 @@
 
     // Example data for the table
     var data = [
-      'ADMISSION APPLICATION FORMS',
-      'ALLOTMENT ORDER (FOR GQ STUDENTS)',
-      'SSLC MARKSHEET',
-      'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)',
-      'HSC-SECOND YEAR MARKSHEET',
-      'TRANSFER CERTIFICATE-12 th STD',
-      'AADHAR CARD',
-      'COMMUNITY CERTIFICATE',
-      'INCOME CERTIFICATE OF PARENT',
-      'NATIVITY/MIGRATION CERTIFICATE',
-      'STUDENT AND PARENT FORMAL PHOTO'
+    {% for name in file_names%}  
+    '{{name}}',
+    {% endfor %}
     ];
 
     // Generate table rows
@@ -162,7 +173,7 @@
       sessionStorage.setItem('searchValue', receiptNumber);
 
       // Redirect the user to the next page
-      window.location.href = "{% url 'summary' %}"; // Replace "next-page.html" with the actual URL of the next page
+      window.location.href = ""; // Replace "next-page.html" with the actual URL of the next page
     }
 
     function populateSearchValue() {
