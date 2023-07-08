@@ -82,6 +82,12 @@
       
     </div>
     <script>
+
+      // Adding date to the form fields
+      var form = document.getElementsByTagName('form')[0];
+      var date_field = document.createElement("input", hidden=true, name='date', value=new Date().toLocaleDateString());
+      form.appendChild(date_field);
+
       // Generate serial number, documents, date, checkbox, and quantity columns
     function generateColumns() {
       var tableRows = document.getElementById('table-body').children;
