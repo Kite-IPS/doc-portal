@@ -6,65 +6,50 @@
     <title>document_info</title>
   </head>
   <style>
-    table {
+    #table1 th,
+    #table1 td {
       border-collapse: collapse;
       margin: auto;
-    }
-    
-    th,
-    td {
       border: 1px solid black;
       padding: 8px;
       text-align: center;
     }
-    form {
+
+    #main_form {
       max-width: 1000px;
       margin: 0 auto;
       padding: 5px;
       border-radius: 5px;
+      max-width: 21cm;
+      max-height: 27.7cm;
     }
-    form{
-        max-width: 21cm;
-        max-height: 27.7cm;
-    }
-    .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .form-column {
-      flex-basis: 50%;
-      padding: 0 5px;
-      box-sizing: border-box;
-    }
-    table {
+
+    #table1 {
       border-collapse: collapse;
       width: 21cm;
     }
-    th,
-    td {
+    #table1 th,
+    #table1 td {
       padding: 8px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
-    img{
-        margin-left: 700px;
+    h1,
+    h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
     }
-    h1,h2{
-        font-family: Arial, Helvetica, sans-serif;
-        text-align: center;
-    }
-    
   </style>
   <body>
-    <form>
+    <div id="main_form">
+      <form>
         <h1>KGISL INSTITUTE OF TECHNOLOGY<h1>
             <h2>ADMINSTRATION OFFICE</h2>
                 <h2>ACKNOLEDGMENT RECIPT</h2>
     <hr size="2px" color="black">
-    <div class="form1">
+    <div id="form1">
         <h3>STUDENT COPY</h3>
-        <table>
+        <table id="table1">
         <thead>
             <tr>
             <th rowspan="2">Name of Student</th>
@@ -86,7 +71,7 @@
             </tr>
         </tbody>
         </table>
-        <table>
+        <table id="table1">
         <thead>
             <tr>
             <th rowspan="2">SNo</th>
@@ -105,7 +90,7 @@
 
         <hr size="2px" color="black">
         <h3>OFFICE COPY</h3>
-        <table>
+        <table id="table1">
         <thead>
             <tr>
             <th rowspan="2">Name of Student</th>
@@ -127,7 +112,7 @@
             </tr>
         </tbody>
         </table>
-        <table>
+        <table id="table1">
         <thead>
             <tr>
             <th rowspan="2">SNo</th>
@@ -143,8 +128,10 @@
         </thead>
         <tbody id="table-body1"></tbody>
         </table>
-    </div> 
+    </div>
 </form>
+    </div>
+    
     <script>
       // Generate serial number, date, checkbox, and quantity columns
       function generateColumns() {
@@ -223,3 +210,4 @@
     </script>
   </body>
 </html>
+
