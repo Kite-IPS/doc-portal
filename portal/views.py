@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, JsonResponse
 from .models import Record, Document, Student
 from datetime import datetime
 
@@ -43,7 +42,7 @@ def home(request):
                     count=count,
                     date=datetime.strptime(post_data["date"], "%d/%m/%Y")).save()
 
-        return HttpResponse("success")
+        return redirect('next_page', receipt_no=student.recipt_no)
     else:
 
         file_names= [document.name for document in Document.objects.all()]
