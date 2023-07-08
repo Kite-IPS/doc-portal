@@ -1,164 +1,160 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Document Verification</title>
-  <link rel="stylesheet" href="{% static 'css/main2.css' %}">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <script src="{% static 'js/script.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
-<body id="invoice">
-    <header class="header">
-      <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
-      <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
-      <h2>ADMINISTRATIVE OFFICE</h2>
-      <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
-      <div class="search-bar">
-        <input type=" number" id="receipt-number" class="search-input" placeholder="Search your RECEIPT NO here...">
-        <button class="search-button" onclick="searchReceipt()">Search</button>
-      </div>
-    </header>
-    <div class="info">
-      <form>
-          <div class="form-row">
-            <div class="form-column">
-              <label for="name">NAME OF THE STUDENT:</label>
-              <p>nsjnxuiasx</p>
-            </div><br>
-            <div class="form-column">
-              <label for="receipt">ACK.RECEIPT NO:</label>
-              <p>wdbuiwqhnuwuiq</p>
-            </div>
-            <div class="form-column">
-              <label for="name">NAME OF THE PARENT:</label>
-              <p>fgfrtgvcgvctg</p>
-            </div>
-            <div class="form-column">
-              <label for="dept">DEPARMENT:</label>
-              <p></p>
-            </div>
-          </div>
-            <div class="form-row">
-              <div class="form-column">
-              <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
-                <p></p>
-              </div>
-              <div class="form-column">
-                <br><label for="contact2">PARENT NO:</label>
-                <p></p>
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <label for="quota">QUOTA:</label><br>
-              <input type="radio" id="mgmt" name="quota" value="mgmt">
-              <label for="mgmt">MANAGEMENT</label>
-              
-              <input type="radio" id="govt" name="quota" value="govt">
-              <label for="govt">GOVERNMENT</label>
-            </div>
-            <a id="back" href="{% url 'home' %}">Back</a>
-            
-          </div>
-        </form>
+
+<body>
+  <header class="header">
+    <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
+    <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
+    <h2>ADMINISTRATIVE OFFICE</h2>
+    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <div class="search-bar">
+      <input type=" number" id="receipt-number" class="search-input" placeholder="Search your RECEIPT NO here...">
+      <button class="search-button" onclick="searchReceipt()">Search</button>
     </div>
-    <div class="doc_info">
-        <table>
-          <tr>
-            <th>S.no</th>
-            <th>Documents</th>
-            <th>Date</th>
-            <th>Original</th>
-            <th>Photocopy</th>
-            <th>Quantity</th>
-            
-          </tr>
-          <tbody id="table-body">
-            <!-- values are added dynamically -->
-          </tbody>
-        </table>
+  </header>
+  <div class="info">
+    <div class="form-row">
+      <div class="form-column">
+        <label for="name_stu">NAME OF THE STUDENT:</label>
+        <input type="text" id="name_stu" name="name_stu" value="{{student.name}}" disabled>
+      </div><br>
+      <div class="form-column">
+        <label for="receipt">ACK.RECEIPT NO:</label>
+        <input type="text" id="phone" name="receipt" value="{{student.recipt_no}}" disabled>
+      </div>
+      <div class="form-column">
+        <label for="name_prnt">NAME OF THE PARENT:</label>
+        <input type="text" id="name_prnt" name="name_prnt" value="{{student.parent_name}}" disabled>
+      </div>
+      <div class="form-column">
+        <label for="dept">DEPARMENT:</label>
+        <div class="dropdown">
+          <select id="dept" name="dept" disabled>
+            <option disabled selected>{{student.department}}</option>
+          </select>
+          <span class="dropdown-icon"></span>
+          <style>
+            .dropdown {
+              position: relative;
+              display: inline-block;
+            }
+
+            .dropdown select {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              outline: none;
+              border: 1px solid #ccc;
+              padding: 8px 40px 8px 12px;
+              font-size: 16px;
+              border-radius: 4px;
+              background-color: #fff;
+              cursor: pointer;
+              width: 200px;
+            }
+
+            .dropdown select:hover,
+            .dropdown select:focus {
+              border-color: #555;
+            }
+
+            .dropdown-icon {
+              position: absolute;
+              top: 50%;
+              right: 12px;
+              transform: translateY(-50%);
+              pointer-events: none;
+            }
+
+            /* Custom styles for the dropdown arrow icon */
+            .dropdown-icon::after {
+              content: '\25BC';
+              font-size: 12px;
+              color: #555;
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-column">
+        <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+        <input type="text" id="contact1" name="contact1" value="{{student.student_number}}" disabled>
+      </div>
+      <div class="form-column">
+        <br><label for="contact2">PARENT NO:</label>
+        <input type="text" id="contact2" name="contact2" value="{{student.parent_number}}" disabled>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="quota">QUOTA:</label><br>
+      {% if student.quota %}
+      <input type="radio" id="mgmt" name="quota" value="mgmt" disabled>
+      <label for="mgmt">MANAGEMENT</label>
+      <input type="radio" id="govt" name="quota" value="govt" checked disabled>
+      <label for="govt">GOVERNMENT</label>
+      {% else %}
+      <input type="radio" id="mgmt" name="quota" value="mgmt" checked disabled>
+      <label for="mgmt">MANAGEMENT</label>
+      <input type="radio" id="govt" name="quota" value="govt" disabled>
+      <label for="govt">GOVERNMENT</label>
+      {% endif %}
     </div>
   </div>
-  <button id="pdf" onclick="generatePDF()">Download PDF</button>
-    <script>
-      // Generate serial number, date, checkbox, and quantity columns
-    
-    // Example data for the table
-    var data = [
-      'ADMISSION APPLICATION FORMS',
-      'ALLOTMENT ORDER (FOR GQ STUDENTS)',
-      'SSLC MARKSHEET',
-      'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)',
-      'HSC-SECOND YEAR MARKSHEET',
-      'TRANSFER CERTIFICATE-12 th STD',
-      'AADHAR CARD',
-      'COMMUNITY CERTIFICATE',
-      'INCOME CERTIFICATE OF PARENT',
-      'NATIVITY/MIGRATION CERTIFICATE',
-      'STUDENT AND PARENT FORMAL PHOTO'
-    ];
-      function generateColumns() {
-      var tableRows = document.getElementById('table-body').children;
-      for (var i = 0; i < tableRows.length; i++) {
-        var serialNumberCell = document.createElement('td');
-        serialNumberCell.textContent = i + 1;
-        tableRows[i].insertBefore(serialNumberCell, tableRows[i].firstChild);
-        
 
-        var dateCell = document.createElement('td');
-        var currentDate = new Date().toLocaleDateString();
-        dateCell.textContent = currentDate;
-        tableRows[i].appendChild(dateCell);
+  </div>
+  <div class="doc_info">
+    <table>
+      <tr>
+        <th>S.no</th>
+        <th>Documents</th>
+        <th>Date</th>
+        <th>Original</th>
+        <th>Photocopy</th>
+        <th>Quantity</th>
 
-        var checkboxCell = document.createElement('td');
-        var checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkboxCell.appendChild(checkbox);
-        tableRows[i].appendChild(checkboxCell);
-        checkboxCell.classList.add('checkboxcell');
-        checkbox.classList.add('cell5');
+      </tr>
+      <tbody id="table-body">
+        {% for record in student.record_set.all %}
+          <tr>
+            <td>
+              {{forloop.counter}}
+            </td>
+            <td>
+              {{record.document.name}}
+            </td>
+            <td>
+              {{record.date}}
+            </td>
+            <td>
+              {% if record.original %}
+              <input type="checkbox" checked="true" class="cell5" disabled>
+              {% else %}
+              <input type="checkbox" class="cell5" disabled>
+              {% endif %}
+            </td>
+            <td>
+              {% if record.copy %}
+              <input type="checkbox" checked="true" class="cell5" disabled>
+              {% else %}
+              <input type="checkbox" class="cell5" disabled>
+              {% endif %}
+            </td>
+            <td>
+              <input type="number" value="{{record.count}}" class="cell3" disabled>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
 
-        var checkboxCell = document.createElement('td');
-        var checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.name = names
-        checkboxCell.appendChild(checkbox);
-        tableRows[i].appendChild(checkboxCell);
-        checkboxCell.classList.add('checkboxcell');
-        checkbox.classList.add('cell5');
-
-
-        var quantityCell = document.createElement('td');
-        var quantityInput = document.createElement('p');
-        quantityCell.appendChild(quantityInput);
-        tableRows[i].appendChild(quantityCell);
-        quantityCell.classList.add('cell4');
-        quantityInput.classList.add('cell3');
-      }
-    }
-
-    // Generate table rows
-    var tableBody = document.getElementById('table-body');
-    for (var i = 0; i < data.length; i++) {
-      var row = document.createElement('tr');
-      row.id = 'row-' + i; // Assign a unique ID to each row
-      var dataCell = document.createElement('td');
-      dataCell.textContent = data[i];
-      row.appendChild(dataCell);
-      tableBody.appendChild(row);
-    }
-    
-
-    // Call the function to generate serial numbers, dates, checkboxes, and quantities
-    generateColumns();
-
-    //search function
-    function searchReceipt() {
-      var receiptNumber = document.getElementById("receipt-number").value;
-      // Redirect the user to the next page
-      window.location.href = "template/next-page.html"; // Replace "next-page.html" with the actual URL of the next page
-    }
-  
-      </script>
-  </body>
-  </html>
+</html>

@@ -49,3 +49,7 @@ def home(request):
         file_names= [document.name for document in Document.objects.all()]
 
         return render(request, "index.html", {"file_names": file_names})
+
+def next_page(request):
+    student = Student.objects.all()[2]
+    return render(request, "next-page.html", {"student": student})
