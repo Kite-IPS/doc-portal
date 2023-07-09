@@ -11,7 +11,7 @@ class Document(models.Model):
 
 class Student(models.Model):
 
-    admission_no = models.CharField(max_length=30)
+    admission_no = models.CharField(max_length=30, unique=True)
     stud_ver = models.IntegerField()
     docs_ver = models.IntegerField()
 
@@ -31,7 +31,7 @@ class StudentInfo(models.Model):
     ver = models.IntegerField()
 
     def __str__(self):
-        return f"{self.recipt_no} - {self.name}"
+        return f"{self.student.admission_no} - {self.name}"
     
 
 class Record(models.Model):
