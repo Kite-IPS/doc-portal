@@ -1,23 +1,37 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Record, Document, Student
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+from .models import *
 from datetime import datetime
 
 
 def home(request):
     if request.method == "POST":
-        print(request.POST)
-        post_data = request.POST
+        
+        # Getting the data from post request
+        post_data = request.POST.dict()
+        print(post_data)
         quota = post_data['quota'] == 'govt'
-        # Saving the student info
-        student = Student(name=post_data['name_stu'],
-                          recipt_no=post_data['receipt'],
-                          parent_name=post_data['name_prnt'],
-                          department=post_data['dept'],
-                          student_number=post_data['contact1'],
-                          parent_number=post_data['contact2'],
-                          quota=quota,
-                          submit_count=0)
+        
+        # Creating an entry for the student admission num on first submit
+        student = Student(admission_no=post_data['receipt'],
+                          version_count=0)
         student.save()
+
+        version = Version(student=student,
+                          stud_ver=0,
+                          docs_ver=0)
+        version.save()
+
+        # Saving the student info
+        student_info = StudentInfo(
+                              name=post_data['name_stu'],
+                              student = student,
+                              parent_name=post_data['name_prnt'],
+                              department=post_data['dept'],
+                              student_number=post_data['contact1'],
+                              parent_number=post_data['contact2'],
+                              quota=quota,
+                              ver=0)
+        student_info.save()
 
         # Getting all filenames from the form
         file_names = [[*name.split(':')] for name in post_data.keys() if ":" in name]
@@ -44,7 +58,7 @@ def home(request):
                     date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
                     ver=0).save()
 
-        return redirect('next_page', receipt_no=student.recipt_no)
+        return redirect('next_page', receipt_no=student.admission_no)
     else:
 
         file_names= [document.name for document in Document.objects.all()]
@@ -52,8 +66,9 @@ def home(request):
         return render(request, "index.html", {"file_names": file_names})
 
 
-def edit(request, receipt_no):
-    student = get_object_or_404(Student, recipt_no=receipt_no)
+def edit(request, admission_no):
+
+    student = get_object_or_404(Student, admission_no=admission_no)
     if request.method == "POST":
 
         post_data = request.POST
@@ -105,6 +120,14 @@ def edit(request, receipt_no):
         return render(request, "edit.html", {"student": student, 'records': records, 'depts': departments})
 
 
-def next_page(request, receipt_no):
-    student = get_object_or_404(Student, recipt_no=receipt_no)
-    return render(request, "next-page.html", {"student": student})
+def view(request, admission_no):
+    student = get_object_or_404(Student, admission_no=admission_no)
+    if 'version' in request.GET:
+        version = int(request.GET.dict()["version"])
+    else:
+        version = student.version_count
+    version = get_object_or_404(Version, version_count=version)
+    info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
+    records = Record.objects.filter(student=student, ver=version.docs_ver)
+    version_values = [i + 1 for i in range(-1, student.version_count)]
+    return render(request, "next-page.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count})

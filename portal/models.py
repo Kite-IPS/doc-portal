@@ -12,11 +12,10 @@ class Document(models.Model):
 class Student(models.Model):
 
     admission_no = models.CharField(max_length=30, unique=True)
-    stud_ver = models.IntegerField()
-    docs_ver = models.IntegerField()
+    version_count = models.IntegerField()
 
     def __str__(self):
-        return f"{self.admission_no} - {self.stud_ver} - {self.docs_ver}"
+        return f"{self.admission_no} - {self.version_count}"
 
 
 class StudentInfo(models.Model):
@@ -46,3 +45,13 @@ class Record(models.Model):
 
     def __str__(self):
         return f"{self.student.admission_no} - {self.document.name} - {self.ver}"
+    
+class Version(models.Model):
+
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    version_count = models.IntegerField()
+    docs_ver = models.IntegerField()
+    stud_ver = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.student.admission_no} - {self.version_count}"
