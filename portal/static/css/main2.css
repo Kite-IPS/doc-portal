@@ -112,11 +112,11 @@ body {
     background-color: #251367;
     color: #f2f2f2;
     width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: large;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: large;
   }
   input[type="radio"]{
     margin-right: 10px;
@@ -163,6 +163,13 @@ body {
     .checkboxcell{
       padding: auto;
     }
+    .cell4{
+      padding-right: 30px;
+    }
+    .cell3{
+      width: 100%;
+      padding-right: 0px;
+    }
     #submit{
       margin-top: auto;
     }
@@ -175,9 +182,6 @@ body {
   }
   
   
-  .small-input {
-    width: 50%;
-  }
   
   .checkboxcell{
     padding-left:auto;

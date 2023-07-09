@@ -13,6 +13,61 @@
     <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
     <h2>ADMINISTRATIVE OFFICE</h2>
     <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <div class="search-bar">
+      <div class="dropdown2" id="version" class="search-version">
+        <select id="dept" name="dept" required>
+          <option disabled selected>Select Version </option>
+          <option value="v1">version1</option>
+          <option value="v2">version2</option>
+          <option value="v3">version3</option>
+          
+        </select>
+        <span class="dropdown-icon"></span>
+        <style>
+                          {% comment %} css for dept dropdown {% endcomment %}
+                          .dropdown2 {
+                            position: relative;
+                            display: inline-block;
+                          }
+                      
+                          .dropdown2 select {
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            outline: none;
+                            border: 1px solid #ccc;
+                            padding: 8px 40px 8px 12px;
+                            font-size: 16px;
+                            border-radius: 4px;
+                            background-color: #fff;
+                            cursor: pointer;
+                            width: 200px;
+                          }
+                      
+                          .dropdown2 select:hover,
+                          .dropdown2 select:focus {
+                            border-color: #555;
+                          }
+                      
+                          .dropdown2-icon {
+                            position: absolute;
+                            top: 50%;
+                            right: 12px;
+                            transform: translateY(-50%);
+                            pointer-events: none;
+                          }
+                      
+                          /* Custom styles for the dropdown arrow icon */
+                          .dropdown2-icon::after {
+                            content: '\25BC';
+                            font-size: 12px;
+                            color: #555;
+                          }
+                        </style>
+                      </div>
+          
+      <button class="search-button" onclick="searchReceipt()">Search</button>
+    </div>
   </header>
   <div class="info">
     <div class="form-row">
