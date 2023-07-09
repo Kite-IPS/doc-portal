@@ -15,7 +15,8 @@ def home(request):
                           department=post_data['dept'],
                           student_number=post_data['contact1'],
                           parent_number=post_data['contact2'],
-                          quota=quota)
+                          quota=quota,
+                          submit_count=0)
         student.save()
 
         # Getting all filenames from the form
@@ -40,7 +41,8 @@ def home(request):
                     original=original,
                     photocopy=photo_copy,
                     count=count,
-                    date=datetime.strptime(post_data["date"], "%d/%m/%Y")).save()
+                    date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
+                    ver=0).save()
 
         return redirect('next_page', receipt_no=student.recipt_no)
     else:
@@ -48,6 +50,60 @@ def home(request):
         file_names= [document.name for document in Document.objects.all()]
 
         return render(request, "index.html", {"file_names": file_names})
+
+
+def edit(request, receipt_no):
+    student = get_object_or_404(Student, recipt_no=receipt_no)
+    if request.method == "POST":
+
+        post_data = request.POST
+
+        for data in post_data:
+            print(type(post_data[data]), data, post_data[data])
+
+        quota = post_data['quota'] == 'govt'
+        
+        # Saving the student info
+        student.name=post_data['name_stu'],
+        student.parent_name=post_data['name_prnt'],
+        student.department=post_data['dept'],
+        student.student_number=post_data['contact1'],
+        student.parent_number=post_data['contact2'],
+        student.quota=quota
+        student.submit_count += 1
+        student.save()
+
+        # Getting all filenames from the form
+        file_names = [[*name.split(':')] for name in post_data.keys() if ":" in name]
+        clean_names = {}
+        for name in file_names:
+            if name[0] in clean_names:
+                clean_names[name[0]].append(name[1])
+            else:
+                clean_names[name[0]] = [name[1]]
+        
+        # Saving the file data
+        for file in clean_names:
+            doc = Document.objects.get(name = file)
+
+            # Getting the info from post request
+            original = post_data[file+":original"] == 'on'
+            photo_copy = post_data[file+":copy"] == 'on'
+            count = int(post_data[file+":count"])
+            
+            Record(student=student, document=doc,
+                    original=original,
+                    photocopy=photo_copy,
+                    count=count,
+                    date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
+                    ver=student.submit_count).save()
+
+        return redirect('next_page', receipt_no=student.recipt_no)
+    else:
+        records = student.record_set.filter(ver=student.submit_count)
+        departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
+        return render(request, "edit.html", {"student": student, 'records': records, 'depts': departments})
+
 
 def next_page(request, receipt_no):
     student = get_object_or_404(Student, recipt_no=receipt_no)
