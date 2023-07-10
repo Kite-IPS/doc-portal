@@ -58,7 +58,7 @@ def home(request):
                     date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
                     ver=0).save()
 
-        return redirect('next_page', receipt_no=student.admission_no)
+        return redirect('view', admission_no=student.admission_no)
     else:
 
         file_names= [document.name for document in Document.objects.all()]
