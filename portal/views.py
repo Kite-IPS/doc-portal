@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from datetime import datetime
 
@@ -17,6 +17,7 @@ def home(request):
         student.save()
 
         version = Version(student=student,
+                          version_count=0,
                           stud_ver=0,
                           docs_ver=0)
         version.save()
