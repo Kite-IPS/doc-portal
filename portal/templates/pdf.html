@@ -7,24 +7,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="html2pdf.bundle.min.js"></script>
     <script>
-       function generatePDF(){
-        const element = document.querySelector(".container");
-
-
-        html2pdf()
-        .from(element)
-        .outputPdf('dataurlnewwindow')
-       }
+      function generatePDF() {
+        const element = document.querySelector('.container')
+      
+        html2pdf().from(element).outputPdf('dataurlnewwindow')
+      }
     </script>
   </head>
   <style>
     @page {
       size: A4;
       margin: 0;
-    }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
     }
     .container {
       width: 21cm;
@@ -36,21 +29,19 @@
     #table1 th,
     #table1 td {
       border-collapse: collapse;
-      margin: auto;
+      margin: 1px;
       border: 1px solid black;
-    
       text-align: center;
-    
     }
-
+    
     #main_form {
       max-width: 1000px;
       margin: 0 auto;
-      
+      padding: 2px;
       max-width: 20cm;
       max-height: 20cm;
     }
-
+    
     #table1 {
       border-collapse: collapse;
       margin-left: 2px;
@@ -64,132 +55,211 @@
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
-    .txt{
+    .txt {
       text-align: center;
       margin-top: 10px;
     }
-    .signature{
+    .signature {
       width: 20cm;
       height: 1.5cm;
       background-color: white;
       border: 1px solid #ccc;
       border-color: black;
       margin-left: 0.02cm;
-}
-.incharge{
-  margin-left: 7cm;
-  margin-top: -35px;
-} 
-.sign1{
-  margin-left: 12cm;
-  margin-top: -25px;
-} 
-.sign2{
-  margin-left: 16cm;
-  margin-top: -35px;
-}
+    }
+    .incharge {
+      margin-left: 7cm;
+      margin-top: -35px;
+    }
+    .sign1 {
+      margin-left: 12cm;
+      margin-top: -25px;
+    }
+    .sign2 {
+      margin-left: 16cm;
+      margin-top: -35px;
+    }
   </style>
   <body>
     <div class="container">
       <div id="main_form">
         <form>
-          <div class="txt"><b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>STUDENT COPY</b></div>
-      <hr size="2px" color="black">
-      <div id="form1">
-          <table id="table1">
-          <thead>
-              <tr>
-              <th rowspan="2">Name of Student</th>
-              <th rowspan="2">ACK. Receipt No</th>
-              <th rowspan="2">Name of Parent</th>
-              <th rowspan="2">Department</th>
-              <th rowspan="2">Parent Number</th>
-              <th rowspan="2">Student Number</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-              <td>John</td>
-              <td>22csb05</td>
-              <td>Mark</td>
-              <td>cse</td>
-              <td>519911891811</td>
-              <td>4849848949</td>
-              </tr>
-          </tbody>
-          </table>
-          <table id="table1">
-          <thead>
-              <tr>
-              <th rowspan="2">SNo</th>
-              <th rowspan="2">Document</th>
-              <th rowspan="2">Date</th>
-              <th colspan="2">Copies</th>
-              <th rowspan="2">Quantity</th>
-              </tr>
-              <tr>
-              <th>Original</th>
-              <th>Photocopy</th>
-              </tr>
-          </thead>
-          <tbody id="table-body"></tbody>
-          </table>
-          <div class="signature">
-            #sign
+          <hr size="2px" color="black" />
+          <div class="txt">
+            <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>STUDENT COPY</b>
           </div>
-  </div> 
-  <div id="form1">
-    <div class="txt"><b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>OFFICE COPY</b></div>
-    <hr size="2px" color="black">
-    <table id="table1">
-    <thead>
-        <tr>
-        <th rowspan="2">Name of Student</th>
-        <th rowspan="2">ACK. Receipt No</th>
-        <th rowspan="2">Name of Parent</th>
-        <th rowspan="2">Department</th>
-        <th rowspan="2">Parent Number</th>
-        <th rowspan="2">Student Number</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>John</td>
-        <td>22csb05</td>
-        <td>Mark</td>
-        <td>cse</td>
-        <td>519911891811</td>
-        <td>4849848949</td>
-        </tr>
-    </tbody>
-    </table>
-    <table id="table1">
-    <thead>
-        <tr>
-        <th rowspan="2">SNo</th>
-        <th rowspan="2">Document</th>
-        <th rowspan="2">Date</th>
-        <th colspan="2">Copies</th>
-        <th rowspan="2">Quantity</th>
-        </tr>
-        <tr>
-        <th>Original</th>
-        <th>Photocopy</th>
-        </tr>
-    </thead>
-    <tbody id="table-body1"></tbody>
-    </table>
-  </div> 
-      
-  </form>
-  <div class="signature">
-    #sign
-    </div>
-    
-  </div>
+          <hr size="2px" color="black" />
+          <div id="form1">
+            <table id="table1">
+              <thead>
+                <tr>
+                  <th rowspan="2">Name of Student</th>
+                  <th rowspan="2">ACK. Receipt No</th>
+                  <th rowspan="2">Name of Parent</th>
+                  <th rowspan="2">Department</th>
+                  <th rowspan="2">Parent Number</th>
+                  <th rowspan="2">Student Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>22csb05</td>
+                  <td>Mark</td>
+                  <td>cse</td>
+                  <td>519911891811</td>
+                  <td>4849848949</td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="table1">
+              <thead>
+                <tr>
+                  <th rowspan="2">SNo</th>
+                  <th rowspan="2">Document</th>
+                  <th rowspan="2">Date</th>
+                  <th colspan="2">Copies</th>
+                  <th rowspan="2">Quantity</th>
+                </tr>
+                <tr>
+                  <th>Original</th>
+                  <th>Photocopy</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+            <div class="signature"></div>
+          </div>
+          <div id="form1">
+            <hr size="2px" color="black" />
+            <div class="txt">
+              <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>OFFICE COPY</b>
+            </div>
+            <hr size="2px" color="black" />
+            <table id="table1">
+              <thead>
+                <tr>
+                  <th rowspan="2">Name of Student</th>
+                  <th rowspan="2">ACK. Receipt No</th>
+                  <th rowspan="2">Name of Parent</th>
+                  <th rowspan="2">Department</th>
+                  <th rowspan="2">Parent Number</th>
+                  <th rowspan="2">Student Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>22csb05</td>
+                  <td>Mark</td>
+                  <td>cse</td>
+                  <td>519911891811</td>
+                  <td>4849848949</td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="table1">
+              <thead>
+                <tr>
+                  <th rowspan="2">SNo</th>
+                  <th rowspan="2">Document</th>
+                  <th rowspan="2">Date</th>
+                  <th colspan="2">Copies</th>
+                  <th rowspan="2">Quantity</th>
+                </tr>
+                <tr>
+                  <th>Original</th>
+                  <th>Photocopy</th>
+                </tr>
+              </thead>
+              <tbody id="table-body1"></tbody>
+            </table>
+          </div>
+        </form>
+        <div class="signature"></div>
+
+        <button onclick="generatePDF()">Download pdf</button>
+        <script>
+          // Generate serial number, date, checkbox, and quantity columns
+          function generateColumns() {
+            var tableRows = document.getElementById('table-body').children
+            for (var i = 0; i < tableRows.length; i++) {
+              var serialNumberCell = document.createElement('td')
+              serialNumberCell.textContent = i + 1
+              tableRows[i].insertBefore(serialNumberCell, tableRows[i].firstChild)
+          
+              var dateCell = document.createElement('td')
+              var currentDate = new Date().toLocaleDateString()
+              dateCell.textContent = currentDate
+              tableRows[i].appendChild(dateCell)
+          
+              var checkboxCell = document.createElement('td')
+              var checkbox = document.createElement('input')
+              checkbox.type = 'checkbox'
+              checkboxCell.appendChild(checkbox)
+              tableRows[i].appendChild(checkboxCell)
+              checkboxCell.classList.add('checkboxcell')
+              checkbox.classList.add('cell5')
+          
+              var checkboxCell = document.createElement('td')
+              var checkbox = document.createElement('input')
+              checkbox.type = 'checkbox'
+              checkboxCell.appendChild(checkbox)
+              tableRows[i].appendChild(checkboxCell)
+              checkboxCell.classList.add('checkboxcell')
+              checkbox.classList.add('cell5')
+          
+              var quantityCell = document.createElement('td')
+              var quantityInput = document.createElement('p')
+              quantityCell.appendChild(quantityInput)
+              tableRows[i].appendChild(quantityCell)
+              quantityCell.classList.add('cell4')
+              quantityInput.classList.add('cell3')
+            }
+          }
+          
+          // Example data for the table
+          var data = ['ADMISSION APPLICATION FORMS', 'ALLOTMENT ORDER (FOR GQ STUDENTS)', 'SSLC MARKSHEET', 'HSC-FIRST YEAR MARKSHEET(NA-IF CBSE)', 'HSC-SECOND YEAR MARKSHEET', 'TRANSFER CERTIFICATE-12 th STD', 'AADHAR CARD', 'COMMUNITY CERTIFICATE', 'INCOME CERTIFICATE OF PARENT', 'NATIVITY/MIGRATION CERTIFICATE', 'STUDENT AND PARENT FORMAL PHOTO']
+          
+          // Generate table rows
+          var tableBody = document.getElementById('table-body')
+          for (var i = 0; i < data.length; i++) {
+            var row = document.createElement('tr')
+            row.id = 'row-' + i // Assign a unique ID to each row
+            var dataCell = document.createElement('td')
+            dataCell.textContent = data[i]
+            row.appendChild(dataCell)
+            tableBody.appendChild(row)
+          }
+          
+          // Call the function to generate serial numbers, dates, checkboxes, and quantities
+          generateColumns()
+          
+          //search function
+          function searchReceipt() {
+            var receiptNumber = document.getElementById('receipt-number').value
+            // Redirect the user to the next page
+            window.location.href = 'template/next-page.html' // Replace "next-page.html" with the actual URL of the next page
+          }
+          
+          var sourceTable = document.getElementById('table-body')
+          var targetTable = document.getElementById('table-body1')
+          
+          for (var i = 0; i < sourceTable.rows.length; i++) {
+            var newRow = targetTable.insertRow()
+            for (var j = 0; j < sourceTable.rows[i].cells.length; j++) {
+              var cellContent = sourceTable.rows[i].cells[j].innerHTML
+              var newCell = newRow.insertCell()
+              newCell.innerHTML = cellContent
+            }
+          }
+          
+          targetTable.className = sourceTable.className
+        </script>
       </div>
-      </div>
     </div>
+<<<<<<< HEAD
+=======
     
     
 <button onclick="generatePDF()">Download pdf</button>
@@ -269,5 +339,6 @@
 
       targetTable.className = sourceTable.className;
     </script>
+>>>>>>> 7629df9d5e1859ff0e7fe87ae56abaf14a3ce494
   </body>
 </html>
