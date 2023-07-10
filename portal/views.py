@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from datetime import datetime
+from django.utils import timezone
 
 
 def home(request):
@@ -70,24 +71,25 @@ def home(request):
 def edit(request, admission_no):
 
     student = get_object_or_404(Student, admission_no=admission_no)
+    version = get_object_or_404(Version, version_count=student.version_count, student=student)
+    info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
+    records = Record.objects.filter(student=student, ver=version.docs_ver)
+    version_values = [i + 1 for i in range(0, student.version_count)]
+
     if request.method == "POST":
-
-        post_data = request.POST
-
-        for data in post_data:
-            print(type(post_data[data]), data, post_data[data])
-
+        
+        # Getting the data from post request
+        post_data = request.POST.dict()
+        print(post_data)
         quota = post_data['quota'] == 'govt'
         
-        # Saving the student info
-        student.name=post_data['name_stu'],
-        student.parent_name=post_data['name_prnt'],
-        student.department=post_data['dept'],
-        student.student_number=post_data['contact1'],
-        student.parent_number=post_data['contact2'],
-        student.quota=quota
-        student.submit_count += 1
-        student.save()
+        # Checking for new changes in student details
+        stud_changed = False in [info.name == post_data['name_stu'],
+        info.parent_name == post_data['name_prnt'],
+        info.department == post_data['dept'],
+        info.student_number == post_data['contact1'],
+        info.parent_number == post_data['contact2'],
+        info.quota == quota]
 
         # Getting all filenames from the form
         file_names = [[*name.split(':')] for name in post_data.keys() if ":" in name]
@@ -98,27 +100,70 @@ def edit(request, admission_no):
             else:
                 clean_names[name[0]] = [name[1]]
         
-        # Saving the file data
-        for file in clean_names:
-            doc = Document.objects.get(name = file)
+        # Checking for changes in documents
+        doc_changed = False
 
-            # Getting the info from post request
-            original = post_data[file+":original"] == 'on'
-            photo_copy = post_data[file+":copy"] == 'on'
-            count = int(post_data[file+":count"])
+        for doc in clean_names:
+            print(doc)
+            original = post_data[f"{doc}:original"] == 'on'
+            copy = post_data[f"{doc}:copy"] == 'on'
+            count = post_data[f"{doc}:count"]
+            rec = records.get(document__name = doc)
+            if True in [rec.original==original,
+                    rec.photocopy==copy,
+                    rec.count==count]:
+                doc_changed = True
+                break
+        
+        # Checking for modification
+        if doc_changed or stud_changed:
+
+             # incrementing the version count
+            student.version_count += 1
+            student.save()
+
+            # Creating a new version object to keep track of change
+            new_version = Version(student=student,
+                            stud_ver=version.stud_ver,
+                            docs_ver=version.docs_ver)
             
-            Record(student=student, document=doc,
-                    original=original,
-                    photocopy=photo_copy,
-                    count=count,
-                    date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
-                    ver=student.submit_count).save()
 
-        return redirect('next_page', receipt_no=student.recipt_no)
-    else:
-        records = student.record_set.filter(ver=student.submit_count)
-        departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
-        return render(request, "edit.html", {"student": student, 'records': records, 'depts': departments})
+            if stud_changed:
+                new_version.stud_ver += 1
+                new_stud = StudentInfo(
+                                name=post_data['name_stu'],
+                                student = student,
+                                parent_name=post_data['name_prnt'],
+                                department=post_data['dept'],
+                                student_number=post_data['contact1'],
+                                parent_number=post_data['contact2'],
+                                quota=quota,
+                                ver=new_version.stud_ver)
+                new_stud.save()
+
+            if doc_changed:
+                new_version.docs_ver += 1
+                # Saving the file data
+                for file in clean_names:
+                    doc = Document.objects.get(name = file)
+
+                    # Getting the info from post request
+                    original = post_data[file+":original"] == 'on'
+                    photo_copy = post_data[file+":copy"] == 'on'
+                    count = int(post_data[file+":count"])
+                    
+                    Record(student=student, document=doc,
+                            original=original,
+                            photocopy=photo_copy,
+                            count=count,
+                            date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
+                            ver=0).save()
+            
+            new_version.save()
+            return redirect('view', admission_no=student.admission_no)
+
+    departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
+    return render(request, "edit.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, 'depts': departments})
 
 
 def view(request, admission_no):
