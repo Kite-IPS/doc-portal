@@ -24,7 +24,7 @@
       <div class="dropdown2" id="version" class="search-version">
         <select id="version-select" name="dept" required>
           {% for version in versions%}
-          {% if version == cur_ver%}
+          {% if forloop.counter0 == cur_ver%}
           <option value="{{forloop.counter0}}" selected>ver - {{version}}</option>
           {% else %}
           <option value="{{forloop.counter0}}">ver - {{version}}</option>
