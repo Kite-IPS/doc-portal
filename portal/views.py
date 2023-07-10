@@ -56,7 +56,7 @@ def home(request):
                     original=original,
                     photocopy=photo_copy,
                     count=count,
-                    date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
+                    date=timezone.localdate(),
                     ver=0).save()
 
         return redirect('view', admission_no=student.admission_no)
