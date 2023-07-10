@@ -5,6 +5,13 @@
 <head>
   <title>Document Verification</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <script>
+    function getVersion(){
+      var version = document.getElementById("version-select");
+      window.location.href = "{{admission_no}}?version="+version.value;
+
+    }
+  </script>
 </head>
 
 <body>
@@ -13,6 +20,62 @@
     <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
     <h2>ADMINISTRATIVE OFFICE</h2>
     <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <div class="search-bar">
+      <div class="dropdown2" id="version" class="search-version">
+        <select id="version-select" name="dept" required>
+          {% for version in versions%}
+          {% if version == cur_ver%}
+          <option value="{{forloop.counter0}}" selected>ver - {{version}}</option>
+          {% else %}
+          <option value="{{forloop.counter0}}">ver - {{version}}</option>
+          {% endif%}
+          {% endfor %}
+        </select>
+        <span class="dropdown-icon"></span>
+        <style>
+          .dropdown2 {
+            position: relative;
+            display: inline-block;
+          }
+
+          .dropdown2 select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            border: 1px solid #ccc;
+            padding: 8px 40px 8px 12px;
+            font-size: 16px;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            width: 200px;
+          }
+
+          .dropdown2 select:hover,
+          .dropdown2 select:focus {
+            border-color: #555;
+          }
+
+          .dropdown2-icon {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            pointer-events: none;
+          }
+
+          /* Custom styles for the dropdown arrow icon */
+          .dropdown2-icon::after {
+            content: '\25BC';
+            font-size: 12px;
+            color: #555;
+          }
+        </style>
+      </div>
+
+      <button class="search-button" onclick="getVersion()">Search</button>
+    </div>
   </header>
   <div class="info">
     <div class="form-row">
@@ -22,7 +85,7 @@
       </div><br>
       <div class="form-column">
         <label for="receipt">ACK.RECEIPT NO:</label>
-        <input type="text" id="phone" name="receipt" value="{{student.recipt_no}}" disabled>
+        <input type="text" id="phone" name="receipt" value="{{admission_no}}" disabled>
       </div>
       <div class="form-column">
         <label for="name_prnt">NAME OF THE PARENT:</label>
@@ -119,34 +182,34 @@
       </tr>
       <tbody id="table-body">
         {% for record in student.record_set.all %}
-          <tr>
-            <td>
-              {{forloop.counter}}
-            </td>
-            <td>
-              {{record.document.name}}
-            </td>
-            <td>
-              {{record.date}}
-            </td>
-            <td>
-              {% if record.original %}
-              <input type="checkbox" checked="true" class="cell5" disabled>
-              {% else %}
-              <input type="checkbox" class="cell5" disabled>
-              {% endif %}
-            </td>
-            <td>
-              {% if record.photocopy %}
-              <input type="checkbox" checked="true" class="cell5" disabled>
-              {% else %}
-              <input type="checkbox" class="cell5" disabled>
-              {% endif %}
-            </td>
-            <td>
-              <input type="number" value="{{record.count}}" class="cell3" disabled>
-            </td>
-          </tr>
+        <tr>
+          <td>
+            {{forloop.counter}}
+          </td>
+          <td>
+            {{record.document.name}}
+          </td>
+          <td>
+            {{record.date}}
+          </td>
+          <td>
+            {% if record.original %}
+            <input type="checkbox" checked="true" class="cell5" disabled>
+            {% else %}
+            <input type="checkbox" class="cell5" disabled>
+            {% endif %}
+          </td>
+          <td>
+            {% if record.photocopy %}
+            <input type="checkbox" checked="true" class="cell5" disabled>
+            {% else %}
+            <input type="checkbox" class="cell5" disabled>
+            {% endif %}
+          </td>
+          <td>
+            <input type="number" value="{{record.count}}" class="cell3" disabled>
+          </td>
+        </tr>
         {% endfor %}
       </tbody>
     </table>
