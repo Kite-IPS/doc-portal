@@ -102,14 +102,15 @@ def edit(request, admission_no):
         
         # Checking for changes in documents
         doc_changed = False
-
         for doc in clean_names:
-            print(doc)
             original = post_data[f"{doc}:original"] == 'on'
             copy = post_data[f"{doc}:copy"] == 'on'
-            count = post_data[f"{doc}:count"]
+            count = int(post_data[f"{doc}:count"])
             rec = records.get(document__name = doc)
-            if True in [rec.original==original,
+            print(doc, [rec.original==original,
+                    rec.photocopy==copy,
+                    rec.count==count])
+            if False in [rec.original==original,
                     rec.photocopy==copy,
                     rec.count==count]:
                 doc_changed = True
@@ -124,6 +125,7 @@ def edit(request, admission_no):
 
             # Creating a new version object to keep track of change
             new_version = Version(student=student,
+                            version_count=student.version_count,
                             stud_ver=version.stud_ver,
                             docs_ver=version.docs_ver)
             
@@ -142,25 +144,36 @@ def edit(request, admission_no):
                 new_stud.save()
 
             if doc_changed:
+
                 new_version.docs_ver += 1
+                
                 # Saving the file data
                 for file in clean_names:
-                    doc = Document.objects.get(name = file)
 
+                    doc = Document.objects.get(name = file)
+                    rec = records.get(document__name = doc)
+                    
                     # Getting the info from post request
                     original = post_data[file+":original"] == 'on'
                     photo_copy = post_data[file+":copy"] == 'on'
                     count = int(post_data[file+":count"])
                     
+                    # Checking if this specific file was modified
+                    date = rec.date
+                    if True in [rec.original==original,
+                    rec.photocopy==copy,
+                    rec.count==count]:
+                        date = timezone.localtime()
                     Record(student=student, document=doc,
                             original=original,
                             photocopy=photo_copy,
                             count=count,
-                            date=datetime.strptime(post_data["date"], "%d/%m/%Y"),
-                            ver=0).save()
+                            date=date,
+                            ver=new_version.docs_ver).save()
             
             new_version.save()
-            return redirect('view', admission_no=student.admission_no)
+        
+        return redirect('view', admission_no=student.admission_no)
 
     departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
     return render(request, "edit.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, 'depts': departments})
@@ -176,5 +189,5 @@ def view(request, admission_no):
     info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
     records = Record.objects.filter(student=student, ver=version.docs_ver)
     version_values = [i + 1 for i in range(0, student.version_count+1)]
-    print(version_values)
+    print(records)
     return render(request, "next-page.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count})
