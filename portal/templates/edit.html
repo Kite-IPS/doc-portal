@@ -14,7 +14,7 @@
     <h2>ADMINISTRATIVE OFFICE</h2>
     <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
   </header>
-  <form action="/edit/{{student.recipt_no}}" method="POST">
+  <form action="/edit/{{admission_no}}" method="POST">
     {% csrf_token %}
   <div class="info">
     <div class="form-row">
@@ -24,7 +24,7 @@
       </div><br>
       <div class="form-column">
         <label for="receipt">ACK.RECEIPT NO:</label>
-        <input type="text" id="phone" name="receipt" value="{{student.recipt_no}}" disabled>
+        <input type="text" id="phone" name="receipt" value="{{admission_no}}" disabled>
       </div>
       <div class="form-column">
         <label for="name_prnt">NAME OF THE PARENT:</label>
@@ -138,21 +138,23 @@
               {{record.date}}
             </td>
             <td>
+              <input type="hidden" class="cell5" name="{{record.document.name}}:original" value="off">
               {% if record.original %}
-              <input type="checkbox" checked="true" class="cell5">
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:original">
               {% else %}
-              <input type="checkbox" class="cell5">
+              <input type="checkbox" class="cell5" name="{{record.document.name}}:original">
               {% endif %}
             </td>
             <td>
+              <input type="hidden" class="cell5" name="{{record.document.name}}:copy" value="off">
               {% if record.photocopy %}
-              <input type="checkbox" checked="true" class="cell5">
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:copy">
               {% else %}
-              <input type="checkbox" class="cell5">
+              <input type="checkbox" class="cell5" name="{{record.document.name}}:copy">
               {% endif %}
             </td>
             <td>
-              <input type="number" value="{{record.count}}" class="cell3">
+              <input type="number" value="{{record.count}}" name="{{record.document.name}}:count" class="cell3">
             </td>
           </tr>
         {% endfor %}
