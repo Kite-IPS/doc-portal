@@ -185,3 +185,16 @@ def view(request, admission_no):
     records = Record.objects.filter(student=student, ver=version.docs_ver)
     version_values = [i + 1 for i in range(0, student.version_count+1)]
     return render(request, "next-page.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count})
+
+
+def pdf_download(request, admission_no):
+    student = get_object_or_404(Student, admission_no=admission_no)
+    if 'version' in request.GET:
+        version = int(request.GET.dict()["version"])
+    else:
+        version = student.version_count
+    version = get_object_or_404(Version, version_count=version, student=student)
+    info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
+    records = Record.objects.filter(student=student, ver=version.docs_ver)
+    version_values = [i + 1 for i in range(0, student.version_count+1)]
+    return render(request, "pdf.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count})
