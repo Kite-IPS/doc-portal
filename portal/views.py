@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from datetime import datetime
 from django.utils import timezone
 from django.db import IntegrityError
 
