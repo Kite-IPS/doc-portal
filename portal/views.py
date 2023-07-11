@@ -9,7 +9,6 @@ def home(request):
         
         # Getting the data from post request
         post_data = request.POST.dict()
-        print(post_data)
         quota = post_data['quota'] == 'govt'
         
         # Creating an entry for the student admission num on first submit
@@ -80,7 +79,6 @@ def edit(request, admission_no):
         
         # Getting the data from post request
         post_data = request.POST.dict()
-        print(post_data)
         quota = post_data['quota'] == 'govt'
         
         # Checking for new changes in student details
@@ -107,9 +105,6 @@ def edit(request, admission_no):
             copy = post_data[f"{doc}:copy"] == 'on'
             count = int(post_data[f"{doc}:count"])
             rec = records.get(document__name = doc)
-            print(doc, [rec.original==original,
-                    rec.photocopy==copy,
-                    rec.count==count])
             if False in [rec.original==original,
                     rec.photocopy==copy,
                     rec.count==count]:
@@ -189,5 +184,4 @@ def view(request, admission_no):
     info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
     records = Record.objects.filter(student=student, ver=version.docs_ver)
     version_values = [i + 1 for i in range(0, student.version_count+1)]
-    print(records)
     return render(request, "next-page.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count})
