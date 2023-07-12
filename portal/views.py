@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from datetime import datetime
 from django.utils import timezone
+from django.db import IntegrityError
 
 
 def home(request):
@@ -12,10 +12,15 @@ def home(request):
         quota = post_data['quota'] == 'govt'
         
         # Creating an entry for the student admission num on first submit
-        student = Student(admission_no=post_data['receipt'],
-                          version_count=0)
-        student.save()
+        try:
+            student = Student(admission_no=post_data['receipt'],
+                            version_count=0)
+            student.save()
 
+        # If a student of given id already exists then showing an error message
+        except IntegrityError:
+            return render(request, "dup_index.html")
+    
         version = Version(student=student,
                           version_count=0,
                           stud_ver=0,
