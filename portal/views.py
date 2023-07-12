@@ -210,10 +210,10 @@ def pdf_download(request, admission_no):
 
     template_path = 'print.html'
     context = {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count}
-    #return render(request, 'print.html', context=context)
+    
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
-    # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    
     # find the template and render it.
     template = get_template(template_path)
     html = template.render(context)
