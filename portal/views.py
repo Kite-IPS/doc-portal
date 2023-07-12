@@ -24,7 +24,7 @@ def add(request):
 
         # If a student of given id already exists then showing an error message
         except IntegrityError:
-            return render(request, "dup_index.html")
+            return render(request, "dup_index.html", {"admission_no": post_data['receipt']})
     
         version = Version(student=student,
                           version_count=0,
