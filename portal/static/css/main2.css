@@ -25,11 +25,10 @@ body {
     justify-content: center;
     width: 300px;
     margin: auto;
-   
-    border-radius: 5px 0 0 5px;
+   border-radius: 5px 0 0 5px;
     
   }
-  
+
   .search-input {
     padding: 10px;
     width: 320px;
@@ -46,10 +45,11 @@ body {
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 5px;
     cursor: pointer;
     outline: none;
   }
+
   
   /* Media query for responsive behavior */
   @media (max-width: 600px) {
@@ -202,30 +202,4 @@ body {
     height: 40px;
     
   }
-  #back,
-  #pdf{
-    display: block;
-    width: 150px;
-    padding: 10px;
-    border: none;
-    background-color: #251367;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-left: auto;
-    margin-top: 5px; 
-    margin-right: 45%;
-    
   
-  }
-  
-  #back {
-    text-decoration: none;
-  }
-
-  #back:hover,
-  #pdf:hover {
-    background-color: #007bff;
-    color: #251367;
-    }
