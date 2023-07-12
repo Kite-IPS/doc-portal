@@ -4,166 +4,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>document_info</title>
+    <style>
+      table {
+        border: 1px solid black;
+        padding: 2px;
+      }
+      .cells {
+        text-align: center;
+        padding: 3px;
+      }
+      .txt {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <!-- student copy -->
-
-    <div class="container">
-      <div id="main_form">
-        <form>
-          <hr size="2px" color="black" />
-          <div class="txt">
-            <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>STUDENT COPY</b>
-          </div>
-          <hr size="2px" color="black" />
-          <div id="form1">
-            <table class="table1">
-              <thead>
-                <tr>
-                  <th rowspan="2">Name of Student</th>
-                  <th rowspan="2">ACK. Receipt No</th>
-                  <th rowspan="2">Name of Parent</th>
-                  <th rowspan="2">Department</th>
-                  <th rowspan="2">Parent Number</th>
-                  <th rowspan="2">Student Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{{ student.name }}</td>
-                  <td>{{ admission_no }}</td>
-                  <td>{{ student.parent_name }}</td>
-                  <td>{{ student.department }}</td>
-                  <td>{{ student.student_number }}</td>
-                  <td>{{ student.parent_number }}</td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="table1">
-              <thead>
-                <tr>
-                  <th rowspan="2">SNo</th>
-                  <th rowspan="2">Document</th>
-                  <th rowspan="2">Date</th>
-                  <th colspan="2">Copies</th>
-                  <th rowspan="2">Quantity</th>
-                </tr>
-                <tr>
-                  <th>Original</th>
-                  <th>Photocopy</th>
-                </tr>
-              </thead>
-              <tbody id="table-body">
-                {% for record in records %}
-                  <tr>
-                    <td style="align-items: center;">{{ forloop.counter }}</td>
-                    <td style="align-items: center;">{{ record.document.name }}</td>
-                    <td style="align-items: center;">{{ record.date }}</td>
-                    <td style="align-items: center;">
-                      {% if record.original %}
-                        <p>x</p>
-                      {% else %}
-                        <p>o</p>
-                      {% endif %}
-                    </td>
-                    <td style="align-items: center;">
-                      {% if record.photocopy %}
-                        <p>x</p>
-                      {% else %}
-                        <p>o</p>
-                      {% endif %}
-                    </td>
-                    <td style="align-items: center;">
-                      <p>{{ record.count }}</p>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-            <div class="signature1">
-              <div>CERTIFICATE RECIVER</div>
-              <div>STUDENT</div>
-              <div>PARENT/GAURDIAN</div>
-            </div>
-          </div>
-
-          <div id="form1">
-            <hr size="2px" color="black" />
-            <div class="txt">
-              <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>OFFICE COPY</b>
-            </div>
-            <hr size="2px" color="black" />
-            <table class="table1">
-              <thead>
-                <tr>
-                  <th rowspan="2">Name of Student</th>
-                  <th rowspan="2">ACK. Receipt No</th>
-                  <th rowspan="2">Name of Parent</th>
-                  <th rowspan="2">Department</th>
-                  <th rowspan="2">Parent Number</th>
-                  <th rowspan="2">Student Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{{ student.name }}</td>
-                  <td>{{ admission_no }}</td>
-                  <td>{{ student.parent_name }}</td>
-                  <td>{{ student.department }}</td>
-                  <td>{{ student.student_number }}</td>
-                  <td>{{ student.parent_number }}</td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="table1">
-              <thead>
-                <tr>
-                  <th rowspan="2">SNo</th>
-                  <th rowspan="2">Document</th>
-                  <th rowspan="2">Date</th>
-                  <th colspan="2">Copies</th>
-                  <th rowspan="2">Quantity</th>
-                </tr>
-                <tr>
-                  <th>Original</th>
-                  <th>Photocopy</th>
-                </tr>
-              </thead>
-              <tbody id="table-body">
-                {% for record in records %}
-                  <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ record.document.name }}</td>
-                    <td>{{ record.date }}</td>
-                    <td>
-                      {% if record.original %}
-                        <p>x</p>
-                      {% else %}
-                        <p>o</p>
-                      {% endif %}
-                    </td>
-                    <td>
-                      {% if record.photocopy %}
-                        <p>x</p>
-                      {% else %}
-                        <p>o</p>
-                      {% endif %}
-                    </td>
-                    <td>
-                      <input type="number" value="{{ record.count }}" class="cell3" disabled />
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-            <div class="signature2">
-              <div>CERTIFICATE RECIVER</div>
-              <div>STUDENT</div>
-              <div>PARENT/GAURDIAN</div>
-            </div>
-          </div>
-        </form>
+    <div class="main_content">
+      <!-- heading -->
+      <div class="txt">
+        <hr size="2px" color="black" />
+        <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>STUDENT COPY</b>
+        <hr size="2px" color="black" />
       </div>
+      <!-- main table -->
+      <table class="table1">
+        <tr>
+          <th>Name of Student</th>
+          <th>
+            <p>ACK. Receipt No</p>
+          </th>
+          <th>
+            <p>Name of Parent</p>
+          </th>
+          <th>
+            <p>Department</p>
+          </th>
+          <th>
+            <p>Parent Number</p>
+          </th>
+          <th>
+            <p>Student Number</p>
+          </th>
+        </tr>
+        <tr>
+          <td class="cells">
+            <p>{{ student.name }}</p>
+          </td>
+          <td class="cells">
+            <p>{{ admission_no }}</p>
+          </td>
+          <td class="cells">
+            <p>{{ student.parent_name }}</p>
+          </td>
+          <td class="cells">
+            <p>{{ student.department }}</p>
+          </td>
+          <td class="cells">
+            <p>{{ student.student_number }}</p>
+          </td>
+          <td class="cells">
+            <p>{{ student.parent_number }}</p>
+          </td>
+        </tr>
+      </table>
+      <table class="table1">
+          <tr>
+            <th rowspan="2">SNo</th>
+            <th rowspan="2">Document</th>
+            <th rowspan="2">Date</th>
+            <th colspan="2">Copies</th>
+            <th rowspan="2">Quantity</th>
+          </tr>
+          <tr>
+            <th>Original</th>
+            <th>Photocopy</th>
+          </tr>
+          {% for record in records %}
+            <tr>
+              <td class="txt">{{ forloop.counter }}</td>
+              <td class="txt">{{ record.document.name }}</td>
+              <td class="txt">{{ record.date }}</td>
+              <td class="txt">
+                {% if record.original %}
+                  <p>x</p>
+                {% else %}
+                  <p>o</p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if record.photocopy %}
+                  <p>x</p>
+                {% else %}
+                  <p>o</p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ record.count }}</p>
+              </td>
+            </tr>
+          {% endfor %}
+      </table>
     </div>
   </body>
 </html>
