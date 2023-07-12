@@ -7,6 +7,9 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 
 def home(request):
+    return render(request, "dashboard.html")
+
+def add(request):
     if request.method == "POST":
         
         # Getting the data from post request
