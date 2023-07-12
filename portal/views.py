@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.utils import timezone
 from django.db import IntegrityError
-
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 def home(request):
+    return render(request, "dashboard.html")
+
+def add(request):
     if request.method == "POST":
         
         # Getting the data from post request
@@ -202,4 +207,21 @@ def pdf_download(request, admission_no):
     info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
     records = Record.objects.filter(student=student, ver=version.docs_ver)
     version_values = [i + 1 for i in range(0, student.version_count+1)]
-    return render(request, "pdf.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count})
+
+    template_path = 'print.html'
+    context = {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count}
+    #return render(request, 'print.html', context=context)
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    # response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
