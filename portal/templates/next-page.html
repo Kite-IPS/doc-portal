@@ -21,6 +21,8 @@
     <h2>ADMINISTRATIVE OFFICE</h2>
     <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
     <div class="search-bar">
+
+    
       <div class="dropdown2" id="version" class="search-version">
         <select id="version-select" name="dept" required>
           {% for version in versions%}
@@ -75,6 +77,7 @@
       </div>
 
       <button class="search-button" onclick="getVersion()">Search</button>
+     
     </div>
   </header>
   <div class="info">
@@ -84,7 +87,7 @@
         <input type="text" id="name_stu" name="name_stu" value="{{student.name}}" disabled>
       </div><br>
       <div class="form-column">
-        <label for="receipt">ACK.RECEIPT NO:</label>
+        <label for="receipt">ADMISSION NO:</label>
         <input type="text" id="phone" name="receipt" value="{{admission_no}}" disabled>
       </div>
       <div class="form-column">
@@ -213,7 +216,62 @@
         {% endfor %}
       </tbody>
     </table>
+    <div class="button-container">
+      <button class="edit-button">Edit</button>
+      <button class="download-button">Download</button>
+    </div>
+   
+  
+    <style>
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+      }
+  
+      .edit-button,
+      .download-button {
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+  
+      .edit-button {
+        background-color: #4CAF50;
+        color: white;
+      }
+  
+      .download-button {
+        background-color: #008CBA;
+        color: white;
+      }
+  
+      @media (min-width: 768px) {
+        .button-container {
+          flex-direction: row;
+        }
+  
+        .edit-button,
+        .download-button {
+          width: auto;
+          margin-bottom: 0;
+        }
+      }
+  
+      @media (max-width: 480px) {
+        .edit-button,
+        .download-button {
+          width: 50%;
+          margin-right: 5px;
+        }
+      }
+     
+    </style>
   </div>
+  
 </body>
 
 </html>
