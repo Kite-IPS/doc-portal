@@ -105,6 +105,7 @@ body {
 
   .card p {
     margin-bottom: 0;
+
   }
   .card1{
     background-color: #007bff;
@@ -143,10 +144,15 @@ body {
     border-radius: 10px;
     
   }
+  th.rotate {
+    height:150px;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+  }
 
   #documentTable th{
     background-color: #251367;
-    height: 5px;
     color: whitesmoke;
     border: 2px solid #000000;
     padding: 8px;
