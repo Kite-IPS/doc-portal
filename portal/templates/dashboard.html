@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document Verification</title>
+</head>
+<body>
+  <header class="header">
+    <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
+    <h2>ADMINISTRATIVE OFFICE</h2>
+    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <div class="search-bar">
+      <input type=" number" id="receipt-number" class="search-input" placeholder="Search ADMISSION NO here...">
+      <button class="search-button" onclick="searchReceipt()">Search</button>
+    </div>
+  </header>
+  <form action="{%  url 'dashboard' %}" method="POST">
+    <div id="tableContainer">
+      <table id="documentTable">
+        <tr>
+          <th rowspan="2">Admission No</th>
+          <th colspan="2">Document 1</th>
+        </tr>
+        <tr>
+          <th>Original</th>
+          <th>Photocopy</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>&#10003;</td>
+          <td>&#10008;</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>&#10003;</td>
+          <td>&#10008;</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>&#10003;</td>
+          <td>&#10008;</td>
+        </tr> 
+     </table>
+    </div>
+    
+
+        
+      </script>
+  </form>
+</body>
+</html>

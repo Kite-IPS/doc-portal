@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Title */
+  .header {
+    background-color: #251367;
+    color: #fff;
+    padding: 4px;
+    text-align: center;
+  }
+  .logo{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  .header h1,h2{
+    font-size: 20px;
+  }
+  .search-bar[input="number"]{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    margin: auto;
+    flex-wrap: wrap;
+    border-radius: 5px 0 0 5px;
+    
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 320px;
+    outline: none;
+    border-radius: 5px 0 0 5px;
+     border: #007bff;
+  }
+  .search-bar ::placeholder{
+    font-size: small;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+    outline: none;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  /* Media query for responsive behavior */
+  @media (max-width: 600px) {
+    .header {
+      font-size: 18px;
+      flex-direction: column;
+    }
+    
+    .search-input {
+      width: 200px;
+    }
+  }
+  
+  /* Responsive CSS */
+  @media screen and (max-width: 800px) {
+    .header h1,h2 {
+      font-size: 18px;
+    }
+    .form{
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  #tableContainer {
+    width: 100%;
+    height: auto;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 40px;
+    box-sizing: border-box;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+
+  #documentTable {
+    background-color: rgb(200, 200, 200);
+    border-bottom: 5px solid black;
+    border-collapse: collapse;
+    margin: auto;
+    width: 20%;
+    
+  }
+
+  #documentTable th{
+    background-color: #251367;
+    height: 5px;
+    color: whitesmoke;
+    border: 2px solid #000000;
+  }
+
+  #documentTable td {
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #fff;
+  }
+
+  .green-cell {
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  .red-cell {
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
