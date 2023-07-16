@@ -78,6 +78,7 @@ body {
     height: auto;
     background-color: #f2f2f2;
     border: 1px solid #ccc;
+    border-bottom: 2px solid black; ;
     border-radius: 4px;
     padding: 40px;
     box-sizing: border-box;
@@ -122,6 +123,7 @@ body {
     height: auto;
     background-color: #f2f2f2;
     border: 1px solid #ccc;
+    border-top: 2px solid black;
     border-radius: 4px;
     padding: 40px;
     box-sizing: border-box;
