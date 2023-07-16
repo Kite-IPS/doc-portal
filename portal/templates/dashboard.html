@@ -17,6 +17,28 @@
     </div>
   </header>
   <form action="{%  url 'dashboard' %}" method="POST">
+    <div class="dashboard">
+      <div class="card1">
+        <p>Total: 100</p>
+        <h2 id="h2">STUDENTS</h2>
+
+      </div>
+      <div class="card2">
+        <p>Original: 500</p>
+        <p>Photocopy: 500</p>
+        <h2 id="h2">SUBMITTED</h2>
+       
+      </div>
+      <div class="card3">
+        <p>Original: 500</p>
+        <p>Photocopy: 500</p>
+        <h2 id="h2">PENDING</h2>
+        
+        
+      </div>
+    </div>
+
+    {% comment %} //table {% endcomment %}
     <div class="table-container">
       <table id="documentTable">
         <tr>
