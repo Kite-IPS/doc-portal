@@ -11,9 +11,8 @@
     <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
     <h2>ADMINISTRATIVE OFFICE</h2>
     <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
-    <div class="search-bar">
-      <input type=" number" id="receipt-number" class="search-input" placeholder="Search ADMISSION NO here...">
-      <button class="search-button" onclick="searchReceipt()">Search</button>
+    <div class="search_bar">
+      <input type="text" class="search_input" placeholder="Search Admission Number Here..." onkeyup="searchTable()" />
     </div>
   </header>
   <form action="{%  url 'dashboard' %}" method="POST">
@@ -50,25 +49,38 @@
           <th>P</th>
         </tr>
         <tr>
-          <td>123456</td>
-          <td id="green-cell">&#10004;</td>
-          <td id="red-cell">&#10007;</td>
+          <td>22csb11</td>
+          <td class="green-cell">&#10004;</td>
+          <td class="red-cell">&#10007;</td>
         </tr>
         <tr>
-          <td>789012</td>
-          <td id="green-cell">&#10004;</td>
-          <td id="red-cell">&#10007;</td>
+          <td>22aib30</td>
+          <td class="green-cell">&#10004;</td>
+          <td class="red-cell">&#10007;</td>
+        </tr>
+        <tr>
+          <td>22csb05</td>
+          <td class="green-cell">&#10004;</td>
+          <td class="red-cell">&#10007;</td>
+        </tr>
+        <tr>
+          <td>22csb19</td>
+          <td class="green-cell">&#10004;</td>
+          <td class="red-cell">&#10007;</td>
+        </tr>
+        <tr class="message-row" style="display: none;">
+          <td colspan="3">Nothing found</td>
         </tr>
       </table>
       <style>
-        #green-cell::before{
+        .green-cell::before{
           color: green;
           font-weight: bold;
           justify-content: center;
           color: white;
         }
       
-        #red-cell::before{
+        .red-cell::before{
           color: red;
           font-weight: bold;
           justify-content: center;
@@ -76,8 +88,42 @@
         }
       </style>
     </div>
+    <script>
+      function searchTable() {
+        var input = document.querySelector('.search_input');
+        var filter = input.value.toUpperCase();
+        var table = document.getElementById('documentTable');
+        var rows = table.getElementsByTagName('tr');
+        var messageRow = table.getElementsByClassName('message-row')[0];
+  
+        var matchFound = false;
+  
+        for (var i = 2; i < rows.length; i++) {
+          var admissionNumberCell = rows[i].getElementsByTagName('td')[0];
+          var admissionNumberText = admissionNumberCell.textContent || admissionNumberCell.innerText;
+  
+          if (startsWith(admissionNumberText.toUpperCase(), filter)) {
+            rows[i].style.display = '';
+            matchFound = true;
+          } else {
+            rows[i].style.display = 'none';
+          }
+        }
+  
+        if (!matchFound) {
+          messageRow.style.display = '';
+        } else {
+          messageRow.style.display = 'none';
+        }
+      }
+  
+      function startsWith(text, search) {
+        return text.startsWith(search);
+      }
+    </script>
   </body>
   </html>
+
   
   
   

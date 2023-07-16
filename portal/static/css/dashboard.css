@@ -19,37 +19,25 @@ body {
   .header h1,h2{
     font-size: 20px;
   }
-  .search-bar[input="number"]{
+  .search_bar[input="text"]{
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    width: 300px;
+    width: 200px;
     margin: auto;
     flex-wrap: wrap;
-    border-radius: 5px 0 0 5px;
-    
+    border-radius: 5px;
   }
   
-  .search-input {
+  .search_input {
     padding: 10px;
-    width: 320px;
-    outline: none;
-    border-radius: 5px 0 0 5px;
-     border: #007bff;
+    width: 220px;
+    border-radius: 10px;
+    border-color: #007bff;
   }
-  .search-bar ::placeholder{
+  .search_bar ::placeholder{
     font-size: small;
-  }
-  
-  .search-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 0px 5px 5px 0px;
-    cursor: pointer;
-    outline: none;
-    transition: width 0.3s ease-in-out;
+    text-align: center;
   }
   
   /* Media query for responsive behavior */
@@ -60,7 +48,7 @@ body {
     }
     
     .search-input {
-      width: 200px;
+      width: 150px;
     }
   }
   
@@ -75,14 +63,24 @@ body {
     }
   
   }
+
+
   /*count css*/
+  
   .dashboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 0px;
     margin-right: 20px;
+    width: 100%;
+    height: auto;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 40px;
+    box-sizing: border-box;
   }
 
   .card1,
@@ -128,7 +126,7 @@ body {
     padding: 40px;
     box-sizing: border-box;
     margin-left: 0px;
-    margin-top: 20px;
+    margin-top: 0px;
   }
 
   #documentTable {
@@ -153,6 +151,13 @@ body {
     border: 1px solid black;
     padding: 5px;
     background-color: #fff;
+  }
+
+
+  /*nothing found message style*/
+  .message-row {
+    font-weight: bold;
+    text-align: center;
   }
 
 
