@@ -7,7 +7,7 @@
     <style>
       @page {
         size: A4 portrait;
-        margin: 2cm;
+        margin: 1.5cm;
       }
       table {
         border: 1px solid black;
@@ -59,6 +59,18 @@
       .sign_cell {
         padding-top: 50px;
       }
+      .version {
+        text-align: right;
+        font-size: large;
+      }
+      .txt1 {
+        text-align: left;
+      }
+      .alert {
+        text-align: left;
+        padding: 2px;
+        font-size: large;
+      }
     </style>
   </head>
   <body>
@@ -66,10 +78,12 @@
       <!-- STUDENT copy -->
       <div class="main_content">
         <!-- heading -->
+        <div class="version">version - 1</div>
         <div class="txt">
           <hr size="2px" color="black" />
-          <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>STUDENT COPY</b>
-          <hr size="2px" color="black" />
+          <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>STUDENT COPY<br>
+            ("x - not submited , o - submited")
+          </b>
         </div>
         <!-- main table -->
         <table class="table1">
@@ -127,7 +141,7 @@
           {% for record in records %}
             <tr>
               <td class="txt">{{ forloop.counter }}</td>
-              <td class="txt">{{ record.document.name }}</td>
+              <td class="txt1">{{ record.document.name }}</td>
               <td class="txt">{{ record.date }}</td>
               <td class="txt">
                 {% if record.original %}
@@ -163,14 +177,13 @@
           </tr>
         </table>
       </div>
-      <br>
+      <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
       <!-- OFFICE copy -->
       <div class="main_content">
         <!-- heading -->
         <div class="txt">
           <hr size="2px" color="black" />
           <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>OFFICE COPY</b>
-          <hr size="2px" color="black" />
         </div>
         <!-- main table -->
         <table class="table1">
@@ -228,7 +241,7 @@
           {% for record in records %}
             <tr>
               <td class="txt">{{ forloop.counter }}</td>
-              <td class="txt">{{ record.document.name }}</td>
+              <td class="txt1">{{ record.document.name }}</td>
               <td class="txt">{{ record.date }}</td>
               <td class="txt">
                 {% if record.original %}
@@ -263,6 +276,7 @@
             </td>
           </tr>
         </table>
+        <div class="alert">"THE INFORMATION GOES HERE"</div>
       </div>
     </div>
   </body>
