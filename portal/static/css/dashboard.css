@@ -163,6 +163,19 @@ body {
     padding: 5px;
     background-color: #fff;
   }
+  .green-cell{
+    color: green;
+    font-weight: bold;
+    justify-content: center;
+    
+  }
+
+  .red-cell{
+    color: red;
+    font-weight: bold;
+    justify-content: center;
+
+  }
 
 
   /*nothing found message style*/
