@@ -108,13 +108,13 @@ body {
     background-color: #fff;
   }
 
-  .green-cell {
+  #green-cell {
     background-color: green;
     justify-content: center;
     align-items: center;
     color: white;
   }
-  .red-cell {
+  #red-cell {
     background-color: red;
     justify-content: center;
     align-items: center;
