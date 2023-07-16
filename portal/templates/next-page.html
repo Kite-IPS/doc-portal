@@ -217,8 +217,8 @@
       </tbody>
     </table>
     <div class="button-container">
-      <button class="edit-button">Edit</button>
-      <button class="download-button">Download</button>
+      <a class="edit-button" href="/edit/{{admission_no}}">Edit</a>
+      <a class="download-button" href="/pdf/{{admission_no}}?version={{cur_ver}}">Download</a>
     </div>
    
   
@@ -237,6 +237,7 @@
         cursor: pointer;
         margin-bottom: 10px;
         width: 100%;
+        text-decoration: none;
       }
   
       .edit-button {
@@ -252,6 +253,7 @@
       @media (min-width: 768px) {
         .button-container {
           flex-direction: row;
+          text-align: center;
         }
   
         .edit-button,
@@ -264,9 +266,11 @@
       @media (max-width: 480px) {
         .edit-button,
         .download-button {
-          width: 50%;
+          width: 60px;
           margin-right: 5px;
         }
+        
+        
       }
      
     </style>
