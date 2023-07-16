@@ -17,37 +17,47 @@
     </div>
   </header>
   <form action="{%  url 'dashboard' %}" method="POST">
-    <div id="tableContainer">
+    <div class="table-container">
       <table id="documentTable">
         <tr>
-          <th rowspan="2">Admission No</th>
+          <th rowspan="2">Admission.No</th>
           <th colspan="2">Document 1</th>
         </tr>
         <tr>
-          <th>Original</th>
-          <th>Photocopy</th>
+          <th>O</th>
+          <th>P</th>
         </tr>
         <tr>
-          <td>1</td>
-          <td>&#10003;</td>
-          <td>&#10008;</td>
+          <td>123456</td>
+          <td id="green-cell">&#10004;</td>
+          <td id="red-cell">&#10007;</td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>&#10003;</td>
-          <td>&#10008;</td>
+          <td>789012</td>
+          <td id="green-cell">&#10004;</td>
+          <td id="red-cell">&#10007;</td>
         </tr>
-        <tr>
-          <td>3</td>
-          <td>&#10003;</td>
-          <td>&#10008;</td>
-        </tr> 
-     </table>
+      </table>
+      <style>
+        #green-cell::before{
+          color: green;
+          font-weight: bold;
+          justify-content: center;
+          color: white;
+        }
+      
+        #red-cell::before{
+          color: red;
+          font-weight: bold;
+          justify-content: center;
+          color: white;
+        }
+      </style>
     </div>
-    
-
-        
-      </script>
-  </form>
-</body>
-</html>
+  </body>
+  </html>
+  
+  
+  
+  
+  
