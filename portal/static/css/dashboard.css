@@ -107,13 +107,16 @@ body {
     margin-bottom: 0;
   }
   .card1{
-    background-color: #251367;
+    background-color: #007bff;
+    border: 4px solid #251367;
   }
   .card2{
-    background-color: green;
+    background-color: #00ff44;
+    border: 4px solid #096d18;
   }
   .card3{
-    background-color: red;
+    background-color: #f54646;
+    border: 4px solid #6d0000;
   }
 
   
