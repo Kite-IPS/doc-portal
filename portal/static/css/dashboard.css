@@ -121,7 +121,7 @@ body {
   .card3{
     background: rgb(254,58,58);
     background: linear-gradient(54deg, rgba(254,58,58,1) 0%, rgba(252,159,159,1) 100%);
-    border: 2px solid #df3f3f;
+    border: 2  px solid #df3f3f;
   }
 
   
