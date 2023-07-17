@@ -165,7 +165,7 @@ def edit(request, admission_no):
                     
                     # Checking if this specific file was modified
                     date = rec.date
-                    if True in [rec.original==original,
+                    if False in [rec.original==original,
                     rec.photocopy==copy,
                     rec.count==count]:
                         date = timezone.localtime()
