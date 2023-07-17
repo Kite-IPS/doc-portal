@@ -19,8 +19,10 @@ body {
   .header h1,h2{
     font-size: 20px;
   }
+  .search_bar{
+    margin-bottom: 20px;
+  }
   .search_bar[input="text"]{
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     width: 200px;
@@ -71,16 +73,15 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: 0px;
     margin-right: 20px;
     width: 100%;
     height: auto;
     background-color: #f2f2f2;
     border: 1px solid #ccc;
-    border-bottom: 2px solid black; ;
     border-radius: 4px;
-    padding: 40px;
+    padding: 20px;
     box-sizing: border-box;
   }
 
@@ -127,7 +128,6 @@ body {
     height: auto;
     background-color: #f2f2f2;
     border: 1px solid #ccc;
-    border-top: 2px solid black;
     border-radius: 4px;
     padding: 40px;
     box-sizing: border-box;
@@ -137,7 +137,7 @@ body {
 
   #documentTable {
     background-color: rgb(200, 200, 200);
-    border-bottom: 5px solid black;
+    border-bottom: 3px solid black;
     border-collapse: collapse;
     margin: auto;
     width: 20%;
@@ -161,17 +161,17 @@ body {
   #documentTable td {
     border: 1px solid black;
     padding: 5px;
-    background-color: #fff;
+
   }
   .green-cell{
-    color: green;
+    background-color: rgb(97, 248, 97);
     font-weight: bold;
     justify-content: center;
     
   }
 
   .red-cell{
-    color: red;
+    background-color: rgb(250, 76, 76);
     font-weight: bold;
     justify-content: center;
 
