@@ -5,6 +5,7 @@
 <head>
   <title>Document Verification</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <script src="{% static 'js/count_toggle.js' %}"> </script>
 </head>
 
 <body>
@@ -148,13 +149,18 @@
             <td>
               <input type="hidden" class="cell5" name="{{record.document.name}}:copy" value="off">
               {% if record.photocopy %}
-              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:copy">
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:copy" onclick="toggleInputField(this)">
               {% else %}
-              <input type="checkbox" class="cell5" name="{{record.document.name}}:copy">
+              <input type="checkbox" class="cell5" name="{{record.document.name}}:copy" onclick="toggleInputField(this)">
               {% endif %}
             </td>
             <td>
+              {% if record.photocopy %}
               <input type="number" value="{{record.count}}" name="{{record.document.name}}:count" class="cell3">
+              {% else %}
+              <input readonly type="number" value="0" name="{{record.document.name}}:count" class="cell3">
+              {% endif %}
+              
             </td>
           </tr>
         {% endfor %}
