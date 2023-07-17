@@ -6,6 +6,6 @@ function toggleInputField(checkbox) {
   }
   else{
     inputField.readOnly = false;
-    inputField.value = inputField.value;
+    inputField.value = 1;
   }
 }
