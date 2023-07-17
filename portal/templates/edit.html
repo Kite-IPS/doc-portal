@@ -155,7 +155,12 @@
               {% endif %}
             </td>
             <td>
+              {% if record.photocopy %}
               <input type="number" value="{{record.count}}" name="{{record.document.name}}:count" class="cell3">
+              {% else %}
+              <input readonly type="number" value="0" name="{{record.document.name}}:count" class="cell3">
+              {% endif %}
+              
             </td>
           </tr>
         {% endfor %}
