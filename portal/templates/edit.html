@@ -25,7 +25,7 @@
         <input type="text" id="name_stu" name="name_stu" value="{{student.name}}">
       </div><br>
       <div class="form-column">
-        <label for="receipt">ACK.RECEIPT NO:</label>
+        <label for="receipt">ADMISSION NO:</label>
         <input type="text" id="phone" name="receipt" value="{{admission_no}}" disabled>
       </div>
       <div class="form-column">
@@ -87,15 +87,19 @@
           </style>
         </div>
       </div>
-    </div>
+    </div><br>
     <div class="form-row">
-      <div class="form-column">
-        <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+    <div class="form-column">
+        <label for="contact1"> <b>CONTACT INFO:</b><br>STUDENT NO:</label>
         <input type="text" id="contact1" name="contact1" value="{{student.student_number}}">
       </div>
       <div class="form-column">
         <br><label for="contact2">PARENT NO:</label>
         <input type="text" id="contact2" name="contact2" value="{{student.parent_number}}">
+      </div>
+      <div class="form-column">
+        <br><label for="email">EMAIL ID</label>
+        <input type="email" class="email" id="email" name="email" required>
       </div>
     </div>
 
