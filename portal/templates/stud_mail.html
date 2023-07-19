@@ -9,10 +9,11 @@
       font-family: Arial, sans-serif;
     }
     .base {
-      max-width: 1000px;
+     width: 1000px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 1px;
       border: 1px solid #ccc;
+      height: 837px;
     }
     .version {
       text-align: right;
@@ -46,7 +47,7 @@
     <!-- STUDENT copy -->
     <div class="main_content">
       <!-- heading -->
-      <div class="version">version - 1</div>
+      <div class="version">version - {{cur_ver}}</div>
       <div class="txt">
         <hr size="2px" color="black" />
         <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>
@@ -95,6 +96,14 @@
           </td>
           <td class="cells">
             <p>{{ student.parent_number }}</p>
+          </td>
+
+          <td>
+            {% if student.quota %}
+            <p>GOVT</p>
+            {% else %}
+            <p>MGMNT</p>
+            {% endif %}
           </td>
         </tr>
       </table>
