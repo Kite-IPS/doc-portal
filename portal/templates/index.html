@@ -137,13 +137,6 @@
       </form>
     </div>
 
-    <!-- Popup div -->
-  <div id="popupDiv" class="popup">
-    <label>
-      <input type="checkbox" id="checkBox"> Checkbox
-    </label>
-  </div>
-
     <script>
 
     //for dept drop down box
@@ -254,13 +247,8 @@
     generateColumns();
 
     //search function
-    function searchReceipt() {
+    function searchReceipt(){
       var receiptNumber = document.getElementById("receipt-number").value;
-      //additional processing with the receipt number if needed
-
-      // Store the search value in session storage
-      sessionStorage.setItem('searchValue', receiptNumber);
-
       // Redirect the user to the next page
       window.location.href = "view/"+receiptNumber; // Replace "next-page.html" with the actual URL of the next page
     }
