@@ -97,7 +97,7 @@ def edit(request, admission_no):
 
     # Checking if the document is locked
     if student.lock:
-        return HttpResponse("<h1> Cannot edit this locked doc</h1>")
+        return render(request, "lock.html")
 
     if request.method == "POST":
 
