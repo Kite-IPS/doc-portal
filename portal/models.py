@@ -13,6 +13,7 @@ class Student(models.Model):
 
     admission_no = models.CharField(max_length=30, unique=True)
     version_count = models.IntegerField()
+    lock = models.BooleanField()
 
     def __str__(self):
         return f"{self.admission_no} - {self.version_count}"
@@ -21,6 +22,7 @@ class Student(models.Model):
 class StudentInfo(models.Model):
 
     name = models.CharField(max_length=50)
+    email = models.EmailField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     department = models.CharField(max_length=50)  
     student_number = models.CharField(max_length=20)   
