@@ -39,12 +39,6 @@
     th {
       background-color: #f2f2f2;
     }
-    .sign_tab {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
   </style>
 </head>
 <body>
@@ -57,7 +51,7 @@
         <hr size="2px" color="black" />
         <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>
           STUDENT COPY<br />
-          ("x - not submited , o - submited")
+          ("x - submited , o - not submited")
         </b>
       </div>
       <!-- main table -->
@@ -78,6 +72,9 @@
           </th>
           <th>
             <p>Student Number</p>
+          </th>
+          <th>
+            <p>QUOTA</p>
           </th>
         </tr>
         <tr>
@@ -137,19 +134,6 @@
             </td>
           </tr>
         {% endfor %}
-      </table>
-      <table class="sign_tab">
-        <tr>
-          <td>
-            <p class="sign_cell">CERTIFICATE RECIVER</p>
-          </td>
-          <td>
-            <p class="sign_cell">STUDENT</p>
-          </td>
-          <td>
-            <p class="sign_cell">PARENT/GAURDIAN</p>
-          </td>
-        </tr>
       </table>
     </div>
   </div>
