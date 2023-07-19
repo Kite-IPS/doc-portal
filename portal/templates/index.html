@@ -13,7 +13,7 @@
     <h2>ADMINISTRATIVE OFFICE</h2>
     <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
     <div class="search-bar">
-      <input type=" number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO here...">
+      <input type=" number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO here..."  onkeypress="preventFormSubmission(event)">
       <button class="search-button" onclick="searchReceipt()">Search</button>
     </div>
   </header>
@@ -249,8 +249,18 @@
     //search function
     function searchReceipt(){
       var receiptNumber = document.getElementById("receipt-number").value;
+      var searchTerm = receiptNumber.value;
       // Redirect the user to the next page
       window.location.href = "view/"+receiptNumber; // Replace "next-page.html" with the actual URL of the next page
+
+    }
+
+    // Function to prevent form submission when Enter key is pressed in the search input
+    function preventFormSubmission(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        searchReceipt();
+      }
     }
 
     // function for searching admission number 

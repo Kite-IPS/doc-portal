@@ -6,6 +6,11 @@
   <title>Document Verification</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <script>
+
+    window.onload = function() {
+    const dropdown = document.getElementById("version-select");
+    dropdown.addEventListener('change',getVersion);
+    }
     function getVersion(){
       var version = document.getElementById("version-select");
       window.location.href = "{{admission_no}}?version="+version.value;
@@ -76,7 +81,7 @@
         </style>
       </div>
 
-      <button class="search-button" onclick="getVersion()">Search</button>
+
      
     </div>
   </header>
