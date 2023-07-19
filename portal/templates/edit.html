@@ -6,6 +6,7 @@
   <title>Document Verification</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <script src="{% static 'js/count_toggle.js' %}"> </script>
+  <script src="{% static 'js/popup.js' %}"> </script>
 </head>
 
 <body>
@@ -166,8 +167,31 @@
         {% endfor %}
       </tbody>
     </table>
+    <button type="button" class="button" id="submit" onclick="showPopup()">check </button>
   </div>
-  <input type="submit" class="button" id="submit" value="submit">
+  
+  
+  <!-- Popup div -->
+  <div id="popupDiv" class="popup">
+    <label>
+      <input type="checkbox" id="checkBox"> Checkbox
+    </label>
+    <style>
+      /* Styling for the popup div */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+    </style>
+  </div>
+
   </form>
 </body>
 
