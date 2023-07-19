@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <script src="{% static 'js/count_toggle.js' %}"> </script>
   <script src="{% static 'js/popup.js' %}"> </script>
+  <script src="{% static 'js/lock.js' %}"> </script>
 </head>
 
 <body>
@@ -183,7 +184,7 @@
     <!-- Declaration text for the checkbox -->
     <p class="declaration" style="color: red;"><b style="color: black;">NOTE:</b> click the checkbox before submitting only if this is a final copy</p><br>
     <label id="agree">
-      <input type="checkbox" id="checkbox" name="finalversion"> < By clicking this, you're agreeing that you've submited all the required documents   
+      <input type="checkbox" id="checkbox" name="finalversion" onclick="addLockInfo(this)"> < By clicking this, you're agreeing that you've submited all the required documents   
     </label>
     <!-- Submit button -->
     <button type="submit" id="submitpop" class="submit">Submit</button>
