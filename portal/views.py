@@ -22,7 +22,8 @@ def add(request):
         # Creating an entry for the student admission num on first submit
         try:
             student = Student(admission_no=post_data['receipt'],
-                            version_count=0)
+                            version_count=0,
+                            lock=False)
             student.save()
 
         # If a student of given id already exists then showing an error message
@@ -72,6 +73,11 @@ def add(request):
                     count=count,
                     date=timezone.localdate(),
                     ver=0).save()
+            
+        # Mailing the student
+        context = get_student_info(request, student.admission_no)
+        context['cur_ver'] += 1
+        mail_student("stud_mail.html", context, student_info.email)
             
         return redirect('view', admission_no=student.admission_no)
     else:
@@ -183,9 +189,13 @@ def edit(request, admission_no):
                             ver=new_version.docs_ver).save()
             
             new_version.save()
+    
+            # Mailing the student
+            context = get_student_info(request, student.admission_no)
+            context['cur_ver'] += 1
 
-            # Send mail to the respective person
-        
+            mail_student("stud_mail.html", context, post_data["email"])
+                
         return redirect('view', admission_no=student.admission_no)
 
     departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
