@@ -128,11 +128,17 @@
           
           
         </table>
-        <input type="submit" class="button" id="submit" value="submit">
+        <button class="button" id="submit"> Submit </button>
       </form>
-        
-      
     </div>
+
+    <!-- Popup div -->
+  <div id="popupDiv" class="popup">
+    <label>
+      <input type="checkbox" id="checkBox"> Checkbox
+    </label>
+  </div>
+
     <script>
 
     //for dept drop down box
@@ -252,14 +258,15 @@
       window.location.href = "view/"+receiptNumber; // Replace "next-page.html" with the actual URL of the next page
     }
 
+    // function for searching admission number 
     function populateSearchValue() {
       var searchValue = sessionStorage.getItem('searchValue');
       if (searchValue) {
         document.getElementById("receipt-number").value = searchValue;
       }
     }
-
     populateSearchValue();
+
 
       </script>
   </body>
