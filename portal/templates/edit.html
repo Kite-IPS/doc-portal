@@ -167,7 +167,7 @@
         {% endfor %}
       </tbody>
     </table>
-    <button type="button" class="button" id="submit" onclick="showPopup()">check </button>
+    <button type="button" class="button" id="submit" onclick="showPopup()"> PROCEED </button>
   </div>
   
   <!-- Background overlay -->
@@ -177,9 +177,9 @@
   <div id="popupDiv" class="popup">
     <span class="close-icon" onclick="hidePopup()">&#10006;</span>
     <!-- Declaration text for the checkbox -->
-    <p class="declaration"><b>NOTE:</b>click the checkbox before submitting only if it is a final copy</p><br>
-    <label>
-      <input type="checkbox" id="checkbox" name="finalversion"> By clicking this, you're agreeing that you've submited all the required documents   
+    <p class="declaration" style="color: red;"><b style="color: black;">NOTE:</b> click the checkbox before submitting only if this is a final copy</p><br>
+    <label id="agree">
+      <input type="checkbox" id="checkbox" name="finalversion"> < By clicking this, you're agreeing that you've submited all the required documents   
     </label>
     <!-- Submit button -->
     <button type="submit" id="submitpop" class="submit">Submit</button>
@@ -212,13 +212,18 @@
     /* Styling for the close icon */
     .close-icon {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 5px;
+      right: 13px;
       cursor: pointer;
     }
+
+
     .declaration {
       margin-bottom: 10px;
+      padding: 5px;
     }
+
+
     #submitpop{
       display: block;
       width: 100px;
@@ -242,11 +247,13 @@
         #submitpop{
           margin-right: 100px;
         }
-        
       }
+
+
     #checkbox{
       width: 20px;
       height: 20px;
+      margin-bottom: 16px;
     }
     </style>
   </div>
