@@ -44,6 +44,7 @@ def add(request):
                               student_number=post_data['contact1'],
                               parent_number=post_data['contact2'],
                               quota=quota,
+                              email=post_data['email'],
                               ver=0)
         student_info.save()
 
@@ -100,7 +101,8 @@ def edit(request, admission_no):
         info.department == post_data['dept'],
         info.student_number == post_data['contact1'],
         info.parent_number == post_data['contact2'],
-        info.quota == quota]
+        info.quota == quota,
+        info.email == post_data["email"]]
 
         # Getting all filenames from the form
         file_names = [[*name.split(':')] for name in post_data.keys() if ":" in name]
@@ -148,6 +150,7 @@ def edit(request, admission_no):
                                 student_number=post_data['contact1'],
                                 parent_number=post_data['contact2'],
                                 quota=quota,
+                                email=post_data["email"],
                                 ver=new_version.stud_ver)
                 new_stud.save()
 
