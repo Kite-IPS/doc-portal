@@ -5,9 +5,12 @@ from django.db import IntegrityError
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+from .utils import *
+
 
 def home(request):
     return render(request, "dashboard.html")
+
 
 def add(request):
     if request.method == "POST":
@@ -68,7 +71,7 @@ def add(request):
                     count=count,
                     date=timezone.localdate(),
                     ver=0).save()
-
+            
         return redirect('view', admission_no=student.admission_no)
     else:
 
@@ -177,6 +180,8 @@ def edit(request, admission_no):
                             ver=new_version.docs_ver).save()
             
             new_version.save()
+
+            # Send mail to the respective person
         
         return redirect('view', admission_no=student.admission_no)
 
@@ -185,31 +190,15 @@ def edit(request, admission_no):
 
 
 def view(request, admission_no):
-    student = get_object_or_404(Student, admission_no=admission_no)
-    if 'version' in request.GET:
-        version = int(request.GET.dict()["version"])
-    else:
-        version = student.version_count
-    version = get_object_or_404(Version, version_count=version, student=student)
-    info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
-    records = Record.objects.filter(student=student, ver=version.docs_ver)
-    version_values = [i + 1 for i in range(0, student.version_count+1)]
-    return render(request, "next-page.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count})
+
+    context = get_student_info(request, admission_no)
+    return render(request, "next-page.html", context)
 
 
 def pdf_download(request, admission_no):
-    student = get_object_or_404(Student, admission_no=admission_no)
-    if 'version' in request.GET:
-        version = int(request.GET.dict()["version"])
-    else:
-        version = student.version_count
-    version = get_object_or_404(Version, version_count=version, student=student)
-    info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
-    records = Record.objects.filter(student=student, ver=version.docs_ver)
-    version_values = [i + 1 for i in range(0, student.version_count+1)]
 
     template_path = 'print.html'
-    context = {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count}
+    context = get_student_info(request, admission_no)
     
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
@@ -228,16 +217,7 @@ def pdf_download(request, admission_no):
 
 
 def stud(request, admission_no):
-    student = get_object_or_404(Student, admission_no=admission_no)
-    if 'version' in request.GET:
-        version = int(request.GET.dict()["version"])
-    else:
-        version = student.version_count
-    version = get_object_or_404(Version, version_count=version, student=student)
-    info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
-    records = Record.objects.filter(student=student, ver=version.docs_ver)
-    version_values = [i + 1 for i in range(0, student.version_count+1)]
     
-    context = {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count}
-    
+    context = get_student_info(request, admission_no)
+    #mail_student("stud_mail.html", context, "marudhu2021@gmail.com")
     return render(request, "stud_mail.html", context)

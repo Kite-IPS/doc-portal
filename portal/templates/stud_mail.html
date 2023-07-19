@@ -97,6 +97,14 @@
           <td class="cells">
             <p>{{ student.parent_number }}</p>
           </td>
+
+          <td>
+            {% if student.quota %}
+            <p>GOVT</p>
+            {% else %}
+            <p>MGMNT</p>
+            {% endif %}
+          </td>
         </tr>
       </table>
       <table class="table1">
