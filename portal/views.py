@@ -237,21 +237,7 @@ def stud(request, admission_no):
     info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
     records = Record.objects.filter(student=student, ver=version.docs_ver)
     version_values = [i + 1 for i in range(0, student.version_count+1)]
-
-    template_path = 'print.html'
+    
     context = {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count}
     
-    # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
-    
-    # find the template and render it.
-    template = get_template(template_path)
-    html = template.render(context)
-
-    # create a pdf
-    pisa_status = pisa.CreatePDF(
-       html, dest=response)
-    # if error then show some funny view
-    if pisa_status.err:
-       return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    return response
+    return render(request, "stud_mail.html", context)
