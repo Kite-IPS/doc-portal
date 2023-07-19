@@ -95,8 +95,17 @@ def edit(request, admission_no):
     records = Record.objects.filter(student=student, ver=version.docs_ver)
     version_values = [i + 1 for i in range(0, student.version_count)]
 
+    # Checking if the document is locked
+    if student.lock:
+        return HttpResponse("<h1> Cannot edit this locked doc</h1>")
+
     if request.method == "POST":
-        
+
+        # Checking if the document must be locked
+        if request.POST.get("lock", False):
+            student.lock = True
+            student.save()
+
         # Getting the data from post request
         post_data = request.POST.dict()
         quota = post_data['quota'] == 'govt'
