@@ -115,7 +115,8 @@ label , #mgmt{
 
 
 
-input[type="text"]{
+input[type="text"],
+.email{
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -123,6 +124,7 @@ input[type="text"]{
   box-sizing: border-box;
   font-size: large;
 }
+
 input[type="radio"]{
   margin-right: 10px;
 }
