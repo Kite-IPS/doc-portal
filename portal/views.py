@@ -219,5 +219,6 @@ def pdf_download(request, admission_no):
 def stud(request, admission_no):
     
     context = get_student_info(request, admission_no)
-    #mail_student("stud_mail.html", context, "marudhu2021@gmail.com")
+    context['cur_ver'] += 1
+    mail_student("stud_mail.html", context, "marudhu2021@gmail.com")
     return render(request, "stud_mail.html", context)
