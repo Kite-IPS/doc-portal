@@ -225,3 +225,33 @@ def pdf_download(request, admission_no):
     if pisa_status.err:
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+
+def stud(request, admission_no):
+    student = get_object_or_404(Student, admission_no=admission_no)
+    if 'version' in request.GET:
+        version = int(request.GET.dict()["version"])
+    else:
+        version = student.version_count
+    version = get_object_or_404(Version, version_count=version, student=student)
+    info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
+    records = Record.objects.filter(student=student, ver=version.docs_ver)
+    version_values = [i + 1 for i in range(0, student.version_count+1)]
+
+    template_path = 'print.html'
+    context = {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count}
+    
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
