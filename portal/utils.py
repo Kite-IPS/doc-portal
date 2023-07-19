@@ -25,7 +25,7 @@ def get_student_info(request, admission_no):
 
 def mail_student(template, context, to_addr):
 
-    subject = 'Subject'
+    subject = f'kg doc submittion count {context["cur_ver"]}'
     html_message = render_to_string(template, context)
     plain_message = strip_tags(html_message)
     from_email = EMAIL_HOST_USER
