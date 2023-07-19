@@ -177,12 +177,12 @@
   <div id="popupDiv" class="popup">
     <span class="close-icon" onclick="hidePopup()">&#10006;</span>
     <!-- Declaration text for the checkbox -->
-    <p class="declaration"><b>NOTE:</b>click the checkbox before submitting only if it is a final copy</p>
+    <p class="declaration"><b>NOTE:</b>click the checkbox before submitting only if it is a final copy</p><br>
     <label>
-      <input type="checkbox" id="checkBox" name="finalversion"> Checkbox
+      <input type="checkbox" id="checkbox" name="finalversion"> By clicking this, you're agreeing that you've submited all the required documents   
     </label>
     <!-- Submit button -->
-    <button type="submit" id="submit">Submit</button>
+    <button type="submit" id="submitpop" class="submit">Submit</button>
     <style>
      /* Styling for the popup div */
     .popup {
@@ -218,6 +218,35 @@
     }
     .declaration {
       margin-bottom: 10px;
+    }
+    #submitpop{
+      display: block;
+      width: 100px;
+      padding: 13px;
+      border: none;
+      background-color: #251367;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 13px;
+      margin-top: 15px; 
+      transition: width 0.3s ease-in-out;
+    }
+    
+    #submitpop:hover {
+        background-color: #007bff;
+        color: #251367;
+      }
+      @media (max-width:2560px) {
+        #submitpop{
+          margin-right: 100px;
+        }
+        
+      }
+    #checkbox{
+      width: 20px;
+      height: 20px;
     }
     </style>
   </div>
