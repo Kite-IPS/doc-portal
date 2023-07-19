@@ -4,6 +4,7 @@
 <head>
   <title>Document Verification</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <script src="{% static 'js/count_toggle.js' %}"> </script>
 </head>
 <body>
   <header class="header">
@@ -204,6 +205,7 @@
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.name = data[i] +':'+ "copy";
+        checkbox.setAttribute("onclick", "toggleInputField(this)");
 
         var checkboxhidden = document.createElement('input');
         checkboxhidden.type = 'hidden';
@@ -223,6 +225,7 @@
         quantityInput.min = '0';
         quantityInput.value = '0';
         quantityInput.name = data[i] +':'+ "count";
+        quantityInput.readOnly = true;
         quantityCell.appendChild(quantityInput);
         tableRows[i].appendChild(quantityCell);
         quantityCell.classList.add('cell4');
