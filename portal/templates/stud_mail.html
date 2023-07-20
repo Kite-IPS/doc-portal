@@ -52,7 +52,7 @@
         <hr size="2px" color="black" />
         <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>
           STUDENT COPY<br/>
-          ("&#10004 - submited , &#10060 - not submited")<br><br>
+          ("yes - submited , no - not submited")<br><br>
         </b>
       </div>
       <!-- main table -->
@@ -126,16 +126,16 @@
             <td class="txt">{{ record.date }}</td>
             <td class="txt">
               {% if record.original %}
-                <p>&#10004</p>
+                <p>yes</p>
               {% else %}
-                <p>&#10060;</p>
+                <p>no</p>
               {% endif %}
             </td>
             <td class="txt">
               {% if record.photocopy %}
-                <p>&#10004</p>
+                <p>yes</p>
               {% else %}
-                <p>&#10060</p>
+                <p>no</p>
               {% endif %}
             </td>
             <td class="txt">
