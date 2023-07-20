@@ -13,7 +13,7 @@
       margin: 0 auto;
       padding: 1px;
       border: 1px solid #ccc;
-      height: 837px;
+      height: 895px;
     }
     .version {
       text-align: right;
@@ -51,8 +51,8 @@
       <div class="txt">
         <hr size="2px" color="black" />
         <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOLEDGMENT RECIPT | <b>
-          STUDENT COPY<br />
-          ("&#10004 - submited , x - not submited")
+          STUDENT COPY<br/>
+          ("&#10004 - submited , &#10060 - not submited")<br><br>
         </b>
       </div>
       <!-- main table -->
@@ -128,14 +128,14 @@
               {% if record.original %}
                 <p>&#10004</p>
               {% else %}
-                <p>x</p>
+                <p>&#10060;</p>
               {% endif %}
             </td>
             <td class="txt">
               {% if record.photocopy %}
                 <p>&#10004</p>
               {% else %}
-                <p>x</p>
+                <p>&#10060</p>
               {% endif %}
             </td>
             <td class="txt">
