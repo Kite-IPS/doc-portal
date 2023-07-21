@@ -159,7 +159,10 @@ body {
     border: 2px solid #000000;
     padding: 8px;
   }
-
+  .lock-icon{
+    width: 50%; 
+    padding-left: 11px; 
+  }
   #documentTable td {
     border: 1px solid black;
     padding: 5px;
