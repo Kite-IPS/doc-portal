@@ -5,6 +5,7 @@
   <title>Document Verification</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <script src="{% static 'js/count_toggle.js' %}"> </script>
+  {% comment %} <script src="{% static 'js/exist_msg.js' %}"> </script> {% endcomment %}
 </head>
 <body>
   <header class="header">
@@ -17,7 +18,7 @@
       <button class="search-button" onclick="searchReceipt()">Search</button>
     </div>
   </header>
-  <form action="{%  url 'add' %}" method="POST">
+  <form action="{%  url 'add' %}" method="POST" id="myForm">
   <div class="info">
         <div class="form-row">
           <div class="form-column">
@@ -26,7 +27,8 @@
           </div><br>
           <div class="form-column">
             <label for="receipt">ADMISSION NO:</label>
-            <input type="text" id="phone" name="receipt" required>
+            <input type="text" id="receipt" name="receipt" required />
+            {% comment %} <div id="messageContainer"></div> {% endcomment %}
           </div>
           <div class="form-column">
             <label for="name_prnt">NAME OF THE PARENT:</label>
