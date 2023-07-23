@@ -147,7 +147,7 @@
             <td>
               <input type="hidden" class="cell5" name="{{record.document.name}}:original" value="off">
               {% if record.original %}
-              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:original">
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:original" readonly>
               {% else %}
               <input type="checkbox" class="cell5" name="{{record.document.name}}:original">
               {% endif %}
