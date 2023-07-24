@@ -75,12 +75,8 @@ WSGI_APPLICATION = 'doc_portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'doc-db',
-        "HOST": "localhost",
-        "PORT": 2000,
-        "USER": "user",
-        "PASSWORD": "doc-viewer"
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
