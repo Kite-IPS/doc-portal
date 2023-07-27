@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Document(models.Model):
 
@@ -57,3 +57,11 @@ class Version(models.Model):
 
     def __str__(self):
         return f"{self.student.admission_no} - {self.version_count}"
+
+class Staff(models.Model):
+    roles = [('s', 'staff'), ('a', 'admin')]
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=5, choices=roles)
+
+    def __str__(self):
+        return f"{self.user.username}"
