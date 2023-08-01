@@ -7,6 +7,8 @@ body {
 /* Title */
 .header {
   background-color: #251367;
+  /* background-color: #1b161b;
+  background-image: linear-gradient(0deg, #1b161b 4%, #251367 65%); */
   color: #fff;
   padding: 4px;
   text-align: center;
