@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import *
+from django.contrib.auth import views as auth_views
 from django.utils import timezone
 from django.db import IntegrityError
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from .utils import *
+from .models import *
+from .forms import AuthForm
+
+
+class LoginView(auth_views.LoginView):
+    form_class = AuthForm
 
 
 def home(request):
