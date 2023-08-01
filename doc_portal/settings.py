@@ -134,3 +134,8 @@ EMAIL_USE_TLS = False
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "kitedocportal@gmail.com"
 EMAIL_HOST_PASSWORD = "hqvttlzuyflegfsw"
+
+
+# Login related settings
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "red"
