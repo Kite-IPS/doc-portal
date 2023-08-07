@@ -27,6 +27,9 @@
         font-size: small;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
       }
+      .text p{
+        font-size: large  ;
+      }
       
       .search-container {
         position: fixed;
@@ -41,12 +44,29 @@
         clip-path: polygon(0 0, 100% 0, 95% 100% ,5.4%  100%);
       }
       
-      /* Responsive styles for the trapezoid container */
-      @media screen and (max-width: 768px) {
-        .seach-container {
-          width: 50%;
+      
+        /* Responsive styles for the trapezoid container */
+        @media screen and (max-width: 768px) {
+          .trapezoid-container {
+            width: 80%;
+          }
         }
-      }
+
+        /* Additional media queries for smaller screens */
+        @media screen and (max-width: 576px) {
+          .trapezoid-container {
+            width: 90%;
+          }
+        }
+
+        /* Additional media queries for larger screens */
+        @media screen and (min-width: 992px) {
+          .trapezoid-container {
+            width: 400px;
+            height: 150px;
+          }
+        }
+
 
       .search-bar[input='number'] {
         display: flex;
@@ -86,7 +106,7 @@
       }
       
 
-      .container{
+      .nav-container{
         position:relative;
         background:linear-gradient(45deg,#77ceff,rgba(13,110,253,.25));
         border-radius:5px;
@@ -172,6 +192,16 @@
       .logout i {
         margin-right: 5px;
       }
+      /* Additional media queries for larger screens */
+      @media screen and (max-width: 515px) {
+        li {
+          letter-spacing:2px;
+          font-size:smaller;
+        }
+        .text p{
+            font-size: large  ;
+        }
+      }
       
 
 
@@ -250,7 +280,7 @@
         color: #fff;
       }
       
-      th, td {
+      th, td, #dept, #quota {
         padding: 10px;
         text-align: center;
         border: 1px solid #ddd;
@@ -260,14 +290,16 @@
         transition: all 0.3s ease; /* Add smooth transition effect */
       }
       
-      td:hover {
+      td:hover,
+      #dept:hover,
+      #quota {
         white-space: normal; /* Show full content on hover */
         word-break: break-all; /* Allow content to wrap within the cell */
         overflow: hidden; /* Hide overflowing content in the cell */
         background-color: #fff; /* Change background on hover (optional) */
       }
       
-      .long-text {
+      .long-text, #dept, #quota {
         min-width: 150px; /* Set a minimum width for the "Documents" column */
       }
       
@@ -338,14 +370,14 @@
       <div class="text">
         <h3>KGISL INSTITUTE OF TECHNOLOGY</h3>
         <h4>ADMINISTRATIVE OFFICE</h4>
-        <h4>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h4>
+        <p>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</p>
       </div>
-      <div class="container">
+      <div class="nav-container">
   
         <ul class='nav'>
           <li id="item">Home</li>
           <li id="item">View</li>
-          <li id="item">Dashboard</li>
+          <li id="item">D-board</li>
           <li class="logout">
             <i class="fas fa-sign-out-alt"></i>
             Logout
@@ -372,23 +404,23 @@
       <div class="entry-info"> 
         <div class="form-row">
           <div class="form-column">
-            <label for="name_stu">NAME OF THE STUDENT:</label>
+            <label for="name_stu"><b>NAME OF THE STUDENT:</b></label>
             <input type="text" id="name_stu" name="name_stu" required>
           </div><br>
           <div class="form-column">
-            <label for="receipt">ADMISSION NO:</label>
+            <label for="receipt"><b>ADMISSION NO:</b></label>
             <input type="text" id="receipt" name="receipt" required />
           <!--<div id="messageContainer"></div>-->
           </div>
           <div class="form-column">
-            <label for="name_prnt">NAME OF THE PARENT:</label>
+            <label for="name_prnt"><b>NAME OF THE PARENT:</b></label>
             <input type="text" id="name_prnt" name="name_prnt" required>
           </div>
           <div class="form-column">
-            <label for="dept">DEPARMENT:</label>
+            <label for="dept"><b>DEPARMENT:</b></label>
             <div class="dropdown">
               <select id="dept" name="dept" required>
-                <option disabled selected>Select department</option>
+                <option disabled selected>--your Department--</option>
                 <option value="CSE">CSE</option>
                 <option value="AI&DS">AI&DS</option>
                 <option value="IT">IT</option>
@@ -442,7 +474,7 @@
         </div>
         <div class="form-row">
           <div class="form-column">
-           <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+           <label for="contact1"><b>CONTACT INFO:</b><br>STUDENT NO:</label>
             <input type="text" id="contact1" name="contact1" required> 
           </div>
           <div class="form-column">
@@ -450,14 +482,14 @@
             <input type="text" id="contact2" name="contact2" required>
           </div><br>
           <div class="form-column">
-            <br><label for="email">EMAIL ID</label>
+            <br><label for="email">EMAIL ID:</label>
             <input type="email" class="email" id="email" name="email" required>
           </div>
           <div class="form-column">
-             <br><label for="quota">QUOTA:</label>
+             <br><label for="quota"><b>QUOTA:</b></label>
             <div class="dropdown">
               <select id="quota" name="quota" required>
-                <option disabled selected>Select Quota</option>
+                <option disabled selected>--Select Quota--</option>
                 <option value="MANAGEMENT">MANAGEMENT</option>
                 <option value="GOVERNMENT">GOVERNMENT</option>
               </select>
