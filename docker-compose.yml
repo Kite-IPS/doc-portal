@@ -24,8 +24,6 @@ services:
     restart: always
     volumes:
       - .:/app
-    ports:
-      - 8000:8000 
 
   db:
 
@@ -41,10 +39,6 @@ services:
     
     volumes:
       - storage:/var/lib/mysql
-
-    ports:
-      - 2000:3306
-
 
 volumes:
   storage:
