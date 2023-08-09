@@ -20,211 +20,133 @@ def home(request):
 
 
 
-class staff_dashboard:
+class StaffDashboard(View):
 
-    def add(request):
-        if request.method == "POST":
-            
-            # Getting the data from post request
-            post_data = request.POST.dict()
-            quota = post_data['quota'] == 'govt'
-            
-            # Creating an entry for the student admission num on first submit
-            try:
-                student = Student(admission_no=post_data['receipt'],
-                                version_count=0,
-                                lock=False)
-                student.save()
-
-            # If a student of given id already exists then showing an error message
-            except IntegrityError:
-                return render(request, "dup_index.html", {"admission_no": post_data['receipt']})
+    def get(self, request):
         
-            version = Version(student=student,
-                            version_count=0,
-                            stud_ver=0,
-                            docs_ver=0)
-            version.save()
+        file_names= [document.name for document in Document.objects.all()]
+        return render(request, "index.html", {"file_names": file_names})
 
-            # Saving the student info
-            student_info = StudentInfo(
-                                name=post_data['name_stu'],
-                                student = student,
-                                parent_name=post_data['name_prnt'],
-                                department=post_data['dept'],
-                                student_number=post_data['contact1'],
-                                parent_number=post_data['contact2'],
-                                quota=quota,
-                                email=post_data['email'],
-                                ver=0)
-            student_info.save()
+    def post(self, request):
 
-            # Getting all filenames from the form
-            file_names = [[*name.split(':')] for name in post_data.keys() if ":" in name]
-            clean_names = {}
-            for name in file_names:
-                if name[0] in clean_names:
-                    clean_names[name[0]].append(name[1])
-                else:
-                    clean_names[name[0]] = [name[1]]
-            
-            # Saving the file data
-            for file in clean_names:
-                doc = Document.objects.get(name = file)
-
-                # Getting the info from post request
-                original = post_data[file+":original"] == 'on'
-                photo_copy = post_data[file+":copy"] == 'on'
-                count = int(post_data[file+":count"])
-                
-                Record(student=student, document=doc,
-                        original=original,
-                        photocopy=photo_copy,
-                        count=count,
-                        date=timezone.localdate(),
-                        ver=0).save()
-                
-            # Mailing the student
-            context = get_student_info(request, student.admission_no)
-            context['cur_ver'] += 1
-            mail_student("stud_mail.html", context, student_info.email)
-                
-            return redirect('view', admission_no=student.admission_no)
-        else:
-
-            file_names= [document.name for document in Document.objects.all()]
-
-            return render(request, "index.html", {"file_names": file_names})
-
-
-    def edit(request, admission_no):
-
-        student = get_object_or_404(Student, admission_no=admission_no)
-        version = get_object_or_404(Version, version_count=student.version_count, student=student)
-        info = get_object_or_404(StudentInfo, student=student, ver=version.stud_ver)
-        records = Record.objects.filter(student=student, ver=version.docs_ver)
-        version_values = [i + 1 for i in range(0, student.version_count)]
-
-        # Checking if the document is locked
-        if student.lock:
-            return render(request, "lock.html")
-
-        if request.method == "POST":
-
-            # Checking if the document must be locked
-            if request.POST.get("lock", False):
-                student.lock = True
-                student.save()
-
-            # Getting the data from post request
-            post_data = request.POST.dict()
-            quota = post_data['quota'] == 'govt'
-            
-            # Checking for new changes in student details
-            stud_changed = False in [info.name == post_data['name_stu'],
-            info.parent_name == post_data['name_prnt'],
-            info.department == post_data['dept'],
-            info.student_number == post_data['contact1'],
-            info.parent_number == post_data['contact2'],
-            info.quota == quota,
-            info.email == post_data["email"]]
-
-            # Getting all filenames from the form
-            file_names = [[*name.split(':')] for name in post_data.keys() if ":" in name]
-            clean_names = {}
-            for name in file_names:
-                if name[0] in clean_names:
-                    clean_names[name[0]].append(name[1])
-                else:
-                    clean_names[name[0]] = [name[1]]
-            
-            # Checking for changes in documents
-            doc_changed = False
-            for doc in clean_names:
-                original = post_data[f"{doc}:original"] == 'on'
-                copy = post_data[f"{doc}:copy"] == 'on'
-                count = int(post_data[f"{doc}:count"])
-                rec = records.get(document__name = doc)
-                if False in [rec.original==original,
-                        rec.photocopy==copy,
-                        rec.count==count]:
-                    doc_changed = True
-                    break
-            
-            # Checking for modification
-            if doc_changed or stud_changed:
-
-                # incrementing the version count
-                student.version_count += 1
-                student.save()
-
-                # Creating a new version object to keep track of change
-                new_version = Version(student=student,
-                                version_count=student.version_count,
-                                stud_ver=version.stud_ver,
-                                docs_ver=version.docs_ver)
-                
-
-                if stud_changed:
-                    new_version.stud_ver += 1
-                    new_stud = StudentInfo(
-                                    name=post_data['name_stu'],
-                                    student = student,
-                                    parent_name=post_data['name_prnt'],
-                                    department=post_data['dept'],
-                                    student_number=post_data['contact1'],
-                                    parent_number=post_data['contact2'],
-                                    quota=quota,
-                                    email=post_data["email"],
-                                    ver=new_version.stud_ver)
-                    new_stud.save()
-
-                if doc_changed:
-
-                    new_version.docs_ver += 1
-                    
-                    # Saving the file data
-                    for file in clean_names:
-
-                        doc = Document.objects.get(name = file)
-                        rec = records.get(document__name = doc)
-                        
-                        # Getting the info from post request
-                        original = post_data[file+":original"] == 'on'
-                        photo_copy = post_data[file+":copy"] == 'on'
-                        count = int(post_data[file+":count"])
-                        
-                        # Checking if this specific file was modified
-                        date = rec.date
-                        if False in [rec.original==original,
-                        rec.photocopy==copy,
-                        rec.count==count]:
-                            date = timezone.localtime()
-                        Record(student=student, document=doc,
-                                original=original,
-                                photocopy=photo_copy,
-                                count=count,
-                                date=date,
-                                ver=new_version.docs_ver).save()
-                
-                new_version.save()
+        self.parse_post_data(request)
         
-                # Mailing the student
-                context = get_student_info(request, student.admission_no)
-                context['cur_ver'] += 1
+        try:
+            self.add_student()
+        except ValueError:
+            return HttpResponse("A Student with given id already exists!")
+        
+        return redirect("add")
+    
+    @staticmethod
+    def doc_to_dict(doc):
+        return {doc.name : {"original": doc.original, "copy": doc.copy, "count": doc.count}}
+    
+    @staticmethod
+    def student_info_to_dict(student_info):
 
-                mail_student("stud_mail.html", context, post_data["email"])
-                    
-            return redirect('view', admission_no=student.admission_no)
+        return {
+        "student_name":student_info.name,
+        "student_num":student_info.student_number,
+        "parent_name":student_info.parent_name,
+        "parent_num":student_info.parent_number,
+        "email":student_info.email,
+        "dept":student_info.department,
+        "quota":student_info.quota,
+        }
 
-        departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
-        return render(request, "edit.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, 'depts': departments})
+    @staticmethod
+    def is_doc_modified(server_doc, request_doc):
+        pass
 
+    def add_student(self):
 
-    def view(request, admission_no):
+        # Checking if a student with given id already exist
+        if self.check_num(self.admission_no):
+            raise ValueError
+        
+        # Create a new student
+        student = Student(admission_no=self.admission_no,
+                          version_count=0,
+                          lock = False)
+        student.save()
+        
+        # Create related versions
+        version = Version(student=student,
+                          version_count=0,
+                          docs_ver=0,
+                          stud_ver=0)
+        version.save()
 
-        context = get_student_info(request, admission_no)
-        return render(request, "next-page.html", context)
+        # Creating Student info version
+        info = StudentInfo(
+            student = student,
+            name = self.student_info['student_name'],
+            student_number = self.student_info['student_num'],
+            parent_name = self.student_info["parent_name"],
+            parent_number = self.student_info['parent_num'],
+            email = self.student_info['email'],
+            department = self.student_info['dept'],
+            quota = self.student_info['quota'],
+            ver = 0
+        )
+
+        info.save()
+
+        # Saving the documents
+        docs_list = Document.objects.all()
+        for doc, val in self.docs_info.items():
+            Record(ver=0,
+                   date=timezone.localdate(),
+                   student=student,
+                   original=val["original"],
+                   photocopy=val["copy"],
+                   count=val["count"],
+                   document=docs_list.get(name=doc)).save()
+
+    def check_num(self, admission_no):
+
+        return Student.objects.filter(admission_no=admission_no).exists()
+
+    def parse_request(self, request):
+        
+        pass
+
+    def lock_document(self):
+        
+        # Locking the student entry
+        self.student.lock = True
+        self.student.save()
+
+    def is_locked(self):
+
+        return self.student.lock
+
+    def parse_post_data(self, request):
+
+        # Getting the student admission number
+        self.admission_no = request.POST.get("receipt")
+ 
+        # Getting the student data from post
+        self.student_info = {
+            "student_name": request.POST.get("name_stu"),
+            "parent_name": request.POST.get("name_prnt"),
+            "dept": request.POST.get("dept"),
+            "student_num": request.POST.get("contact1"),
+            "parent_num": request.POST.get("contact2"),
+            "email": request.POST.get("email"),
+            "quota": request.POST.get("quota") == 'govt',
+        }
+
+        self.docs_info = {}
+
+        # Looping through all the available docs and getting the data
+        file_names = {name.split(':')[0] for name in request.POST.keys() if ":" in name}
+        
+        for name in file_names:
+            self.docs_info[name] = {"original": request.POST.get(f"{name}:original") == 'on',
+                                      "copy": request.POST.get(f"{name}:copy") == 'on',
+                                      "count": int(request.POST.get(f"{name}:count"))}
 
 
 def pdf_download(request, admission_no):
