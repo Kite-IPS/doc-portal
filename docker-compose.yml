@@ -6,7 +6,7 @@ services:
   njinx:
     build: ./njinx/
     restart: always
-    container_name: njinx-server
+    container_name: njinx
     volumes:
       - ./static:/static/
 
@@ -25,7 +25,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - 5000:8000 
+      - 8000:8000 
 
   db:
 
