@@ -90,7 +90,7 @@ def add(request):
 
         file_names= [document.name for document in Document.objects.all()]
 
-        return render(request, "index.html", {"file_names": file_names})
+        return render(request, "dash.html", {"file_names": file_names})
 
 
 def edit(request, admission_no):
