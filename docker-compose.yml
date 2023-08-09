@@ -3,6 +3,19 @@ version: '3'
 
 services:
 
+  njinx:
+    build: ./njinx/
+    restart: always
+    container_name: njinx-server
+    volumes:
+      - ./static:/static/
+
+    ports:
+      - "80:8000"
+
+    depends_on:
+      - site
+
   site:
 
     build: .
