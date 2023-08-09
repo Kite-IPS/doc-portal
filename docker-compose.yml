@@ -3,6 +3,19 @@ version: '3'
 
 services:
 
+  njinx:
+    build: ./njinx/
+    restart: always
+    container_name: njinx
+    volumes:
+      - ./static:/static/
+
+    ports:
+      - "80:8000"
+
+    depends_on:
+      - site
+
   site:
 
     build: .
@@ -11,8 +24,9 @@ services:
     restart: always
     volumes:
       - .:/app
+    
     ports:
-      - 5000:8000 
+      - "8000:8000"
 
   db:
 
@@ -28,10 +42,6 @@ services:
     
     volumes:
       - storage:/var/lib/mysql
-
-    ports:
-      - 2000:3306
-
 
 volumes:
   storage:
