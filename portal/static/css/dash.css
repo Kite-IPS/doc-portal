@@ -308,12 +308,14 @@ table {
 }
 
 thead {
+  text-align: center;
   background-color: #333;
   color: #fff;
 }
 
 th,
 td{
+  word-break: normal;
   padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
@@ -324,6 +326,7 @@ td{
 }
 
 td:hover {
+  word-break: normal;
   white-space: normal; /* Show full content on hover */
   word-break: break-all; /* Allow content to wrap within the cell */
   overflow: hidden; /* Hide overflowing content in the cell */
@@ -398,4 +401,11 @@ div{
 .down-menu{
   position: relative;
   bottom: 10px;
+}
+
+.document_name{
+  overflow: hidden; /* Hide any overflowing content in the header cells */
+  text-overflow: ellipsis; /* Add ellipsis (...) if content overflows in the header cells */
+  transition: all 0.3s ease; /* Add smooth transition effect */
+  word-break: normal;
 }

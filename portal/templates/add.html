@@ -1,168 +1,171 @@
-{% extends 'dash.html' %}
+{% extends 'dash.html' %} 
 
+{% block title %}Create Record | KGCAR{% endblock title %} 
 
 {% block inital_entry %}
 <section id="home">
-    <div class="space"></div>
-    <div class="entry-info">
-      <div class="form-row">
-        <div class="form-column">
-          <label for="name_stu"><b>NAME OF THE STUDENT:</b></label>
-          <input type="text" id="name_stu" name="name_stu" required />
-        </div>
-        <br />
-        <div class="form-column">
-          <label for="receipt"><b>ADMISSION NO:</b></label>
-          <input type="text" id="receipt" name="receipt" required />
-          <!--<div id="messageContainer"></div>-->
-        </div>
-        <div class="form-column">
-          <label for="name_prnt"><b>NAME OF THE PARENT:</b></label>
-          <input type="text" id="name_prnt" name="name_prnt" required />
-        </div>
-        <div class="form-column">
-          <label for="dept"><b>DEPARMENT:</b></label>
-          <div class="dropdown">
-            <select id="dept" name="dept" required>
-              <option disabled selected>--Department--</option>
-              <option value="CSE">CSE</option>
-              <option value="AI&DS">AI&DS</option>
-              <option value="IT">IT</option>
-              <option value="ECE">ECE</option>
-              <option value="CSBS">CSBS</option>
-              <option value="MECH">MECH</option>
-            </select>
-            <span class="dropdown-icon"></span>
-            <style>
-              .dropdown {
-                position: relative;
-                display: block;
-              }
-
-              .dropdown select {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                outline: none;
-                border: 1px solid #ccc;
-                padding: 8px 40px 8px 12px;
-                font-size: 16px;
-                border-radius: 4px;
-                background-color: #fff;
-                cursor: pointer;
-                width: 70%;
-              }
-
-              .dropdown select:hover,
-              .dropdown select:focus {
-                border-color: #555;
-              }
-
-              .dropdown-icon {
-                position: relative;
-                top: 50%;
-                right: 30px;
-                transform: translateY(-50%);
-                pointer-events: none;
-              }
-
-              /* Custom styles for the dropdown arrow icon */
-              .dropdown-icon::after {
-                content: "\25BC";
-                font-size: 12px;
-                color: #555;
-              }
-            </style>
-          </div>
-        </div>
+  <div class="space"></div>
+  <form action="{% url 'add' %}" method="POST">
+    {% csrf_token %}
+  <div class="entry-info">
+    <div class="form-row">
+      <div class="form-column">
+        <label for="name_stu"><b>NAME OF THE STUDENT:</b></label>
+        <input type="text" id="name_stu" name="name_stu" required />
       </div>
-      <div class="form-row">
-        <div class="form-column">
-          <label for="contact1"
-            ><b>CONTACT INFO:</b><br />STUDENT NO:</label
-          >
-          <input type="text" id="contact1" name="contact1" required />
-        </div>
-        <div class="form-column">
-          <br /><label for="contact2">PARENT NO:</label>
-          <input type="text" id="contact2" name="contact2" required />
-        </div>
-        <br />
-        <div class="form-column">
-          <br /><label for="email">EMAIL ID:</label>
-          <input
-            type="email"
-            class="email"
-            id="email"
-            name="email"
-            required
-          />
-        </div>
-        <div class="form-column">
-          <br /><label for="quota"><b>QUOTA:</b></label>
-          <div class="dropdown">
-            <select id="quota" name="quota" required>
-              <option disabled selected>--Quota--</option>
-              <option value="MANAGEMENT">MANAGEMENT</option>
-              <option value="GOVERNMENT">GOVERNMENT</option>
-            </select>
-            <span class="dropdown-icon"></span>
-          </div>
+      <br />
+      <div class="form-column">
+        <label for="receipt"><b>ADMISSION NO:</b></label>
+        <input type="text" id="receipt" name="receipt" required />
+        <!--<div id="messageContainer"></div>-->
+      </div>
+      <div class="form-column">
+        <label for="name_prnt"><b>NAME OF THE PARENT:</b></label>
+        <input type="text" id="name_prnt" name="name_prnt" required />
+      </div>
+      <div class="form-column">
+        <label for="dept"><b>DEPARMENT:</b></label>
+        <div class="dropdown">
+          <select id="dept" name="dept" required>
+            <option disabled selected>--Department--</option>
+            <option value="CSE">CSE</option>
+            <option value="AI&DS">AI&DS</option>
+            <option value="IT">IT</option>
+            <option value="ECE">ECE</option>
+            <option value="CSBS">CSBS</option>
+            <option value="MECH">MECH</option>
+          </select>
+          <span class="dropdown-icon"></span>
+          <style>
+            .dropdown {
+              position: relative;
+              display: block;
+            }
+
+            .dropdown select {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              outline: none;
+              border: 1px solid #ccc;
+              padding: 8px 40px 8px 12px;
+              font-size: 16px;
+              border-radius: 4px;
+              background-color: #fff;
+              cursor: pointer;
+              width: 70%;
+            }
+
+            .dropdown select:hover,
+            .dropdown select:focus {
+              border-color: #555;
+            }
+
+            .dropdown-icon {
+              position: relative;
+              top: 50%;
+              right: 30px;
+              transform: translateY(-50%);
+              pointer-events: none;
+            }
+
+            /* Custom styles for the dropdown arrow icon */
+            .dropdown-icon::after {
+              content: "\25BC";
+              font-size: 12px;
+              color: #555;
+            }
+          </style>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- for the table -->
-  <div class="entry-table">
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>S.no</th>
-            <th>Documents</th>
-            <th>Date</th>
-            <th>Original</th>
-            <th>Photocopy</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>
-              Document
-              11111111111111111111111111111111111111111111111111111111111111111111111111111
-            </td>
-            <td>2023-08-01</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Document 2</td>
-            <td>2023-08-02</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Document 3</td>
-            <td>2023-08-03</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>15</td>
-          </tr>
-          <!-- Add more rows as needed -->
-        </tbody>
-      </table>
+    <div class="form-row">
+      <div class="form-column">
+        <label for="contact1"><b>CONTACT INFO:</b><br />STUDENT NO:</label>
+        <input type="text" id="contact1" name="contact1" required />
+      </div>
+      <div class="form-column">
+        <br /><label for="contact2">PARENT NO:</label>
+        <input type="text" id="contact2" name="contact2" required />
+      </div>
+      <br />
+      <div class="form-column">
+        <br /><label for="email">EMAIL ID:</label>
+        <input type="email" class="email" id="email" name="email" required />
+      </div>
+      <div class="form-column">
+        <br /><label for="quota"><b>QUOTA:</b></label>
+        <div class="dropdown">
+          <select id="quota" name="quota" required>
+            <option disabled selected>--Quota--</option>
+            <option value="MANAGEMENT">MANAGEMENT</option>
+            <option value="GOVERNMENT">GOVERNMENT</option>
+          </select>
+          <span class="dropdown-icon"></span>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- submit button -->
-  <div class="submit-button" id="button">
-    <button type="button" class="btn btn-success">Submit</button>
+<!-- for the table -->
+<div class="entry-table">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>S.no</th>
+          <th>Documents</th>
+          <th>Date</th>
+          <th>Original</th>
+          <th>Photocopy</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for doc_name in file_names %}
+        <tr>
+          <td colspan="0.5">{{ forloop.counter }}</td>
+          <td><p class="document_name">{{ doc_name }}</p></td>
+          <td>{{ date }}</td>
+          <td>
+            <input
+              type="hidden"
+              class="cell5"
+              name="{{doc_name}}:original"
+              value="off"
+            />
+            <input type="checkbox" class="form-check-input h3 w3" name="{{doc_name}}:original" />
+          </td>
+          <td>
+            <input
+              type="hidden"
+              class="cell5"
+              name="{{doc_name}}:original"
+              value="off"
+            />
+            <input type="checkbox" class="form-check-input h3 w3" name="{{doc_name}}:original" />
+          </td>
+          <td>
+            <input
+              type="number"
+              value="{{record.count}}"
+              name="{{doc_name}}:count"
+              class="cell3"
+            />
+          </td>
+        </tr>
+        {% endfor %}
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
   </div>
+</div>
+
+<!-- submit button -->
+<div class="submit-button" id="button">
+  <button type="submit" class="btn btn-success">Submit</button>
+</div>
+
+</form>
 {% endblock inital_entry %}
