@@ -129,9 +129,11 @@ class AddNewStudent(View):
         file_names = {name.split(':')[0] for name in request.POST.keys() if ":" in name}
         
         for name in file_names:
+            count_str = request.POST.get(f"{name}:count")
+            count = int(count_str) if count_str.isdigit() else 0
             self.docs_info[name] = {"original": request.POST.get(f"{name}:original") == 'on',
                                       "copy": request.POST.get(f"{name}:copy") == 'on',
-                                      "count": int(request.POST.get(f"{name}:count"))}
+                                      "count": count}
 
 
 class EditAndViewStudents(AddNewStudent):
