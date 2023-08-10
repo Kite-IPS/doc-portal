@@ -138,8 +138,11 @@ class AddNewStudent(View):
 
 class EditAndViewStudents(AddNewStudent):
 
+
     def get(self, request):
-        pass
+        
+        file_names= [document.name for document in Document.objects.all()]
+        return render(request, "view_and_edit.html", {"file_names": file_names, "date": timezone.localdate()})
 
     def post(self, request):
         pass
