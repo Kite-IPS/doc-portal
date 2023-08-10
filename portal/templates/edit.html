@@ -147,7 +147,8 @@
             <td>
               <input type="hidden" class="cell5" name="{{record.document.name}}:original" value="off">
               {% if record.original %}
-              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:original" readonly>
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:original" disabled>
+              <input type="hidden"  class="cell5" name="{{record.document.name}}:original"  value="on">
               {% else %}
               <input type="checkbox" class="cell5" name="{{record.document.name}}:original">
               {% endif %}
@@ -155,7 +156,8 @@
             <td>
               <input type="hidden" class="cell5" name="{{record.document.name}}:copy" value="off">
               {% if record.photocopy %}
-              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:copy" onclick="toggleInputField(this)">
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:copy" disabled>
+              <input type="hidden"  class="cell5" name="{{record.document.name}}:copy"  value="on">
               {% else %}
               <input type="checkbox" class="cell5" name="{{record.document.name}}:copy" onclick="toggleInputField(this)">
               {% endif %}
@@ -163,6 +165,7 @@
             <td>
               {% if record.photocopy %}
               <input type="number" value="{{record.count}}" name="{{record.document.name}}:count" class="cell3">
+              <input type="hidden" value="{{record.count}}" class="min val">
               {% else %}
               <input readonly type="number" value="0" name="{{record.document.name}}:count" class="cell3">
               {% endif %}
