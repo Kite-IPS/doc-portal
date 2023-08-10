@@ -4,6 +4,6 @@ from .import views
 urlpatterns = [
     path("dashboard", views.home, name='dashboard'),
     path("", views.AddNewStudent.as_view(), name='add'),
-    path("", views.EditAndViewStudents.as_view(), name='edit'),
+    path("view_and_edit/<admission_no>", views.EditAndViewStudents.as_view(), name='view_and_edit'),
     path("pdf/<admission_no>", views.pdf_download, name="pdf")
 ]
