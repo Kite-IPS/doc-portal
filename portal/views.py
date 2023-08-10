@@ -25,7 +25,7 @@ class StaffDashboard(View):
     def get(self, request):
         
         file_names= [document.name for document in Document.objects.all()]
-        return render(request, "index.html", {"file_names": file_names, "date": timezone.localdate()})
+        return render(request, "add.html", {"file_names": file_names, "date": timezone.localdate()})
 
     def post(self, request):
 
