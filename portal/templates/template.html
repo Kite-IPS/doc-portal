@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>template</title>
+  <style>
+    /* styles.css */
+    body, ul  {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .nav-container {
+        display: flex;
+        height: 100vh; /* Ensure the container takes the full height of the viewport */
+    }
+
+    /* Styling for the navbar */
+  .navbar {
+    width: 200px;
+    height: 100vh; /* Set to full viewport height */
+    background-color: #333; /* Dark background color */
+    position: fixed; /* Fix the navbar position on the left side */
+    top: 0;
+    left: 0;
+    color: #fff; /* Text color */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+  }
+  
+  .navbar li {
+    margin-bottom: 10px;
+
+  }
+  
+  .navbar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out; /* Smooth background color transition */
+
+  }
+    .navbar a:hover {
+        background-color: #555; /* Darken the background color on hover */
+    }
+
+    /* Style for the main content area */
+    main {
+        flex: 1;
+        padding: 20px;
+    }
+
+    /* Additional styles for the main content */
+    main h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    main p {
+        line-height: 1.6;
+    }
+    .header{
+        background-color: #251367;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        padding: 20px;
+        margin-left: 200px;
+        align-items: center;
+      }
+      .logo img{
+        max-height: 40px;
+        max-width: 50px;
+    }
+      .head-txt h1,h2{
+        font-size: 15px;
+        padding-left: 100px;
+      }
+    
+    
+    
+  </style>
+  
+</head>
+<body>
+    <div class="header">
+        <div class="head-txt"> 
+            <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
+            <h2>ADMINISTRATIVE OFFICE</h2>
+            <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+            
+        </div>
+        <div class="logo">
+            <img src="{% static 'image/logo.png' %}" alt="Logo" >
+        </div>
+        
+    </div>
+    <div class=" nav-container">
+        Vertical Nav Bar
+        <nav class="navbar">
+            <div class="kgcar">
+                <h2>Kgcar</h2><hr>
+            </div>
+            <div class="search-bar">
+                <form action="#" method="GET">
+                    <input type="text" id="srch" name="search" placeholder="Search...">
+                </form>
+            </div>
+            <ul>
+                <li><a href="#section1">Dashboard</a></li>
+                <li><a href="#section2">New</a></li>
+                <li><a href="#section3">View/Edit</a></li>
+            </ul>
+        </nav>
+        <!-- Main Content Area -->
+        <!--main>
+            <section id="section1">
+             Content for section 1 
+            </section>
+            <section id="section2">
+                
+            </section>
+            <section id="section3">
+               
+            </section>
+        </main>-->
+    </div>
+    
+
+</body>
+</html>
