@@ -20,7 +20,7 @@ def home(request):
 
 
 
-class StaffDashboard(View):
+class AddNewStudent(View):
 
     def get(self, request):
         
@@ -37,11 +37,7 @@ class StaffDashboard(View):
             return HttpResponse("A Student with given id already exists!")
         
         return redirect("add")
-    
-    @staticmethod
-    def doc_to_dict(doc):
-        return {doc.name : {"original": doc.original, "copy": doc.copy, "count": doc.count}}
-    
+        
     @staticmethod
     def student_info_to_dict(student_info):
 
@@ -54,10 +50,6 @@ class StaffDashboard(View):
         "dept":student_info.department,
         "quota":student_info.quota,
         }
-
-    @staticmethod
-    def is_doc_modified(server_doc, request_doc):
-        pass
 
     def add_student(self):
 
@@ -108,19 +100,12 @@ class StaffDashboard(View):
 
         return Student.objects.filter(admission_no=admission_no).exists()
 
-    def parse_request(self, request):
-        
-        pass
 
     def lock_document(self):
         
         # Locking the student entry
         self.student.lock = True
         self.student.save()
-
-    def is_locked(self):
-
-        return self.student.lock
 
     def parse_post_data(self, request):
 
@@ -147,6 +132,30 @@ class StaffDashboard(View):
             self.docs_info[name] = {"original": request.POST.get(f"{name}:original") == 'on',
                                       "copy": request.POST.get(f"{name}:copy") == 'on',
                                       "count": int(request.POST.get(f"{name}:count"))}
+
+
+class EditAndViewStudents(AddNewStudent):
+
+    def get(self, request):
+        pass
+
+    def post(self, request):
+        pass
+
+    @staticmethod
+    def doc_to_dict(doc):
+        return {doc.name : {"original": doc.original, "copy": doc.copy, "count": doc.count}}
+    
+    @staticmethod
+    def is_doc_modified(server_doc, request_doc):
+        pass
+    
+    def parse_request(self, request):
+        
+        pass
+    def is_locked(self):
+
+        return self.student.lock
 
 
 def pdf_download(request, admission_no):
