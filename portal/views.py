@@ -83,7 +83,7 @@ def add(request):
         # Mailing the student
         context = get_student_info(request, student.admission_no)
         context['cur_ver'] += 1
-        mail_student("stud_mail.html", context, student_info.email)
+        # mail_student("stud_mail.html", context, student_info.email)
             
         return redirect('view', admission_no=student.admission_no)
     else:
@@ -209,7 +209,7 @@ def edit(request, admission_no):
             context = get_student_info(request, student.admission_no)
             context['cur_ver'] += 1
 
-            mail_student("stud_mail.html", context, post_data["email"])
+            # mail_student("stud_mail.html", context, post_data["email"])
                 
         return redirect('view', admission_no=student.admission_no)
 
