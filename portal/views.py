@@ -95,30 +95,33 @@ class AddNewStudent(View):
 
     def parse_post_data(self, request):
 
+        post_data = request.POST.dict()
+        print(post_data)
+
         # Getting the student admission number
-        self.admission_no = request.POST.get("receipt")
+        self.admission_no = post_data.get("receipt")
  
         # Getting the student data from post
         self.student_info = {
-            "student_name": request.POST.get("name_stu"),
-            "parent_name": request.POST.get("name_prnt"),
-            "dept": request.POST.get("dept"),
-            "student_num": request.POST.get("contact1"),
-            "parent_num": request.POST.get("contact2"),
-            "email": request.POST.get("email"),
-            "quota": request.POST.get("quota") == 'govt',
+            "student_name": post_data.get("name_stu"),
+            "parent_name": post_data.get("name_prnt"),
+            "dept": post_data.get("dept"),
+            "student_num": post_data.get("contact1"),
+            "parent_num": post_data.get("contact2"),
+            "email": post_data.get("email"),
+            "quota": post_data.get("quota") == 'govt',
         }
 
         self.docs_info = {}
 
         # Looping through all the available docs and getting the data
-        file_names = {name.split(':')[0] for name in request.POST.keys() if ":" in name}
+        file_names = {name.split(':')[0] for name in post_data.keys() if ":" in name}
         
         for name in file_names:
-            count_str = request.POST.get(f"{name}:count")
+            count_str = post_data.get(f"{name}:count")
             count = int(count_str) if count_str.isdigit() else 0
-            self.docs_info[name] = {"original": request.POST.get(f"{name}:original") == 'on',
-                                      "copy": request.POST.get(f"{name}:copy") == 'on',
+            self.docs_info[name] = {"original": post_data.get(f"{name}:original") == 'on',
+                                      "copy": post_data.get(f"{name}:copy") == 'on',
                                       "count": count}
 
 
