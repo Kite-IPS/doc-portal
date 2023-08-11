@@ -37,19 +37,6 @@ class AddNewStudent(View):
             return HttpResponse("A Student with given id already exists!")
         
         return redirect("add")
-        
-    @staticmethod
-    def student_info_to_dict(student_info):
-
-        return {
-        "student_name":student_info.name,
-        "student_num":student_info.student_number,
-        "parent_name":student_info.parent_name,
-        "parent_num":student_info.parent_number,
-        "email":student_info.email,
-        "dept":student_info.department,
-        "quota":student_info.quota,
-        }
 
     def add_student(self):
 
@@ -99,7 +86,6 @@ class AddNewStudent(View):
     def check_num(self, admission_no):
 
         return Student.objects.filter(admission_no=admission_no).exists()
-
 
     def lock_document(self):
         
@@ -154,10 +140,20 @@ class EditAndViewStudents(AddNewStudent):
     @staticmethod
     def is_doc_modified(server_doc, request_doc):
         pass
-    
-    def parse_request(self, request):
         
-        pass
+    @staticmethod
+    def student_info_to_dict(student_info):
+
+        return {
+        "student_name":student_info.name,
+        "student_num":student_info.student_number,
+        "parent_name":student_info.parent_name,
+        "parent_num":student_info.parent_number,
+        "email":student_info.email,
+        "dept":student_info.department,
+        "quota":student_info.quota,
+        }
+
     def is_locked(self):
 
         return self.student.lock
