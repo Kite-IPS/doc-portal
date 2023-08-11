@@ -297,10 +297,11 @@ input[type="radio"] {
   border-radius: 8px;
   border: 1px solid #d9d9d9;
   background: #fff;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 input[type="checkbox"]{
+  border: 2.5px solid black;
   transition: 350ms;
 }
 
@@ -314,13 +315,29 @@ table {
   border-collapse: collapse;
   table-layout: fixed;
   background-color: #f9f9f9;
-  border-radius: 10px;
 }
 
 thead {
   text-align: center;
   background-color: #333;
   color: #fff;
+
+}
+
+thead th:first-of-type{
+  border-top-left-radius: 5px;
+}
+
+thead th:last-of-type{
+  border-top-right-radius: 5px;
+}
+
+tbody tr:last-of-type td:first-of-type{
+  border-bottom-left-radius: 5px;
+}
+
+tbody tr:last-of-type td:last-of-type{
+  border-bottom-right-radius: 5px;
 }
 
 th,
@@ -348,11 +365,11 @@ td:hover {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #e9f4ff;
+  background-color: #abd3fcaa;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #edeef0;
+  background-color: #bfc0c133;
 }
 
 /* Responsive styles */
@@ -361,6 +378,10 @@ tbody tr:nth-child(even) {
   td {
     font-size: 14px;
   }
+}
+
+.form_quantity_input{
+  width: 60%;
 }
 
 .submit-button {
@@ -375,7 +396,7 @@ div{
 
 .menu-2 {
   width: 100%;
-  height: 80px;
+  height: auto;
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid #d9d9d9;
@@ -384,7 +405,7 @@ div{
 }
 .main-info-2 {
   width: 100%;
-  height: 230px;
+  height: auto;
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid #d9d9d9;
@@ -393,14 +414,14 @@ div{
 }
 .main-table-2 {
   width: 100%;
-  height: 400px;
+  height: auto;
   flex-shrink: 0;
   background: #fff;
   margin-top: 10px;
 }
 .down-menu {
   width: 100%;
-  height: 63px;
+  height: auto;
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid #d9d9d9;
@@ -414,6 +435,8 @@ div{
 }
 
 .document_name{
+  margin: auto 5px;
+  text-align: left;
   overflow: hidden; /* Hide any overflowing content in the header cells */
   text-overflow: ellipsis; /* Add ellipsis (...) if content overflows in the header cells */
   transition: all 0.3s ease; /* Add smooth transition effect */
