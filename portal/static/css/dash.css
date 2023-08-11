@@ -115,7 +115,7 @@ hr{
   border-radius: 5px;
   padding: 10px;
   height: 75px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
 }
 
 .nav-button{
@@ -151,6 +151,7 @@ li {
   position: relative;
   z-index: 3;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 #item:before {
@@ -251,12 +252,16 @@ option{
 
 /*css for the input fields*/
 .form-row {
+  text-align: left;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
 
 .form-column {
+  text-align: left;
+  align-items: center;
   flex-basis: 25%;
   padding: 0 7px;
   box-sizing: border-box;
@@ -278,6 +283,7 @@ input[type="text"],
   border-radius: 4px;
   box-sizing: border-box;
   font-size: large;
+  margin: auto auto;
 }
 
 input[type="radio"] {
@@ -292,6 +298,10 @@ input[type="radio"] {
   border: 1px solid #d9d9d9;
   background: #fff;
   margin-top: 10px;
+}
+
+input[type="checkbox"]{
+  transition: 350ms;
 }
 
 .table-container {

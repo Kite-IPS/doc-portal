@@ -116,6 +116,16 @@
       <div class="entry-table">
         <div class="table-container">
           <table>
+            <!-- Defenition of column widths -->
+            <colgroup>
+              <col span="1" style="width: 10%">
+              <col span="1" style="width: 40%">
+              <col span="1" style="width: 20%">
+              <col span="1" style="width: 10%">
+              <col span="1" style="width: 10%">
+              <col span="1" style="width: 10%">
+            </colgroup>
+
             <thead>
               <tr>
                 <th>S.no</th>
@@ -127,67 +137,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>
-                  Document
-                  11111111111111111111111111111111111111111111111111111111111111111111111111111
-                </td>
-                <td>2023-08-01</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Document 2</td>
-                <td>2023-08-02</td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Document 3</td>
-                <td>2023-08-03</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>15</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Document 3</td>
-                <td>2023-08-03</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>15</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Document 3</td>
-                <td>2023-08-03</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>15</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Document 3</td>
-                <td>2023-08-03</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>15</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Document 3</td>
-                <td>2023-08-03</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>15</td>
-              </tr>
-
-              <!-- Add more rows as needed -->
+              {% for doc_name in file_names %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td><p class="document_name">{{ doc_name }}</p></td>
+                  <td>{{ date }}</td>
+                  <td>
+                    <input
+                      type="hidden"
+                      class="cell5"
+                      name="{{doc_name}}:original"
+                      value="off"
+                    />
+                    <input type="checkbox" class="form-check-input h3 w3" name="{{doc_name}}:original" />
+                  </td>
+                  <td>
+                    <input
+                      type="hidden"
+                      class="cell5"
+                      name="{{doc_name}}:original"
+                      value="off"
+                    />
+                    <input type="checkbox" class="form-check-input h3 w3" name="{{doc_name}}:original" />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value="{{record.count}}"
+                      name="{{doc_name}}:count"
+                    />
+                  </td>
+                </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
