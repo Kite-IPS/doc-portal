@@ -3,23 +3,23 @@
 {% block inital_entry %}
 <section id="home">
   <div class="space"></div>
-  <form action="{% url 'add' %}" method="POST">
+  <form action="{% url 'view_and_edit' view_context.admission_no %}" method="POST">
     {% csrf_token %}
     <div class="entry-info">
       <div class="form-row">
         <div class="form-column">
           <label for="name_stu"><b>NAME OF THE STUDENT:</b></label>
-          <input type="text" id="name_stu" name="name_stu" required />
+          <input type="text" id="name_stu" name="name_stu" value="{{edit_context.student.name}}" required />
         </div>
         <br />
         <div class="form-column">
           <label for="receipt"><b>ADMISSION NO:</b></label>
-          <input type="text" id="receipt" name="receipt" required />
+          <input type="text" id="receipt" name="receipt" value="{{edit_context.admission_no}}" required />
           <!--<div id="messageContainer"></div>-->
         </div>
         <div class="form-column">
           <label for="name_prnt"><b>NAME OF THE PARENT:</b></label>
-          <input type="text" id="name_prnt" name="name_prnt" required />
+          <input type="text" id="name_prnt" name="name_prnt" value="{{edit_context.student.parent_name}}" required />
         </div>
         <div class="form-column">
           <label for="dept"><b>DEPARMENT:</b></label>
@@ -303,7 +303,7 @@
                 <td>
                   <input type="hidden" class="form-check-input h3 w3" value="off">
                   {% if record.original %}
-                  <input type="checkbox" checked="true" class="form-check-input h3 w3" checked disabled>
+                  <input type="checkbox" class="form-check-input h3 w3" checked disabled>
                   {% else %}
                   <input type="checkbox" class="form-check-input h3 w3" disabled>
                   {% endif %}
@@ -311,14 +311,15 @@
                 <td>
                   <input type="hidden" class="form-check-input h3 w3" value="off">
                   {% if record.photocopy %}
-                  <input type="checkbox" checked="true" class="form-check-input h3 w3" checked disabled>
+                  <input type="checkbox" class="form-check-input h3 w3" checked disabled>
                   {% else %}
                   <input type="checkbox" class="form-check-input h3 w3" disabled>
                   {% endif %}
                 </td>
                 <td>
                   {% if record.photocopy %}
-
+                  <input disabled readonly type="number" value="{{ record.document.count }}" class="form_quantity_input"
+                    name="{{record.document.count}}" class="cell3">                    
                   {% else %}
                   <input disabled readonly type="number" value="0" class="form_quantity_input"
                     name="{{record.document.count}}" class="cell3">
