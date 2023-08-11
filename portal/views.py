@@ -141,8 +141,9 @@ class EditAndViewStudents(AddNewStudent):
         
         view_context = self.get_student_history(version)
         edit_context = self.get_student_history(self.student.version_count)
+        departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
 
-        return render(request, "view_and_edit.html", {"edit_context":edit_context, "view_context": view_context})
+        return render(request, "view_and_edit.html", {"edit_context":edit_context, "view_context": view_context, "depts": departments})
     
     def get_student_history(self, version_num):
 
