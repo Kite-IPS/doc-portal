@@ -30,6 +30,7 @@ class AddNewStudent(View):
     def post(self, request):
 
         self.parse_post_data(request)
+        print(self.student_info, self.docs_info)
         
         try:
             self.add_student()
@@ -121,7 +122,7 @@ class AddNewStudent(View):
             count_str = post_data.get(f"{name}:count")
             count = int(count_str) if count_str.isdigit() else 0
             self.docs_info[name] = {"original": post_data.get(f"{name}:original") == 'on',
-                                      "copy": post_data.get(f"{name}:copy") == 'on',
+                                      "copy": post_data.get(f"{name}:photocopy") == 'on',
                                       "count": count}
 
 
