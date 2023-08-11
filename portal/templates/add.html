@@ -98,8 +98,8 @@
         <div class="dropdown">
           <select id="quota" name="quota" required>
             <option disabled selected>--Quota--</option>
-            <option value="MANAGEMENT">MANAGEMENT</option>
-            <option value="GOVERNMENT">GOVERNMENT</option>
+            <option value="mgnt">MANAGEMENT</option>
+            <option value="govt">GOVERNMENT</option>
           </select>
           <span class="dropdown-icon"></span>
         </div>
@@ -162,6 +162,8 @@
               value="{{record.count}}"
               name="{{doc_name}}:count"
               class="form_quantity_input"
+              min="0"
+              max="50"
             />
           </td>
         </tr>

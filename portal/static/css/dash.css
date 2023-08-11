@@ -240,6 +240,12 @@ option{
   content: '';
 }
 
+.space-small{
+  height: 20px;
+  width: 100%;
+  content: '';
+}
+
 .entry-info {
   padding: 10px;
   width: 100%;
@@ -401,7 +407,8 @@ div{
   border-radius: 8px;
   border: 1px solid #d9d9d9;
   background: #fff;
-  margin-top: 10px;
+  margin: 10px 0;
+  padding: 15px;
 }
 .main-info-2 {
   width: 100%;
@@ -426,7 +433,7 @@ div{
   border-radius: 8px;
   border: 1px solid #d9d9d9;
   background: #fff;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .down-menu{
@@ -441,4 +448,8 @@ div{
   text-overflow: ellipsis; /* Add ellipsis (...) if content overflows in the header cells */
   transition: all 0.3s ease; /* Add smooth transition effect */
   word-break: normal;
+}
+
+#no-edit{
+  cursor:not-allowed;
 }
