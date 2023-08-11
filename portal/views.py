@@ -126,12 +126,37 @@ class EditAndViewStudents(AddNewStudent):
 
 
     def get(self, request, admission_no):
+
+        self.admission_no = admission_no
+        self.student = get_object_or_404(Student, admission_no=self.admission_no)
         
-        file_names= [document.name for document in Document.objects.all()]
-        return render(request, "view_and_edit.html", {"file_names": file_names, "date": timezone.localdate()})
+        # Checking if a version is given in route
+        if 'version' in request.GET:
+            version = int(request.GET.dict()["version"])
+        else:
+            version = self.student.version_count
+        
+        view_context = self.get_student_history(version)
+        edit_context = self.get_student_history(self.student.version_count)
+
+        return render(request, "view_and_edit.html", {"edit_context":edit_context, "view_context": view_context})
+    
+    def get_student_history(self, version_num):
+
+        version = get_object_or_404(Version, version_count=version_num, student=self.student)
+        info = get_object_or_404(StudentInfo, student=self.student, ver=version.stud_ver)
+        records = Record.objects.filter(student=self.student, ver=version.docs_ver)
+        version_values = [i + 1 for i in range(0, self.student.version_count+1)]
+
+        return {"student": info, "records": records, "admission_no": self.admission_no, "versions": version_values, "cur_ver": version.version_count}
+
 
     def post(self, request, admission_no):
-        pass
+        
+        parsed_data = self.parse_post_data(request)
+        print(parsed_data)
+
+        return HttpResponse("saved")
 
     @staticmethod
     def doc_to_dict(doc):
