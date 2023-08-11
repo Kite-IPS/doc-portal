@@ -25,13 +25,13 @@
           <label for="dept"><b>DEPARMENT:</b></label>
           <div class="dropdown">
             <select id="dept" name="dept" required>
-              <option disabled selected>--Department--</option>
-              <option value="CSE">CSE</option>
-              <option value="AI&DS">AI&DS</option>
-              <option value="IT">IT</option>
-              <option value="ECE">ECE</option>
-              <option value="CSBS">CSBS</option>
-              <option value="MECH">MECH</option>
+              {% for dept in depts %}
+              {% if dept == edit_context.student.department %}
+              <option value="{{ edit_context.student.department }}" selected>{{ edit_context.student.department }}</option>
+              {% else %}
+              <option value="{{dept}}">{{dept}}</option>
+              {% endif %}
+              {% endfor %}
             </select>
             <span class="dropdown-icon"></span>
             <style>
