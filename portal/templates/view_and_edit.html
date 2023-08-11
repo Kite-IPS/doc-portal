@@ -1,5 +1,7 @@
 {% extends 'dash.html' %}
 
+{% block title %}Edit Record | KGCAR{% endblock title %}
+
 {% block inital_entry %}
 <section id="home">
   <div class="space"></div>
@@ -80,24 +82,28 @@
       <div class="form-row">
         <div class="form-column">
           <label for="contact1"><b>CONTACT INFO:</b><br />STUDENT NO:</label>
-          <input type="text" id="contact1" name="contact1" required />
+          <input type="text" id="contact1" name="contact1" vale="{{ edit_context.student.student_number }}" required />
         </div>
         <div class="form-column">
           <br /><label for="contact2">PARENT NO:</label>
-          <input type="text" id="contact2" name="contact2" required />
+          <input type="text" id="contact2" name="contact2" value="{{ edit_context.student.parent_number }}" required />
         </div>
         <br />
         <div class="form-column">
           <br /><label for="email">EMAIL ID:</label>
-          <input type="email" class="email" id="email" name="email" required />
+          <input type="email" class="email" id="email" name="email" value="{{ edit_context.student.email }}" required />
         </div>
         <div class="form-column">
           <br /><label for="quota"><b>QUOTA:</b></label>
           <div class="dropdown">
             <select id="quota" name="quota" required>
-              <option disabled selected>--Quota--</option>
+              {% if edit_context.student.quota %}
+              <option selected value="govt">GOVERNMENT</option>
               <option value="mgnt">MANAGEMENT</option>
+              {% else %}
               <option value="govt">GOVERNMENT</option>
+              <option selected value="mgnt">MANAGEMENT</option>
+              {% endif %}
             </select>
             <span class="dropdown-icon"></span>
           </div>
@@ -254,7 +260,7 @@
         <div class="form-column">
           <br /><label for="quota"><b>QUOTA:</b></label>
           <div class="dropdown">
-            <select id="quota" name="quota" required>
+            <select id="quota" name="quota" required disabled>
               {% if view_context.student.quota %}
               <option disabled selected>GOVERNMENT</option>
               {% else %}
