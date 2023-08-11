@@ -53,7 +53,7 @@
               onkeypress="preventFormSubmission(event)"
             />
           </div>
-          <li id="item"><a class="nav-button" href="{% url 'add' %}">Home</a></li>
+          <li id="item"><a class="nav-button" href="{% url 'add' %}">New</a></li>
           <li class="logout" id="logout-button">
             <i class="fas fa-sign-out-alt"></i>
             Logout
@@ -77,7 +77,7 @@
         var receiptNumber = document.getElementById("receipt-number").value;
         var searchTerm = receiptNumber.value;
         // Redirect the user to the next page
-        window.location.href = "view/" + receiptNumber; // Replace "next-page.html" with the actual URL of the next page
+        window.location.href = "view_and_edit/" + receiptNumber; // Replace "next-page.html" with the actual URL of the next page
       }
 
       // Function to prevent form submission when Enter key is pressed in the search input

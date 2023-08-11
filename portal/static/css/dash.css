@@ -112,7 +112,8 @@ hr{
   top: 95px;
   width: 100vw;
   background-color: var(--nav_items);
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 10px;
   height: 75px;
   backdrop-filter: blur(15px);
