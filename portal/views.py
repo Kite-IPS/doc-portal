@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import IntegrityError
 from django.http import HttpResponse
@@ -17,7 +19,7 @@ class LoginView(auth_views.LoginView):
 def home(request):
     return render(request, "dashboard.html")
 
-
+@login_required
 def add(request):
     if request.method == "POST":
         
@@ -39,7 +41,9 @@ def add(request):
         version = Version(student=student,
                           version_count=0,
                           stud_ver=0,
-                          docs_ver=0)
+                          docs_ver=0,
+                          curr_user=User.objects.get(username = request.user))
+        
         version.save()
 
         # Saving the student info
@@ -93,6 +97,7 @@ def add(request):
         return render(request, "index.html", {"file_names": file_names})
 
 
+@login_required
 def edit(request, admission_no):
 
     student = get_object_or_404(Student, admission_no=admission_no)
@@ -158,7 +163,8 @@ def edit(request, admission_no):
             new_version = Version(student=student,
                             version_count=student.version_count,
                             stud_ver=version.stud_ver,
-                            docs_ver=version.docs_ver)
+                            docs_ver=version.docs_ver,
+                            curr_user=User.objects.get(username= request.user))
             
 
             if stud_changed:

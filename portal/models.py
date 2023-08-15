@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User 
 
 class Document(models.Model):
 
@@ -54,6 +54,7 @@ class Version(models.Model):
     version_count = models.IntegerField()
     docs_ver = models.IntegerField()
     stud_ver = models.IntegerField()
+    curr_user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.student.admission_no} - {self.version_count}"
+        return f"{self.student.admission_no} - {self.version_count} - {self.curr_user}"
