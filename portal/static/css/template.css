@@ -113,7 +113,7 @@ h2 {
 #form-title{
     text-align: center;
     font-size: 2rem;
-    color: white;
+    color: #333;
 }
 
 #hr{
@@ -125,7 +125,7 @@ h2 {
     position: relative;
     width: 400px;
     height: 420px;
-    background: #251367;
+    background: #f2f2f2;
     border-radius: 8px;
     overflow: hidden;
     
@@ -142,21 +142,21 @@ h2 {
   margin-bottom: 20px;
   border: none;
   border-radius: 6px;
-  background-color: #ffffff;
+  background-color: #e0e0e0;
   transition: background-color 0.3s ease;
   font-size: large;
 }
 
 #username.form-input:focus, #password.form-input:focus{
   outline: none;
-  background-color: #e0e0e0;
+  background-color: #ffffff;
 }
 
 #username-label, #password-label{
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     display:block;
-    color: aliceblue;
+    color: #333;
     padding-top: 10px;
 }
 
