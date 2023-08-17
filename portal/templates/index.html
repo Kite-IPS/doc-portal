@@ -10,12 +10,13 @@
 <body>
   <header class="header">
     <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
-    <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
     <h2>ADMINISTRATIVE OFFICE</h2>
-    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <h2>ACKNOWLEDGEMENT RECEIPT - PARENT COPY - REGULAR ADMISSION</h2>
     <div class="search-bar">
-      <input type=" number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO here..."  onkeypress="preventFormSubmission(event)">
-      <button class="search-button" onclick="searchReceipt()">Search</button>
+      <a href="{% url 'add' %}"><input type="button" class="nav-btn" id="new-button" value="NEW"></a>
+        <input type="number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO here..."  onkeypress="preventFormSubmission(event)">
+        <button class="search-button" onclick="searchReceipt()">Search</button>
+      <a href="{% url 'logout' %}"href="{% url 'logout' %}"><input type="button" class="nav-btn" id="logout-button" value="LOGOUT"></a>
     </div>
   </header>
   <form action="{%  url 'add' %}" method="POST" id="myForm">
@@ -131,15 +132,12 @@
           <tbody id="table-body">       
           
         </tbody>
-
-          
-          
         </table>
         <button class="button" id="submit"> Submit </button>
       </form>
     </div>
 
-    <script>
+  <script>
 
     //for dept drop down box
     var deptSelect = document.getElementById('dept');
@@ -275,6 +273,6 @@
     populateSearchValue();
 
 
-      </script>
+  </script>
   </body>
   </html>
