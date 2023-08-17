@@ -256,3 +256,6 @@ def stud(request, admission_no):
     context['cur_ver'] += 1
     mail_student("stud_mail.html", context, "marudhu2021@gmail.com")
     return render(request, "stud_mail.html", context)
+
+class LoginView(auth_views.LoginView):
+    form_class = AuthForm

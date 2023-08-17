@@ -9,12 +9,10 @@
     <form id="form" method="post">
         {% csrf_token %}
             <label id="username-label" for="username">Username:</label><br>
-       <input class="login-input" type="text" id="username" name="username" placeholder="Username" required autofocus><br>
         {{form.username}}
             <label id="password-label" for="password">Password:</label><br>
-            <input class="login-input" type="password" id="password" name="password" placeholder="Password" required><br>
         {{form.password}}
         <input id="submit-btn" type="submit" value="Login">
     </form>
 </div>
-{%endblock%}
+{% endblock body %}
