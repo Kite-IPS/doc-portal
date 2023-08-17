@@ -101,19 +101,23 @@
             <input type="text" id="contact2" name="contact2" required>
           </div><br>
           <div class="form-column">
-            <br><label for="email">EMAIL ID</label>
+            <br><label for="email">EMAIL ID:</label>
             <input type="email" class="email" id="email" name="email" required>
           </div>
-        </div>
-          
-          <div class="form-row">
-            <label for="quota">QUOTA:</label><br>
-            <input type="radio" id="mgmt" name="quota" value="mgmt" required>
-            <label for="mgmt">MANAGEMENT</label>
-            
-            <input type="radio" id="govt" name="quota" value="govt"required>
-            <label for="govt">GOVERNMENT</label>
+          <div class="form-column">
+            <label for="email">QUOTA:</label>
+            <div class="dropdown">
+              <select id="quota" name="quota" required>
+                <option value="select">Select Quota</option>
+                <option value="govt">GOVERNMENT</option>
+                <option value="mgnt">MANAGEMENT</option>
+              </select>
+              <span class="dropdown-icon"></span>
+            </div>
           </div>
+        </div>
+
+        
         </div>
 
   </div>
