@@ -5,17 +5,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     <link rel="stylesheet" href="{% static 'css/template.css' %}" />
     <title>template</title>
   </head>
   <body>
     <div class="header">
       <div class="head-txt">
+        <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo"/>
         <h2>ADMINISTRATIVE OFFICE</h2>
-        <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
-      </div>
-      <div class="logo">
-        <img src="{% static 'image/logo.png' %}" alt="Logo" />
+        <h2>ACKNOWLEDGEMENT RECEIPT - PARENT COPY - REGULAR ADMISSION</h2>
       </div>
     </div>
     {% block body %}{% endblock %}
