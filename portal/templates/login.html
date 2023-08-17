@@ -1,24 +1,26 @@
 {%extends "template.html" %}
 
 {% block body %}
-<div id="form-window">
-    
-    <span id="form-error">{{form.non_field_errors.as_text}}</span>
-    <form acti id="form" method="post">
+
+    <form id="form" method="post">
         {% csrf_token %}
-        <div id="form-title">
-            <label id="form-label">STAFF LOGIN</label><hr>
+        <div class="login-container">
+            <div id="form-title">
+                <label id="form-label">STAFF LOGIN</label><hr>
+            </div>
+            <span id="form-error">{{form.non_field_errors.as_text}}</span>
+            <div class="form-field">
+                <label id="username-label" for="username">USERNAME:</label><br>
+            {{form.username}}
+            </div>
+            <div class="form-field">
+                <label id="password-label" for="password">PASSWORD:</label><br>
+            {{form.password}}
+            </div>
+            <div class="button">
+                <input id="submit-btn" type="submit" value="Login">
+            </div>
+            
         </div>
-        <span id="form-error">{{form.non_field_errors.as_text}}</span>
-        <div class="form-field">
-            <label id="username-label" for="username">USERNAME:</label><br>
-        {{form.username}}
-        </div>
-        <div class="form-field">
-            <label id="password-label" for="password">PASSWORD:</label><br>
-        {{form.password}}
-        </div>
-        <input id="submit-btn" type="submit" value="Login">
     </form>
-</div>
 {% endblock body %}
