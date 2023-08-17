@@ -23,7 +23,7 @@ services:
   
     restart: always
     volumes:
-      - .:/app
+      - ./static:/app/static
     
     ports:
       - "8000:8000"
