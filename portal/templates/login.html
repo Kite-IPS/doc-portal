@@ -8,10 +8,14 @@
     <span id="form-error">{{form.non_field_errors.as_text}}</span>
     <form id="form" method="post">
         {% csrf_token %}
+        <div class="form-field">
             <label id="username-label" for="username">Username:</label><br>
         {{form.username}}
+        </div>
+        <div class="form-field">
             <label id="password-label" for="password">Password:</label><br>
         {{form.password}}
+        </div>
         <input id="submit-btn" type="submit" value="Login">
     </form>
 </div>
