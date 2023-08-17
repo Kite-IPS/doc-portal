@@ -103,7 +103,7 @@ form {
 }
 
 .form-column {
-  flex-basis: 33%;
+  flex-basis: 25%;
   padding: 0 7px;
   box-sizing: border-box;
 }
