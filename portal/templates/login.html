@@ -3,8 +3,8 @@
 {% block body %}
 <div id="form-window">
     
-    
-    <form id="form" method="post">
+    <span id="form-error">{{form.non_field_errors.as_text}}</span>
+    <form acti id="form" method="post">
         {% csrf_token %}
         <div id="form-title">
             <label id="form-label">STAFF LOGIN</label><hr>
