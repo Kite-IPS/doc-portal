@@ -118,6 +118,13 @@ h2 {
 #form{
     text-align: center;
     padding: 20px;
+    position: relative;
+    width: 400px;
+    height: 420px;
+    background: #251367;
+    border-radius: 8px;
+    overflow: hidden;
+    
 }
 
 .form-field{
@@ -141,8 +148,20 @@ h2 {
 }
 
 #submit-btn{
-    display: block;
-    margin: 10px auto;
-    height: 25px;
-    width: 40%;
+  border: none;
+  outline: none;
+  padding: 9px 25px;
+  background: #251367;
+  color:aliceblue;
+  cursor: pointer;
+  font-size: 0.9em;
+  border-radius: 4px;
+  font-weight: 600;
+  width: 100px;
+  margin:auto;
+}
+
+#submit-btn:hover{
+  color: #333;
+  background-color: #007bff;
 }

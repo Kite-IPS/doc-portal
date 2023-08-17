@@ -2,12 +2,13 @@
 
 {% block body %}
 <div id="form-window">
-    <div id="form-title">
-        <label id="form-label">Staff Login</label>
-    </div>
+    
     <span id="form-error">{{form.non_field_errors.as_text}}</span>
     <form id="form" method="post">
         {% csrf_token %}
+        <div id="form-title">
+            <label id="form-label">Staff Login</label>
+        </div>
         <div class="form-field">
             <label id="username-label" for="username">Username:</label><br>
         {{form.username}}
