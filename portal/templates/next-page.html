@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <title>Document Verification</title>
+  <title>KGCAR | View Record</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <script>
 
@@ -87,19 +87,19 @@
   <div class="info">
     <div class="form-row">
       <div class="form-column">
-        <label for="name_stu">NAME OF THE STUDENT:</label>
+        <label for="name_stu">NAME OF THE STUDENT</label>
         <input type="text" id="name_stu" name="name_stu" value="{{student.name}}" disabled>
       </div><br>
       <div class="form-column">
-        <label for="receipt">ADMISSION NO:</label>
+        <label for="receipt">ADMISSION NO</label>
         <input type="text" id="phone" name="receipt" value="{{admission_no}}" disabled>
       </div>
       <div class="form-column">
-        <label for="name_prnt">NAME OF THE PARENT:</label>
+        <label for="name_prnt">NAME OF THE PARENT</label>
         <input type="text" id="name_prnt" name="name_prnt" value="{{student.parent_name}}" disabled>
       </div>
       <div class="form-column">
-        <label for="dept">DEPARMENT:</label>
+        <label for="dept">DEPARMENT</label>
         <div class="dropdown">
           <select id="dept" name="dept" disabled>
             <option disabled selected>{{student.department}}</option>
@@ -150,32 +150,32 @@
     </div>
     <div class="form-row">
       <div class="form-column">
-        <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+        <label for="contact1">CONTACT INFO:<br>STUDENT NO</label>
         <input type="text" id="contact1" name="contact1" value="{{student.student_number}}" disabled>
       </div>
       <div class="form-column">
-        <br><label for="contact2">PARENT NO:</label>
+        <br><label for="contact2">PARENT NO</label>
         <input type="text" id="contact2" name="contact2" value="{{student.parent_number}}" disabled>
       </div>
       <div class="form-column">
         <br><label for="email">EMAIL ID</label>
         <input type="email" class="email" id="email" name="email" value="{{student.email}}" disabled>
       </div>
-    </div>
-
-    <div class="form-row">
-      <label for="quota">QUOTA:</label><br>
-      {% if student.quota %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt" disabled>
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt" checked disabled>
-      <label for="govt">GOVERNMENT</label>
-      {% else %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt" checked disabled>
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt" disabled>
-      <label for="govt">GOVERNMENT</label>
-      {% endif %}
+      <div class="form-column">
+        <label for="email">QUOTA</label>
+        <div class="dropdown">
+          <select disabled id="quota" name="quota" required>
+            {% if edit_context.student.quota %}
+            <option selected value="govt">GOVERNMENT</option>
+            <option value="mgnt">MANAGEMENT</option>
+            {% else %}
+            <option value="govt">GOVERNMENT</option>
+            <option selected value="mgnt">MANAGEMENT</option>
+            {% endif %}
+          </select>
+          <span class="dropdown-icon"></span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -297,7 +297,9 @@
      
     </style>
   </div>
-  
+  <footer class="footer">
+    © IPS Tech Team - 2023
+  </footer>
 </body>
 
 </html>

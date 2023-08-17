@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Document Verification</title>
+  <title>KGCAR | Add Record</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <script src="{% static 'js/count_toggle.js' %}"> </script>
   {% comment %} <script src="{% static 'js/exist_msg.js' %}"> </script> {% endcomment %}
@@ -14,7 +14,7 @@
     <h2>ACKNOWLEDGEMENT RECEIPT - PARENT COPY - REGULAR ADMISSION</h2>
     <div class="search-bar">
       <a href="{% url 'add' %}"><input type="button" class="nav-btn" id="new-button" value="NEW"></a>
-        <input type="number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO here..."  onkeypress="preventFormSubmission(event)">
+        <input type="number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO to view and edit..."  onkeypress="preventFormSubmission(event)">
         <button class="search-button" onclick="searchReceipt()">Search</button>
       <a href="{% url 'logout' %}"href="{% url 'logout' %}"><input type="button" class="nav-btn" id="logout-button" value="LOGOUT"></a>
     </div>
@@ -23,20 +23,20 @@
   <div class="info">
         <div class="form-row">
           <div class="form-column">
-            <label for="name_stu">NAME OF THE STUDENT:</label>
+            <label for="name_stu">NAME OF THE STUDENT</label>
             <input type="text" id="name_stu" name="name_stu" required>
           </div><br>
           <div class="form-column">
-            <label for="receipt">ADMISSION NO:</label>
+            <label for="receipt">ADMISSION NO</label>
             <input type="text" id="receipt" name="receipt" required />
             {% comment %} <div id="messageContainer"></div> {% endcomment %}
           </div>
           <div class="form-column">
-            <label for="name_prnt">NAME OF THE PARENT:</label>
+            <label for="name_prnt">NAME OF THE PARENT</label>
             <input type="text" id="name_prnt" name="name_prnt" required>
           </div>
           <div class="form-column">
-            <label for="dept">DEPARMENT:</label>
+            <label for="dept">DEPARMENT</label>
             <div class="dropdown">
               <select id="dept" name="dept" required>
                 <option disabled selected>Select department</option>
@@ -93,27 +93,31 @@
         </div>
         <div class="form-row">
           <div class="form-column">
-           <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+           <label for="contact1">CONTACT INFO:<br>STUDENT NO</label>
             <input type="text" id="contact1" name="contact1" required> 
           </div>
           <div class="form-column">
-            <br><label for="contact2">PARENT NO:</label>
+            <br><label for="contact2">PARENT NO</label>
             <input type="text" id="contact2" name="contact2" required>
           </div><br>
           <div class="form-column">
             <br><label for="email">EMAIL ID</label>
             <input type="email" class="email" id="email" name="email" required>
           </div>
-        </div>
-          
-          <div class="form-row">
-            <label for="quota">QUOTA:</label><br>
-            <input type="radio" id="mgmt" name="quota" value="mgmt" required>
-            <label for="mgmt">MANAGEMENT</label>
-            
-            <input type="radio" id="govt" name="quota" value="govt"required>
-            <label for="govt">GOVERNMENT</label>
+          <div class="form-column">
+            <label for="email">QUOTA</label>
+            <div class="dropdown">
+              <select id="quota" name="quota" required>
+                <option value="select">Select Quota</option>
+                <option value="govt">GOVERNMENT</option>
+                <option value="mgnt">MANAGEMENT</option>
+              </select>
+              <span class="dropdown-icon"></span>
+            </div>
           </div>
+        </div>
+
+        
         </div>
 
   </div>
@@ -133,7 +137,7 @@
           
         </tbody>
         </table>
-        <button class="button" id="submit"> Submit </button>
+        <button class="button" id="submit"> Save </button>
       </form>
     </div>
 
@@ -274,5 +278,8 @@
 
 
   </script>
+  <footer class="footer">
+    © IPS Tech Team - 2023
+  </footer>
   </body>
   </html>
