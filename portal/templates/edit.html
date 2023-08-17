@@ -101,21 +101,21 @@
         <br><label for="email">EMAIL ID</label>
         <input type="email" class="email" id="email" name="email" value="{{student.email}}"required>
       </div>
-    </div>
-
-    <div class="form-row">
-      <label for="quota">QUOTA:</label><br>
-      {% if student.quota %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt">
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt" checked>
-      <label for="govt">GOVERNMENT</label>
-      {% else %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt" checked>
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt">
-      <label for="govt">GOVERNMENT</label>
-      {% endif %}
+      <div class="form-column">
+        <label for="email">QUOTA</label>
+        <div class="dropdown">
+          <select disabled id="quota" name="quota" required>
+            {% if edit_context.student.quota %}
+            <option selected value="govt">GOVERNMENT</option>
+            <option value="mgnt">MANAGEMENT</option>
+            {% else %}
+            <option value="govt">GOVERNMENT</option>
+            <option selected value="mgnt">MANAGEMENT</option>
+            {% endif %}
+          </select>
+          <span class="dropdown-icon"></span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -266,6 +266,9 @@
   </div>
 
   </form>
+  <footer class="footer">
+    © IPS Tech Team - 2023
+  </footer>
 </body>
 
 </html>

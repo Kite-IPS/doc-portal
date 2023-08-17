@@ -271,3 +271,9 @@ table td{
   position: absolute;
   right: 20px;
 }
+
+footer{
+  text-align: center;
+  background-color: #f2f2f2;
+  color:grey;
+}
