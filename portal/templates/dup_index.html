@@ -1,8 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static '/image/logo.png' %}">
     <title>ERROR</title>
 </head>
 <body>
@@ -10,7 +13,8 @@
         <br><i>&#9888;</i> ERROR! <br> <br>
         Student with the given admission number already exists,
         try to give your admission number instead. <br> <br><b> NOTE:</b> Just Go Back and Edit It<br><br>
-      </div>
+        <a href="/">back</a>
+    </div>
      <style>
         
      .error_msg{
