@@ -1,3 +1,4 @@
 django
-reportlab
+html2pdf
 mysqlclient
+gunicorn
