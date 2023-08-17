@@ -136,6 +136,7 @@ input[type="radio"]{
   padding: 40px;
   box-sizing: border-box;
   margin-left: 0px;
+  margin-top: 50px;
   
 }
 table{
@@ -144,6 +145,7 @@ table{
   border-bottom: 5px solid black;
   border-collapse: collapse;
   margin: auto;
+  margin-top: 25px;
 }
 table th{
   background-color: #251367;
@@ -243,6 +245,6 @@ table td{
   margin-top: 5px;
 }
   
-.txt-display{
-  width: 400px;
+.user-info{
+  background-color: #ccc;
 }
