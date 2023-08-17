@@ -138,4 +138,5 @@ EMAIL_HOST_PASSWORD = "hqvttlzuyflegfsw"
 
 # Login related settings
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "red"
+LOGIN_REDIRECT_URL = "add"
+LOGOUT_REDIRECT_URL = "login"
