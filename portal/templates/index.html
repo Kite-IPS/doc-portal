@@ -4,6 +4,7 @@
 <head>
   <title>KGCAR | Add Record</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static '/image/logo.png' %}">
   <script src="{% static 'js/count_toggle.js' %}"> </script>
   {% comment %} <script src="{% static 'js/exist_msg.js' %}"> </script> {% endcomment %}
 </head>
@@ -108,7 +109,7 @@
             <label for="email">QUOTA</label>
             <div class="dropdown">
               <select id="quota" name="quota" required>
-                <option value="select">Select Quota</option>
+                <option disabled value="select">Select Quota</option>
                 <option value="govt">GOVERNMENT</option>
                 <option value="mgnt">MANAGEMENT</option>
               </select>
