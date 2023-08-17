@@ -1,4 +1,4 @@
 django
-html2pdf
+xhtml2pdf
 mysqlclient
 gunicorn
