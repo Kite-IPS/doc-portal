@@ -3,22 +3,39 @@ version: '3'
 
 services:
 
-  # site:
+  njinx:
+    build: ./njinx/
+    restart: always
+    container_name: njinx
+    volumes:
+      - ./static:/static/
 
-  #   build: .
-  #   container_name: doc-portal-server
+    ports:
+      - "80:8000"
+
+    depends_on:
+      - site
+
+  site:
+
+    build: .
+    container_name: doc-portal-server
   
-  #   restart: always
-  #   volumes:
-  #     - .:/app
-  #   ports:
-  #     - 5000:8000 
+    restart: always
+    volumes:
+      - .:/app
+    
+    ports:
+      - "8000:8000"
 
   db:
 
     image: mysql
     container_name: doc-portal-db
     restart: always
+
+    ports:
+      - "3306:3306"
 
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw
@@ -28,10 +45,6 @@ services:
     
     volumes:
       - storage:/var/lib/mysql
-
-    ports:
-      - 2000:3306
-
 
 volumes:
   storage:
