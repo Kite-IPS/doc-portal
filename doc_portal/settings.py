@@ -77,8 +77,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'doc-db',
-        "HOST": "localhost",
-        "PORT": 2000,
+        "HOST": "db",
+        "PORT": 3306,
         "USER": "user",
         "PASSWORD": "doc-viewer"
     }
