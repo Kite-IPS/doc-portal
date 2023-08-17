@@ -103,8 +103,9 @@ form {
 }
 
 .form-column {
-  flex-basis: 25%;
-  padding: 0 7px;
+  flex-basis: 22%;
+  padding: 10px;
+  margin: 10px;
   box-sizing: border-box;
 }
 
@@ -112,6 +113,11 @@ label , #mgmt , #govt{
   display: block;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+select{
+  width: 100%;
+  height: 42px;
 }
 
 input[type="text"],

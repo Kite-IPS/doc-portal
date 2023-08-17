@@ -158,24 +158,25 @@
         <input type="text" id="contact2" name="contact2" value="{{student.parent_number}}" disabled>
       </div>
       <div class="form-column">
-        <br><label for="email">EMAIL ID</label>
+        <br><label for="email">EMAIL ID:</label>
         <input type="email" class="email" id="email" name="email" value="{{student.email}}" disabled>
       </div>
-    </div>
-
-    <div class="form-row">
-      <label for="quota">QUOTA:</label><br>
-      {% if student.quota %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt" disabled>
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt" checked disabled>
-      <label for="govt">GOVERNMENT</label>
-      {% else %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt" checked disabled>
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt" disabled>
-      <label for="govt">GOVERNMENT</label>
-      {% endif %}
+      <div class="form-column">
+        <label for="email">QUOTA:</label>
+        <br>
+        <div class="dropdown">
+          <select disabled id="quota" name="quota" required>
+            {% if edit_context.student.quota %}
+            <option selected value="govt">GOVERNMENT</option>
+            <option value="mgnt">MANAGEMENT</option>
+            {% else %}
+            <option value="govt">GOVERNMENT</option>
+            <option selected value="mgnt">MANAGEMENT</option>
+            {% endif %}
+          </select>
+          <span class="dropdown-icon"></span>
+        </div>
+      </div>
     </div>
   </div>
 
