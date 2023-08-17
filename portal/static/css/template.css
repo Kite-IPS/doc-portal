@@ -128,7 +128,12 @@ h2 {
     background: #f2f2f2;
     border-radius: 8px;
     overflow: hidden;
-    
+    padding-top: 50px;
+    border: 1px solid #333;
+}
+
+#form-error{
+  color: red;
 }
 
 .form-field{
@@ -165,6 +170,7 @@ h2 {
   background-color: #3498db;
   color: white;
   padding: 12px;
+  margin-top: 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
