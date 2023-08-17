@@ -103,7 +103,7 @@ form {
 }
 
 .form-column {
-  flex-basis: 50%;
+  flex-basis: 33%;
   padding: 0 7px;
   box-sizing: border-box;
 }
@@ -113,9 +113,6 @@ label , #mgmt , #govt{
   margin-bottom: 5px;
   margin-top: 5px;
 }
-
-
-
 
 input[type="text"],
 .email{
@@ -246,3 +243,6 @@ table td{
   margin-top: 5px;
 }
   
+.txt-display{
+  width: 400px;
+}
