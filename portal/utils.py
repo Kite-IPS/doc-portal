@@ -20,7 +20,7 @@ def get_student_info(request, admission_no):
     records = Record.objects.filter(student=student, ver=version.docs_ver)
     version_values = [i + 1 for i in range(0, student.version_count+1)]
 
-    return {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, "user": version.curr_user}
+    return {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, "user": version.curr_user, "date": version.date}
 
 
 def mail_student(template, context, to_addr):
