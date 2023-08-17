@@ -222,13 +222,13 @@ def edit(request, admission_no):
     departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
     return render(request, "edit.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, 'depts': departments})
 
-
+@login_required
 def view(request, admission_no):
 
     context = get_student_info(request, admission_no)
     return render(request, "next-page.html", context)
 
-
+@login_required
 def pdf_download(request, admission_no):
 
     template_path = 'print.html'
@@ -249,7 +249,7 @@ def pdf_download(request, admission_no):
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
-
+@login_required
 def stud(request, admission_no):
     
     context = get_student_info(request, admission_no)
