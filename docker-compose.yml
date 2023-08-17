@@ -16,6 +16,9 @@ services:
     depends_on:
       - site
 
+    networks:
+      - kgcar
+
   site:
 
     build: .
@@ -23,10 +26,13 @@ services:
   
     restart: always
     volumes:
-      - ./static:/app/static
+      - .:/app
     
     ports:
       - "8000:8000"
+
+    networks:
+      - kgcar
 
   db:
 
@@ -45,7 +51,15 @@ services:
     
     volumes:
       - storage:/var/lib/mysql
+    
+    networks:
+      - kgcar
 
 volumes:
   storage:
     name: "doc-portal-data"
+
+
+networks:
+  kgcar:
+    driver: bridge
