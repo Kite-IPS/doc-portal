@@ -73,7 +73,7 @@ body {
     margin-left: 0px;
   }
   form {
-    max-width: 1000px;
+    /* max-width: 1000px; */
     margin: 0 auto;
     padding: 5px;
     background-color: #f2f2f2;
