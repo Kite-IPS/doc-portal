@@ -124,6 +124,13 @@
               <p>{{ student.parent_number }}</p>
             </td>
           </tr>
+          <td class="cells">
+            {% if student.quota %}
+            <p> GOVT </p>
+            {% else %}
+            <p> MGNT </p>
+            {% endif %}
+          </td>
         </table>
         <table class="table1">
           <tr>
@@ -228,6 +235,13 @@
               <p>{{ student.parent_number }}</p>
             </td>
           </tr>
+          <td class="cells">
+            {% if student.quota %}
+            <p> GOVT </p>
+            {% else %}
+            <p> MGNT </p>
+            {% endif %}
+          </td>
         </table>
         <table class="table1">
           <tr>
