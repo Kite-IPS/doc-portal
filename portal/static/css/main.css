@@ -21,24 +21,14 @@ body {
 .header h1,h2{
   font-size: 20px;
 }
-.search-bar[input="number"]{
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  width: 300px;
-  margin: auto;
-  flex-wrap: wrap;
-  border-radius: 5px 0 0 5px;
-  
+
+#search-container{
+  display: inline-block;
+  width: 235px;
+  height: 45px;
+  align-self: center;
 }
 
-.search-input {
-  padding: 10px;
-  width: 320px;
-  outline: none;
-  border-radius: 5px 0 0 5px;
-   border: #007bff;
-}
 .search-bar ::placeholder{
   font-size: small;
 }
@@ -48,7 +38,8 @@ body {
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 0px 5px 5px 0px;
+  height: 42px;
+  border-radius: 5px;
   cursor: pointer;
   outline: none;
   transition: width 0.3s ease-in-out;
@@ -193,6 +184,7 @@ table td{
   }
   .cell4{
     padding-right: 30px;
+    text-align: center;
   }
   .cell3{
     width: 100%;
@@ -201,6 +193,7 @@ table td{
     border-radius: 4px;
     box-sizing: border-box;
     font-size: large;
+    text-align: center;
   }
   #submit{
     margin-top: auto;
@@ -293,6 +286,14 @@ table td{
   position: absolute;
   right: 20px;
 }
+
+.search-input {
+  padding: 10px;
+  width: 320px;
+  outline: none;
+  border: #007bff;
+}
+
 
 footer{
   padding: 10px;
