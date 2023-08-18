@@ -219,7 +219,7 @@ def edit(request, admission_no):
                 
         return redirect('view', admission_no=student.admission_no)
 
-    departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT"]
+    departments = ["CSE", "ECE", "CSBS", "AI&DS", "MECH", "IT", "MBA"]
     return render(request, "edit.html", {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, 'depts': departments})
 
 @login_required
