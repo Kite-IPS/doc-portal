@@ -12,7 +12,7 @@
   <header class="header">
     <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
     <h2>ADMINISTRATIVE OFFICE</h2>
-    <h2>ACKNOWLEDGEMENT RECEIPT - PARENT COPY - REGULAR ADMISSION</h2>
+    <h2>CERTIFICATE ACKNOWLEDGEMENT RECEIPT - REGULAR ADMISSION</h2>
     <div class="search-bar">
       <a href="{% url 'add' %}"><input type="button" class="nav-btn" id="new-button" value="NEW"></a>
         <input type="number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO to view and edit..."  onkeypress="preventFormSubmission(event)">
@@ -47,6 +47,7 @@
                 <option value="ECE">ECE</option>
                 <option value="CSBS">CSBS</option>
                 <option value="MECH">MECH</option>
+                <option value="MBA">MBA</option>
               </select>
               <span class="dropdown-icon"></span>
               <style>
