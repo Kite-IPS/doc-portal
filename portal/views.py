@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import IntegrityError
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerError
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from .utils import *
@@ -263,7 +263,7 @@ class LoginView(auth_views.LoginView):
 ######################## error pages ########################
 
 def error_404(request, exception):
-    return render(request, 'error_404.html')
+    return HttpResponseNotFound(render(request, 'error_404.html'))
 
 def error_500(request):
-    return render(request, 'error_500.html')
+    return HttpResponseServerError(render(request, 'error_500.html'))
