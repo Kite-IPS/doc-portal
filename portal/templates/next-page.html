@@ -238,9 +238,10 @@
       </tbody>
     </table>
     <div class="button-container">
-      <a class="edit-button" href="/edit/{{admission_no}}">Edit</a>
       {% if lock %}
       <a class="download-button" href="/pdf/{{admission_no}}?version={{cur_ver}}">Download</a>
+      {% else %}
+      <a class="edit-button" href="/edit/{{admission_no}}">Edit</a>
       {% endif %}
     </div>
    
