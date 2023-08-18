@@ -258,3 +258,12 @@ def stud(request, admission_no):
 
 class LoginView(auth_views.LoginView):
     form_class = AuthForm
+
+
+######################## error pages ########################
+
+def error_404(request):
+    return render(request, 'error_404.html')
+
+def error_500(request):
+    return render(request, 'error_500.html')
