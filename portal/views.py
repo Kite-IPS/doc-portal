@@ -92,8 +92,7 @@ def add(request):
         return redirect('view', admission_no=student.admission_no)
     else:
 
-        file_names= [document.name for document in Document.objects.all()]
-
+        file_names = [document.name for document in Document.objects.all()]
         return render(request, "index.html", {"file_names": file_names})
 
 
