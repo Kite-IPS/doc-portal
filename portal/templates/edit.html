@@ -15,7 +15,7 @@
   <header class="header">
     <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
     <h2>ADMINISTRATIVE OFFICE</h2>
-    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <h2>ACKNOWLEDGEMENT RECEIPT - REGULAR ADMISSION</h2>
   </header>
   <form action="/edit/{{admission_no}}" method="POST">
     {% csrf_token %}
@@ -34,7 +34,7 @@
         <input type="text" id="name_prnt" name="name_prnt" value="{{student.parent_name}}">
       </div>
       <div class="form-column">
-        <label for="dept">DEPARMENT</label>
+        <label for="dept">DEPARTMENT</label>
         <div class="dropdown">
           <select id="dept" name="dept">
             {% for dept in depts%}
