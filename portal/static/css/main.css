@@ -103,13 +103,14 @@ form {
 }
 
 .form-column {
-  flex-basis: 22%;
+  width: 22%;
+  min-width: 150px;
   padding: 10px;
   margin: 10px;
   box-sizing: border-box;
 }
 
-label , #mgmt , #govt{
+label{
   display: block;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -153,6 +154,19 @@ table{
   margin: auto;
   margin-top: 25px;
 }
+
+@media screen and (max-width: 600px) {
+  table tbody {
+    overflow-x: scroll;
+  }
+}
+
+
+table tbody{
+  width: 80%;
+  overflow-y: scroll;
+}
+
 table th{
   background-color: #251367;
   height: 5px;
@@ -182,7 +196,11 @@ table td{
   }
   .cell3{
     width: 100%;
-    padding-right: 0px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: large;
   }
   #submit{
     margin-top: auto;
@@ -197,18 +215,22 @@ table td{
 }
 
 
-
 .checkboxcell{
   padding-left:auto;
   
   
 }
 
-.cell3{
-  padding-left: auto;
-  width: 50%;
-  margin: 0 auto;
+.cell3{    
+  width: 40%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: large;
 }
+
 .cell4{
   padding-left:auto;
 }
