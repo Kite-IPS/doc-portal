@@ -262,8 +262,8 @@ class LoginView(auth_views.LoginView):
 
 ######################## error pages ########################
 
-def error_404(request):
+def error_404(request, exception):
     return render(request, 'error_404.html')
 
-def error_500(request):
+def error_500(request, exception):
     return render(request, 'error_500.html')
