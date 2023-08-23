@@ -33,6 +33,10 @@ body {
   font-size: small;
 }
 
+.search-bar{
+  vertical-align: middle;
+}
+
 .search-button {
   padding: 10px 20px;
   background-color: #007bff;
