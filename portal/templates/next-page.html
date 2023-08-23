@@ -166,7 +166,7 @@
         <label for="quota">QUOTA</label>
         <div class="dropdown">
           <select disabled id="quota" name="quota" required>
-            {% if edit_context.student.quota %}
+            {% if student.quota %}
             <option selected value="govt">GOVERNMENT</option>
             <option value="mgnt">MANAGEMENT</option>
             {% else %}
