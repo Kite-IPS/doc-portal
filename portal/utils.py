@@ -24,6 +24,25 @@ def get_student_info(request, admission_no):
     return {"student": info, "records": records, "admission_no": admission_no, "versions": version_values, "cur_ver": version.version_count, "user": version.curr_user, "date": version.date, "lock": student.lock}
 
 
+def split_records(records):
+    record_count = len(records)
+    ordered_records = {"set1": [], "set2": []}
+    labels = ["set1", "set2"]    
+    cur_set = 0
+    item_index = 1
+
+    for rec in records:
+        if item_index % 8:
+            item_index=1
+            cur_set += 1
+            if cur_set >= len(labels):
+                cur_set = len(labels) - 1
+                
+        ordered_records[labels[cur_set]].append(rec)
+
+    return ordered_records
+
+
 def mail_student(template, context, to_addr):
 
     subject = f'kg submitted doc version {context["cur_ver"]}'

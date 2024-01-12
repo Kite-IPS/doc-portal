@@ -231,7 +231,9 @@ def view(request, admission_no):
 def pdf_download(request, admission_no):
 
     template_path = 'print.html'
+    
     context = get_student_info(request, admission_no)
+    context["records"] = split_records(context["records"])
     
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
