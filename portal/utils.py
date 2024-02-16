@@ -25,20 +25,25 @@ def get_student_info(request, admission_no):
 
 
 def split_records(records):
-    record_count = len(records)
+
     ordered_records = {"set1": [], "set2": []}
     labels = ["set1", "set2"]    
     cur_set = 0
     item_index = 1
 
     for rec in records:
-        if item_index % 8:
+
+        # Chunking logic
+        if item_index % 9 == 0:
             item_index=1
             cur_set += 1
             if cur_set >= len(labels):
                 cur_set = len(labels) - 1
                 
         ordered_records[labels[cur_set]].append(rec)
+        item_index += 1
+
+    print(ordered_records, len(ordered_records["set1"]), len(ordered_records["set2"]))
 
     return ordered_records
 
