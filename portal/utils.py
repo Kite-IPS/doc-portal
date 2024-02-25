@@ -30,11 +30,12 @@ def split_records(records):
     labels = ["set1", "set2"]    
     cur_set = 0
     item_index = 1
+    bin_size = len(records) / 2
 
     for rec in records:
 
         # Chunking logic
-        if item_index % 9 == 0:
+        if item_index % bin_size == 0:
             item_index=1
             cur_set += 1
             if cur_set >= len(labels):
@@ -42,10 +43,18 @@ def split_records(records):
                 
         ordered_records[labels[cur_set]].append(rec)
         item_index += 1
+    len_1, len_2 = len(), len(ordered_records["set2"])
+    print(ordered_records, len_1, len_2, f"bin size: {bin_size}")
 
-    print(ordered_records, len(ordered_records["set1"]), len(ordered_records["set2"]))
+    if len_1 % 2:
+        extra = ordered_records["set1"][-1]
+    if len_2 % 2:
+        extra = ordered_records["set2"][-1]
 
-    return ordered_records
+    ordered_records = zip(ordered_records["set1"], ordered_records["set2"])
+
+    # Collecting the elements as tuples
+    return ordered_records, extra
 
 
 def mail_student(template, context, to_addr):
