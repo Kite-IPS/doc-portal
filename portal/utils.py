@@ -54,9 +54,11 @@ def split_records(records):
         extra = ordered_records["set2"][-1]
 
     ordered_records = zip(ordered_records["set1"], ordered_records["set2"])
+    serial_numbers = list(zip([i for i in range(1, len_1 + 1)],[i for i in range(len_1 + 1, len_1 + len_2 + 1)]))
+    len_extra = len_1 + len_2
 
     # Collecting the elements as tuples
-    return ordered_records, extra
+    return ordered_records, extra, serial_numbers, len_extra
 
 
 def mail_student(template, context, to_addr):

@@ -233,7 +233,12 @@ def pdf_download(request, admission_no):
     template_path = 'print.html'
     
     context = get_student_info(request, admission_no)
-    context["records"], context["extra"] = split_records(context["records"])
+    
+    records, extra, serial, extra_index = split_records(context["records"])
+    records = zip(records, serial)
+    context["records"] = records
+    context["extra"] = extra
+    context["extra_index"] = extra_index
     
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
