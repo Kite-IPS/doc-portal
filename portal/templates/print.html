@@ -277,60 +277,66 @@
             <th rowspan="2" class="date">Date</th>
             <th colspan="2" class="copy">Copies</th>
             <th rowspan="2" class="qty">Quantity</th>
+
+            <th rowspan="2" class="sno">SNo</th>
+            <th rowspan="2" class="doc">Document</th>
+            <th rowspan="2" class="date">Date</th>
+            <th colspan="2" class="copy">Copies</th>
+            <th rowspan="2" class="qty">Quantity</th>
+
           </tr>
           <tr>
             <th class="org">Original</th>
             <th class="ptocpy">Photocopy</th>
           </tr>
-          {% for record in records.set1 %}
+          {% for record1, record2 in records %}
             <tr>
               <td class="txt">{{ forloop.counter }}</td>
-              <td class="txt1">{{ record.document.name }}</td>
-              <td class="txt">{{ record.date }}</td>
+              <td class="txt1">{{ record1.document.name }}</td>
+              <td class="txt">{{ record1.date }}</td>
               <td class="txt">
-                {% if record.original %}
+                {% if record1.original %}
                   <p>&#10004</p>
                 {% else %}
                   <p><b>x</b></p>
                 {% endif %}
               </td>
               <td class="txt">
-                {% if record.photocopy %}
+                {% if record1.photocopy %}
                   <p>&#10004</p>
                 {% else %}
                   <p><b>x</b></p>
                 {% endif %}
               </td>
               <td class="txt">
-                <p>{{ record.count }}</p>
+                <p>{{ record1.count }}</p>
+              </td>
+
+              <!-- Set2 data -->
+              <td class="txt">{{ forloop.counter }}</td>
+              <td class="txt1">{{ record2.document.name }}</td>
+              <td class="txt">{{ record2.date }}</td>
+              <td class="txt">
+                {% if record2.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if record2.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ record2.count }}</p>
               </td>
             </tr>
+
           {% endfor %}
 
-          {% for record in records.set2 %}
-            <tr>
-              <td class="txt">{{ forloop.counter }}</td>
-              <td class="txt1">{{ record.document.name }}</td>
-              <td class="txt">{{ record.date }}</td>
-              <td class="txt">
-                {% if record.original %}
-                  <p>&#10004</p>
-                {% else %}
-                  <p><b>x</b></p>
-                {% endif %}
-              </td>
-              <td class="txt">
-                {% if record.photocopy %}
-                  <p>&#10004</p>
-                {% else %}
-                  <p><b>x</b></p>
-                {% endif %}
-              </td>
-              <td class="txt">
-                <p>{{ record.count }}</p>
-              </td>
-            </tr>
-          {% endfor %}
         </table>
         <table class="sign_tab">
           <tr>
