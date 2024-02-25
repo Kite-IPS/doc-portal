@@ -30,7 +30,7 @@ def split_records(records):
     labels = ["set1", "set2"]    
     cur_set = 0
     item_index = 1
-    bin_size = len(records) / 2
+    bin_size = len(records) // 2 + 1
 
     for rec in records:
 
@@ -43,12 +43,14 @@ def split_records(records):
                 
         ordered_records[labels[cur_set]].append(rec)
         item_index += 1
-    len_1, len_2 = len(), len(ordered_records["set2"])
+    len_1, len_2 = len(ordered_records["set1"]), len(ordered_records["set2"])
     print(ordered_records, len_1, len_2, f"bin size: {bin_size}")
 
-    if len_1 % 2:
+    if len_1 - len_2 > 0:
         extra = ordered_records["set1"][-1]
-    if len_2 % 2:
+    elif len_1 - len_2 == 0:
+        extra = []
+    else:
         extra = ordered_records["set2"][-1]
 
     ordered_records = zip(ordered_records["set1"], ordered_records["set2"])
