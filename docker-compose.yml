@@ -3,36 +3,36 @@ version: '3'
 
 services:
 
-  njinx:
-    build: ./njinx/
-    restart: always
-    container_name: njinx
-    volumes:
-      - ./static:/static/
+  # njinx:
+  #   build: ./njinx/
+  #   restart: always
+  #   container_name: njinx
+  #   volumes:
+  #     - ./static:/static/
 
-    ports:
-      - "80:8000"
+  #   ports:
+  #     - "80:8000"
 
-    depends_on:
-      - site
+  #   depends_on:
+  #     - site
 
-    networks:
-      - kgcar
+  #   networks:
+  #     - kgcar
 
-  site:
+  # site:
 
-    build: .
-    container_name: doc-portal-server
+  #   build: .
+  #   container_name: doc-portal-server
   
-    restart: always
-    volumes:
-      - .:/app
+  #   restart: always
+  #   volumes:
+  #     - .:/app
     
-    ports:
-      - "8000:8000"
+  #   ports:
+  #     - "8000:8000"
 
-    networks:
-      - kgcar
+  #   networks:
+  #     - kgcar
 
   db:
 
@@ -41,7 +41,7 @@ services:
     restart: always
 
     ports:
-      - "3306:3306"
+      - "5500:3306"
 
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw
