@@ -150,6 +150,78 @@
             <th class="org">O</th>
             <th class="ptocpy">P</th>
           </tr>
+          {% for record, serial in records1 %}
+            <tr>
+              <td class="txt">{{ serial.0 }}</td>
+              <td class="txt1">{{ record.0.document.name }}</td>
+              <td class="txt">{{ record.0.date }}</td>
+              <td class="txt">
+                {% if record.0.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if record.0.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ record.0.count }}</p>
+              </td>
+
+              <!-- Set2 data -->
+              <td class="txt">{{ serial.1 }}</td>
+              <td class="txt1">{{ record.1.document.name }}</td>
+              <td class="txt">{{ record.1.date }}</td>
+              <td class="txt">
+                {% if record.1.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if record.1.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ record.1.count }}</p>
+              </td>
+            </tr>
+
+          {% endfor %}
+
+          {% if extra %}
+          <td class="txt">{{ extra_index }}</td>
+              <td class="txt1">{{ extra.document.name }}</td>
+              <td class="txt">{{ extra.date }}</td>
+              <td class="txt">
+                {% if extra.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if extra.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ extra.count }}</p>
+              </td>
+            </tr>
+          {% endif %}
+
         </table>
         <table class="sign_tab">
           <tr>
@@ -246,7 +318,7 @@
             <th class="org">O</th>
             <th class="ptocpy">P</th>
           </tr>
-          {% for record, serial in records %}
+          {% for record, serial in records2 %}
             <tr>
               <td class="txt">{{ serial.0 }}</td>
               <td class="txt1">{{ record.0.document.name }}</td>

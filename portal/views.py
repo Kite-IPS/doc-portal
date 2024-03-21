@@ -236,7 +236,12 @@ def pdf_download(request, admission_no):
     
     records, extra, serial, extra_index = split_records(context["records"])
     records = zip(records, serial)
-    context["records"] = records
+    context["records1"] = records
+    
+    records, extra, serial, extra_index = split_records(context["records"])
+    records = zip(records, serial)
+    
+    context["records2"] = records
     context["extra"] = extra
     context["extra_index"] = extra_index
     
