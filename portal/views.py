@@ -7,6 +7,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseServerError
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+import threading
 from .utils import *
 from .models import *
 from .forms import AuthForm
@@ -87,7 +88,8 @@ def add(request):
         # Mailing the student
         context = get_student_info(request, student.admission_no)
         context['cur_ver'] += 1
-        mail_student("stud_mail.html", context, student_info.email)
+
+        threading.Thread(target=mail_student, args=("stud_mail.html", context, student_info.email)).start()
             
         return redirect('view', admission_no=student.admission_no)
     else:
@@ -214,7 +216,7 @@ def edit(request, admission_no):
             context = get_student_info(request, student.admission_no)
             context['cur_ver'] += 1
 
-            mail_student("stud_mail.html", context, post_data["email"])
+            threading.Thread(target=mail_student, args=("stud_mail.html", context, post_data["email"])).start()
                 
         return redirect('view', admission_no=student.admission_no)
 
