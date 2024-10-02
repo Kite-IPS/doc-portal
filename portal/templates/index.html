@@ -19,6 +19,7 @@
         <input type="text" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO to view and edit..."  onkeypress="preventFormSubmission(event)">
       </div>
         <button class="search-button" onclick="searchReceipt()">Search</button>
+        <a href="{% url 'export_certificate_summary' %}" target="_blank"><input type="button" class="nav-btn" id="summary-button" value="SUMMARY"></a>
       <a href="{% url 'login' %}"href="{% url 'login' %}"><input type="button" class="nav-btn" id="logout-button" value="LOGOUT"></a>
     </div>
   </header>
