@@ -9,3 +9,6 @@ urlpatterns = [
     path("pdf/<admission_no>", views.pdf_download, name="pdf"),
     path("stud-mail/<admission_no>", views.stud, name="mail_copy")
 ]
+
+handler404 = 'portal.views.error_404'
+handler500 = 'portal.views.error_500'

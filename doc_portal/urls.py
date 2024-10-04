@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LogoutView
 from portal.views import LoginView
-
+from django.urls import path
+from portal.views import export_certificate_summary
 urlpatterns = [
     path('', include('portal.urls')),
     path('admin/', admin.site.urls),
     path("login", LoginView.as_view(template_name="login.html"), name="login"),
     path("logout", LogoutView.as_view(template_name="logout.html"), name="logout"),
+    path('export-summary/', export_certificate_summary, name='export_certificate_summary'),
+    
 ]

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'doc-db',
         "HOST": "localhost",
-        "PORT": 2000,
+        "PORT": 5500,
         "USER": "user",
         "PASSWORD": "doc-viewer"
     }
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -120,6 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -138,4 +140,6 @@ EMAIL_HOST_PASSWORD = "hqvttlzuyflegfsw"
 
 # Login related settings
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "red"
+LOGIN_REDIRECT_URL = "add"
+LOGOUT_URL = "logout"
+LOGOUT_REDIRECT_URL = "login"

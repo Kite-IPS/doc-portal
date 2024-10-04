@@ -21,26 +21,20 @@ body {
 .header h1,h2{
   font-size: 20px;
 }
-.search-bar[input="number"]{
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  width: 300px;
-  margin: auto;
-  flex-wrap: wrap;
-  border-radius: 5px 0 0 5px;
-  
+
+#search-container{
+  display: inline-block;
+  width: 235px;
+  height: 45px;
+  align-self: center;
 }
 
-.search-input {
-  padding: 10px;
-  width: 320px;
-  outline: none;
-  border-radius: 5px 0 0 5px;
-   border: #007bff;
-}
 .search-bar ::placeholder{
   font-size: small;
+}
+
+.search-bar{
+  vertical-align: middle;
 }
 
 .search-button {
@@ -48,7 +42,8 @@ body {
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 0px 5px 5px 0px;
+  height: 42px;
+  border-radius: 5px;
   cursor: pointer;
   outline: none;
   transition: width 0.3s ease-in-out;
@@ -88,7 +83,7 @@ body {
   margin-left: 0px;
 }
 form {
-  max-width: 1000px;
+  /* max-width: 1000px; */
   margin: 0 auto;
   padding: 5px;
   background-color: #f2f2f2;
@@ -103,19 +98,23 @@ form {
 }
 
 .form-column {
-  flex-basis: 50%;
-  padding: 0 7px;
+  width: 22%;
+  min-width: 150px;
+  padding: 10px;
+  margin: 10px;
   box-sizing: border-box;
 }
 
-label , #mgmt , #govt{
+label{
   display: block;
   margin-bottom: 5px;
   margin-top: 5px;
 }
 
-
-
+select{
+  width: 100%;
+  height: 42px;
+}
 
 input[type="text"],
 .email{
@@ -139,6 +138,7 @@ input[type="radio"]{
   padding: 40px;
   box-sizing: border-box;
   margin-left: 0px;
+  margin-top: 10px;
   
 }
 table{
@@ -147,7 +147,21 @@ table{
   border-bottom: 5px solid black;
   border-collapse: collapse;
   margin: auto;
+  margin-top: 25px;
 }
+
+@media screen and (max-width: 600px) {
+  table tbody {
+    overflow-x: scroll;
+  }
+}
+
+
+table tbody{
+  width: 80%;
+  overflow-y: scroll;
+}
+
 table th{
   background-color: #251367;
   height: 5px;
@@ -174,10 +188,16 @@ table td{
   }
   .cell4{
     padding-right: 30px;
+    text-align: center;
   }
   .cell3{
     width: 100%;
-    padding-right: 0px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: large;
+    text-align: center;
   }
   #submit{
     margin-top: auto;
@@ -192,18 +212,22 @@ table td{
 }
 
 
-
 .checkboxcell{
   padding-left:auto;
   
   
 }
 
-.cell3{
-  padding-left: auto;
-  width: 50%;
-  margin: 0 auto;
+.cell3{    
+  width: 40%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: large;
 }
+
 .cell4{
   padding-left:auto;
 }
@@ -246,3 +270,38 @@ table td{
   margin-top: 5px;
 }
   
+.nav-btn{
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: width 0.3s ease-in-out;
+}
+
+#new-button{
+  position: absolute;
+  left: 20px;
+}
+
+#logout-button{
+  position: absolute;
+  right: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  width: 320px;
+  outline: none;
+  border: #007bff;
+}
+
+
+footer{
+  padding: 10px;
+  text-align: center;
+  background-color: #f2f2f2;
+  color:grey;
+}
