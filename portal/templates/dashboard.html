@@ -13,6 +13,9 @@
     <div class="search_bar">
       <input type="text" class="search_input" placeholder="Search Admission Number Here..." onkeyup="searchTable()" />
     </div>
+    <div class="summary-button"></div>
+      <a href="{% url 'export_certificate_summary' %}" class="button">Download Summary</a>
+    </div>
   </header>
   <form action="{%  url 'dashboard' %}" method="POST">
     <div class="dashboard">

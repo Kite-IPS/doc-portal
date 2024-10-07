@@ -2,3 +2,4 @@ django
 xhtml2pdf
 mysqlclient
 gunicorn
+openpyxl
