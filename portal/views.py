@@ -91,7 +91,7 @@ def add(request):
         # Mailing the student
         context = get_student_info(request, student.admission_no)
         context['cur_ver'] += 1
-
+        
         threading.Thread(target=mail_student, args=("stud_mail.html", context, student_info.email)).start()
             
         return redirect('view', admission_no=student.admission_no)
@@ -99,7 +99,7 @@ def add(request):
 
         file_names = [document.name for document in Document.objects.all()]
         return render(request, "index.html", {"file_names": file_names})
-
+        
 
 @login_required
 def edit(request, admission_no):
