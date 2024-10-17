@@ -21,23 +21,23 @@
         text-align: center;
       }
       .sno {
-        width: 53px;
-        height: 100px;
+        width: 30px;
+        height: 100\px
       }
       .date {
-        width: 150px;
+        width: 100px;
       }
       .doc {
-        width: 300px;
+        width: 100px;
       }
       .org {
-        width: 65px;
+        width: 60px;
       }
       .ptocpy {
-        width: 65px;
+        width: 60px;
       }
       .qty {
-        width: 85px;
+        width: 25px;
       }
       
       .signature {
@@ -76,17 +76,14 @@
         <!-- heading -->
         <div class="txt">
           <hr size="2px" color="black" />
-          <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOWLEDGEMENT RECEIPT | <b>
-            STUDENT COPY<br />
-            ("&#10004 - submited , x - not submited")
-          </b>
+          <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOWLEDGEMENT RECEIPT   | <b>STUDENT COPY</b>
         </div>
-        <!-- main table --> 
+        <!-- main table -->
         <table class="table1">
           <tr>
             <th>Name of Student</th>
             <th>
-              <p>ACK. Receipt No</p>
+              <p>Admission No</p>
             </th>
             <th>
               <p>Name of Parent</p>
@@ -123,6 +120,13 @@
             <td class="cells">
               <p>{{ student.parent_number }}</p>
             </td>
+            <td class="cells">
+              {% if student.quota %}
+              <p> GOVT </p>
+              {% else %}
+              <p> MGNT </p>
+              {% endif %}
+            </td>
           </tr>
         </table>
         <table class="table1">
@@ -131,36 +135,93 @@
             <th rowspan="2" class="doc">Document</th>
             <th rowspan="2" class="date">Date</th>
             <th colspan="2" class="copy">Copies</th>
-            <th rowspan="2" class="qty">Quantity</th>
+            <th rowspan="2" class="qty">Qty</th>
+            <!-- Second set of headers -->
+            <th rowspan="2" class="sno">SNo</th>
+            <th rowspan="2" class="doc">Document</th>
+            <th rowspan="2" class="date">Date</th>
+            <th colspan="2" class="copy">Copies</th>
+            <th rowspan="2" class="qty">Qty</th>
           </tr>
           <tr>
-            <th class="org">Original</th>
-            <th class="ptocpy">Photocopy</th>
+            <th class="org">O</th>
+            <th class="ptocpy">P</th>
+            <!-- Second set of headers -->
+            <th class="org">O</th>
+            <th class="ptocpy">P</th>
           </tr>
-          {% for record in records %}
+          {% for record, serial in records1 %}
             <tr>
-              <td class="txt">{{ forloop.counter }}</td>
-              <td class="txt1">{{ record.document.name }}</td>
-              <td class="txt">{{ record.date }}</td>
+              <td class="txt">{{ serial.0 }}</td>
+              <td class="txt1">{{ record.0.document.name }}</td>
+              <td class="txt">{{ record.0.date }}</td>
               <td class="txt">
-                {% if record.original %}
-                <p>&#10004</p>
-                {% else %}
-                  <p><b>x</b></p>
-                {% endif %}
-              </td>
-              <td class="txt">
-                {% if record.photocopy %}
+                {% if record.0.original %}
                   <p>&#10004</p>
                 {% else %}
                   <p><b>x</b></p>
                 {% endif %}
               </td>
               <td class="txt">
-                <p>{{ record.count }}</p>
+                {% if record.0.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ record.0.count }}</p>
+              </td>
+
+              <!-- Set2 data -->
+              <td class="txt">{{ serial.1 }}</td>
+              <td class="txt1">{{ record.1.document.name }}</td>
+              <td class="txt">{{ record.1.date }}</td>
+              <td class="txt">
+                {% if record.1.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if record.1.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ record.1.count }}</p>
               </td>
             </tr>
+
           {% endfor %}
+
+          {% if extra %}
+          <td class="txt">{{ extra_index }}</td>
+              <td class="txt1">{{ extra.document.name }}</td>
+              <td class="txt">{{ extra.date }}</td>
+              <td class="txt">
+                {% if extra.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if extra.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ extra.count }}</p>
+              </td>
+            </tr>
+          {% endif %}
+
         </table>
         <table class="sign_tab">
           <tr>
@@ -190,7 +251,7 @@
           <tr>
             <th>Name of Student</th>
             <th>
-              <p>ACK. Receipt No</p>
+              <p>Admission No</p>
             </th>
             <th>
               <p>Name of Parent</p>
@@ -227,6 +288,13 @@
             <td class="cells">
               <p>{{ student.parent_number }}</p>
             </td>
+            <td class="cells">
+              {% if student.quota %}
+              <p> GOVT </p>
+              {% else %}
+              <p> MGNT </p>
+              {% endif %}
+            </td>
           </tr>
         </table>
         <table class="table1">
@@ -235,36 +303,93 @@
             <th rowspan="2" class="doc">Document</th>
             <th rowspan="2" class="date">Date</th>
             <th colspan="2" class="copy">Copies</th>
-            <th rowspan="2" class="qty">Quantity</th>
+            <th rowspan="2" class="qty">Qty</th>
+            <!-- Second set of headers -->
+            <th rowspan="2" class="sno">SNo</th>
+            <th rowspan="2" class="doc">Document</th>
+            <th rowspan="2" class="date">Date</th>
+            <th colspan="2" class="copy">Copies</th>
+            <th rowspan="2" class="qty">Qty</th>
           </tr>
           <tr>
-            <th class="org">Original</th>
-            <th class="ptocpy">Photocopy</th>
+            <th class="org">O</th>
+            <th class="ptocpy">P</th>
+            <!-- Second set of headers -->
+            <th class="org">O</th>
+            <th class="ptocpy">P</th>
           </tr>
-          {% for record in records %}
+          {% for record, serial in records2 %}
             <tr>
-              <td class="txt">{{ forloop.counter }}</td>
-              <td class="txt1">{{ record.document.name }}</td>
-              <td class="txt">{{ record.date }}</td>
+              <td class="txt">{{ serial.0 }}</td>
+              <td class="txt1">{{ record.0.document.name }}</td>
+              <td class="txt">{{ record.0.date }}</td>
               <td class="txt">
-                {% if record.original %}
+                {% if record.0.original %}
                   <p>&#10004</p>
                 {% else %}
                   <p><b>x</b></p>
                 {% endif %}
               </td>
               <td class="txt">
-                {% if record.photocopy %}
+                {% if record.0.photocopy %}
                   <p>&#10004</p>
                 {% else %}
                   <p><b>x</b></p>
                 {% endif %}
               </td>
               <td class="txt">
-                <p>{{ record.count }}</p>
+                <p>{{ record.0.count }}</p>
+              </td>
+
+              <!-- Set2 data -->
+              <td class="txt">{{ serial.1 }}</td>
+              <td class="txt1">{{ record.1.document.name }}</td>
+              <td class="txt">{{ record.1.date }}</td>
+              <td class="txt">
+                {% if record.1.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if record.1.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ record.1.count }}</p>
               </td>
             </tr>
+
           {% endfor %}
+
+          {% if extra %}
+          <td class="txt">{{ extra_index }}</td>
+              <td class="txt1">{{ extra.document.name }}</td>
+              <td class="txt">{{ extra.date }}</td>
+              <td class="txt">
+                {% if extra.original %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                {% if extra.photocopy %}
+                  <p>&#10004</p>
+                {% else %}
+                  <p><b>x</b></p>
+                {% endif %}
+              </td>
+              <td class="txt">
+                <p>{{ extra.count }}</p>
+              </td>
+            </tr>
+          {% endif %}
+
         </table>
         <table class="sign_tab">
           <tr>

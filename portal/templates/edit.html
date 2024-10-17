@@ -3,8 +3,9 @@
 <html>
 
 <head>
-  <title>Document Verification</title>
+  <title>KGCAR | Edit Reocrd</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static '/image/logo.png' %}">
   <script src="{% static 'js/count_toggle.js' %}"> </script>
   <script src="{% static 'js/popup.js' %}"> </script>
   <script src="{% static 'js/lock.js' %}"> </script>
@@ -13,28 +14,27 @@
 <body>
   <header class="header">
     <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
-    <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
     <h2>ADMINISTRATIVE OFFICE</h2>
-    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <h2>CERTIFICATE ACKNOWLEDGEMENT RECEIPT - REGULAR ADMISSION</h2>
   </header>
   <form action="/edit/{{admission_no}}" method="POST">
     {% csrf_token %}
   <div class="info">
     <div class="form-row">
       <div class="form-column">
-        <label for="name_stu">NAME OF THE STUDENT:</label>
+        <label for="name_stu">NAME OF THE STUDENT</label>
         <input type="text" id="name_stu" name="name_stu" value="{{student.name}}">
       </div><br>
       <div class="form-column">
-        <label for="receipt">ADMISSION NO:</label>
+        <label for="receipt">ADMISSION NO</label>
         <input type="text" id="phone" name="receipt" value="{{admission_no}}" disabled>
       </div>
       <div class="form-column">
-        <label for="name_prnt">NAME OF THE PARENT:</label>
+        <label for="name_prnt">NAME OF THE PARENT</label>
         <input type="text" id="name_prnt" name="name_prnt" value="{{student.parent_name}}">
       </div>
       <div class="form-column">
-        <label for="dept">DEPARMENT:</label>
+        <label for="dept">DEPARTMENT</label>
         <div class="dropdown">
           <select id="dept" name="dept">
             {% for dept in depts%}
@@ -91,32 +91,32 @@
     </div><br>
     <div class="form-row">
     <div class="form-column">
-        <label for="contact1"> <b>CONTACT INFO:</b><br>STUDENT NO:</label>
+        <label for="contact1">CONTACT INFO:<br>STUDENT NO</label>
         <input type="text" id="contact1" name="contact1" value="{{student.student_number}}">
       </div>
       <div class="form-column">
-        <br><label for="contact2">PARENT NO:</label>
+        <br><label for="contact2">PARENT NO</label>
         <input type="text" id="contact2" name="contact2" value="{{student.parent_number}}">
       </div>
       <div class="form-column">
         <br><label for="email">EMAIL ID</label>
         <input type="email" class="email" id="email" name="email" value="{{student.email}}"required>
       </div>
-    </div>
-
-    <div class="form-row">
-      <label for="quota">QUOTA:</label><br>
-      {% if student.quota %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt">
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt" checked>
-      <label for="govt">GOVERNMENT</label>
-      {% else %}
-      <input type="radio" id="mgmt" name="quota" value="mgmt" checked>
-      <label for="mgmt">MANAGEMENT</label>
-      <input type="radio" id="govt" name="quota" value="govt">
-      <label for="govt">GOVERNMENT</label>
-      {% endif %}
+      <div class="form-column">
+        <label for="quota">QUOTA</label>
+        <div class="dropdown">
+          <select id="quota" name="quota" required>
+            {% if student.quota %}
+            <option selected value="govt">GOVERNMENT</option>
+            <option value="mgnt">MANAGEMENT</option>
+            {% else %}
+            <option value="govt">GOVERNMENT</option>
+            <option selected value="mgnt">MANAGEMENT</option>
+            {% endif %}
+          </select>
+          <span class="dropdown-icon"></span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -147,7 +147,8 @@
             <td>
               <input type="hidden" class="cell5" name="{{record.document.name}}:original" value="off">
               {% if record.original %}
-              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:original" readonly>
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:original" disabled>
+              <input type="hidden"  class="cell5" name="{{record.document.name}}:original"  value="on">
               {% else %}
               <input type="checkbox" class="cell5" name="{{record.document.name}}:original">
               {% endif %}
@@ -155,7 +156,8 @@
             <td>
               <input type="hidden" class="cell5" name="{{record.document.name}}:copy" value="off">
               {% if record.photocopy %}
-              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:copy" onclick="toggleInputField(this)">
+              <input type="checkbox" checked="true" class="cell5" name="{{record.document.name}}:copy" disabled>
+              <input type="hidden"  class="cell5" name="{{record.document.name}}:copy"  value="on">
               {% else %}
               <input type="checkbox" class="cell5" name="{{record.document.name}}:copy" onclick="toggleInputField(this)">
               {% endif %}
@@ -163,6 +165,7 @@
             <td>
               {% if record.photocopy %}
               <input type="number" value="{{record.count}}" name="{{record.document.name}}:count" class="cell3">
+              <input type="hidden" value="{{record.count}}" class="min val">
               {% else %}
               <input readonly type="number" value="0" name="{{record.document.name}}:count" class="cell3">
               {% endif %}
@@ -264,6 +267,9 @@
   </div>
 
   </form>
+  <footer class="footer">
+    © IPS Tech Team - 2023
+  </footer>
 </body>
 
 </html>

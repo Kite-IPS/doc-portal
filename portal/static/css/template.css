@@ -1,90 +1,194 @@
 /* styles.css */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+body,
+ul {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-.nav-container {
-    display: flex;
-    height: 100vh; /* Ensure the container takes the full height of the viewport */
+/* Styling for the navbar */
+.navbar {
+  width: 200px;
+  height: 100vh; /* Set to full viewport height */
+  background-color: #333; /* Dark background color */
+  position: fixed; /* Fix the navbar position on the left side */
+  top: 0;
+  left: 0;
+  color: #fff; /* Text color */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
-/* Style for the vertical navigation bar */
-.vertical-nav {
-    width: 200px;
-    background-color: #333; /* Dark background color */
-    color: #fff; /* Text color */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+.navbar ul {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
 }
 
-/* Style for the navigation links */
-.vertical-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.navbar li {
+  margin-bottom: 10px;
 }
 
-.vertical-nav li {
-    margin-bottom: 10px;
+.navbar a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out; /* Smooth background color transition */
 }
 
-.vertical-nav a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 4px;
-    transition: background-color 0.2s ease-in-out; /* Smooth background color transition */
-}
-
-.vertical-nav a:hover {
-    background-color: #555; /* Darken the background color on hover */
+.navbar a:hover {
+  background-color: #555; /* Darken the background color on hover */
 }
 
 /* Style for the main content area */
 main {
-    flex: 1;
-    padding: 20px;
+  flex: 1;
+  padding: 20px;
 }
 
 /* Additional styles for the main content */
 main h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
 main p {
-    line-height: 1.6;
+  line-height: 1.6;
 }
-.search {
-    display: flex;
-    align-items: center;
-    max-width: 300px;
-    margin: 20px auto;
-    border: 2px solid #ccc;
-    border-radius: 30px;
-    padding: 5px 10px;
-  }
-  
-  .search input {
-    flex: 1;
-    border: none;
-    padding: 8px 12px;
-    outline: none;
-  }
-  
-  .search button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .search button:hover {
-    background-color: #45a049;
-  }
+
+.header {
+  background-color: #251367;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 20px;
+  align-items: center;
+}
+
+.head-txt {
+  margin: 10px auto;
+}
+
+.head-txt h1,
+h2 {
+  color: white;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.search-bar {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.search-bar input {
+  width: 80%;
+  height: 20px;
+  margin: 10px;
+}
+
+.kgcar h2 {
+  font-size: 1.5rem;
+  margin: 10px auto;
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.logo img {
+  height: 75px;
+  width: 75px;
+}
+
+
+/* #form-window {
+  width: 400px;
+  height: 500px;
+  margin: calc(13vh/2) auto;
+} */
+
+#form-title{
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+}
+
+#hr{
+  color: black;
+}
+/* #form{
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    width: 400px;
+    height: 420px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-top: 50px;
+    border: 1px solid #333;
+} */
+
+.login-container {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+  width: 400px;
+  margin: calc(13vh/2) auto;
+}
+#form-error{
+  color: red;
+}
+
+.form-field{
+    margin: 10px;
+    text-align: center;
+}
+
+#username.form-input, #password.form-input{
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s ease;
+  font-size: large;
+}
+
+#username.form-input:focus, #password.form-input:focus{
+  outline: none;
+  background-color: #ffffff;
+}
+
+#username-label, #password-label{
+    text-align: left;
+    font-size: 1.2rem;
+    display:block;
+    color: #333;
+    padding-top: 10px;
+}
+.button{
+  display: flex;
+}
+.button #submit-btn{
+  width: 40%;
+  height: 40px;
+  background-color: #3498db;
+  color: white;
+  padding: 12px;
+  margin: 12px auto;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: medium;
+  transition: background-color 0.3s ease;
+}
+
+#submit-btn:hover{
+  background-color: #2980b9;
+}

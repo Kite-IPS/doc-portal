@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split Table</title>
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 1.5cm;
+      }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    width: 595px; /* A4 width */
+    margin: 0 ;
+    box-sizing: border-box;
+  }
+
+  .table-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .table-container .table {
+    width: calc(50% - 10px); /* Half width with spacing */
+    border-collapse: collapse;
+    margin-right: 10px;
+  }
+
+  .table th,
+  .table td {
+    border: 1px solid #000;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .table th {
+    background-color: #f2f2f2;
+  }
+
+  .table-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .txt{
+    text-align: center;
+    width: 1000px;
+  }
+  .table1{
+        border: 1px solid black;
+        width: 989px;
+      }
+  .sign_tab {
+    text-align: center;
+    width: 989px;
+  }
+  .sign_cell {
+    padding-top: 30px;
+  }
+  table {
+    border: 1px solid black;
+    padding: 2px;
+  }
+  .cells {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- STUDENT copy -->
+    <div class="main_content">
+        <!-- heading -->
+        <div class="txt">
+          <hr size="2px" color="black" />
+          <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOWLEDGEMENT RECEIPT | <b>
+            STUDENT COPY<br />
+            ("&#10004 - submited , x - not submited")
+          </b>
+        </div>
+        <!-- Added table for student copy -->
+        <table class="table1">
+          <tr>
+            <th >Name of Student</th>
+            <th ><p>Admission No</p></th>
+            <th><p>Name of Parent</p></th>
+            <th><p>Department</p></th>
+            <th><p>Parent Number</p></th>
+            <th><p>Student Number</p></th>
+            <th><p>Quota</p></th>
+          </tr>
+          <tr>
+            <td class="cells">
+              <p>klsjkfklskf</p>
+            </td>
+            <td class="cells">
+              <p>wfwfwfwf</p>
+            </td>
+            <td class="cells">
+              <p>fwwefwf</p>
+            </td>
+            <td class="cells">
+              <p>wefwefw</p>
+            </td>
+            <td class="cells">
+              <p>faffefeewf</p>
+            </td>
+            <td class="cells">
+              <p>fklsnlask</p>
+            </td>
+            <td class="cells">
+              <p> GOVT </p>
+            </td>
+          </tr>
+        </table>
+  <!-- First Table -->
+  <div class="table-container">
+    <table class="table">
+        <!--left table-->
+      <thead>
+        <tr>
+          <th rowspan="2">S.No</th>
+          <th rowspan="2">Document</th>
+          <th rowspan="2">Date</th>
+          <th colspan="2">Copies</th>
+          <th rowspan="2">Quantity</th>
+        </tr>
+        <tr>
+          <th>Original</th>
+          <th>Photocopy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add your rows here -->
+        <!-- Example row -->
+        <tr>
+          <td>1</td>
+          <td>Document 1</td>
+          <td>2024-02-15</td>
+          <td>&#10004;</td>
+          <td>x</td>
+          <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+                      
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <!--right table-->
+      <thead>
+        <tr>
+          <th rowspan="2">S.No</th>
+          <th rowspan="2">Document</th>
+          <th rowspan="2">Date</th>
+          <th colspan="2">Copies</th>
+          <th rowspan="2">Quantity</th>
+        </tr>
+        <tr>
+          <th>Original</th>
+          <th>Photocopy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add your rows here -->
+        <!-- Example row -->
+        <tr>
+          <td>9</td>
+          <td>Document 9</td>
+          <td>2024-02-15</td>
+          <td>&#10004;</td>
+          <td>x</td>
+          <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+                      
+      </tbody>
+    </table>
+    
+  </div>
+  <table class="sign_tab">
+    <tr>
+      <td>
+        <p class="sign_cell">CERTIFICATE RECIVER</p>
+      </td>
+      <td>
+        <p class="sign_cell">STUDENT</p>
+      </td>
+      <td>
+        <p class="sign_cell">PARENT/GAURDIAN</p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- OFFICE copy -->
+<div class="main_content">
+    <!-- heading -->
+    <div class="txt">
+      <hr size="2px" color="black" />
+      <b>KGISL INSTITUTE OF TECHNOLOGY</b> | ACKNOWLEDGEMENT RECEIPT | <b>
+        OFFICE COPY<br />
+        ("&#10004 - submited , x - not submited")
+      </b>
+    </div>
+  <!-- Added table for office copy -->
+  <table class="table1">
+    <tr>
+      <th>Name of Student</th>
+      <th><p>Admission No</p></th>
+      <th><p>Name of Parent</p></th>
+      <th><p>Department</p></th>
+      <th><p>Parent Number</p></th>
+      <th><p>Student Number</p></th>
+      <th><p>Quota</p></th>
+    </tr>
+    <tr>
+        <td class="cells">
+          <p>klsjkfklskf</p>
+        </td>
+        <td class="cells">
+          <p>wfwfwfwf</p>
+        </td>
+        <td class="cells">
+          <p>fwwefwf</p>
+        </td>
+        <td class="cells">
+          <p>wefwefw</p>
+        </td>
+        <td class="cells">
+          <p>faffefeewf</p>
+        </td>
+        <td class="cells">
+          <p>fklsnlask</p>
+        </td>
+        <td class="cells">
+          <p> MGNT </p>
+        </td>
+      </tr>
+  </table>
+  <!-- Second Table -->
+  <div class="table-container">
+    <table class="table">
+      <!--left table-->
+      <thead>
+        <tr>
+          <th rowspan="2">S.No</th>
+          <th rowspan="2">Document</th>
+          <th rowspan="2">Date</th>
+          <th colspan="2">Copies</th>
+          <th rowspan="2">Quantity</th>
+        </tr>
+        <tr>
+          <th>Original</th>
+          <th>Photocopy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add your rows here -->
+        <!-- Example row -->
+        
+        <tr>
+          <td>1</td>
+          <td>Document 1</td>
+          <td>2024-02-15</td>
+          <td>&#10004;</td>
+          <td>x</td>
+          <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+                      
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <!--right table-->
+      <thead>
+        <tr>
+          <th rowspan="2">S.No</th>
+          <th rowspan="2">Document</th>
+          <th rowspan="2">Date</th>
+          <th colspan="2">Copies</th>
+          <th rowspan="2">Quantity</th>
+        </tr>
+        <tr>
+          <th>Original</th>
+          <th>Photocopy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add your rows here -->
+        <!-- Example row -->
+        <tr>
+          <td>9</td>
+          <td>Document 9</td>
+          <td>2024-02-15</td>
+          <td>&#10004;</td>
+          <td>x</td>
+          <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Document 1</td>
+            <td>2024-02-15</td>
+            <td>&#10004;</td>
+            <td>x</td>
+            <td>5</td>
+          </tr>
+                      
+      </tbody>
+    </table>
+  </div>
+  <table class="sign_tab">
+    <tr>
+      <td>
+        <p class="sign_cell">CERTIFICATE RECIVER</p>
+      </td>
+      <td>
+        <p class="sign_cell">STUDENT</p>
+      </td>
+      <td>
+        <p class="sign_cell">PARENT/GAURDIAN</p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

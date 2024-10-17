@@ -2,40 +2,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Document Verification</title>
+  <title>KGCAR | Add Record</title>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static '/image/logo.png' %}">
   <script src="{% static 'js/count_toggle.js' %}"> </script>
   {% comment %} <script src="{% static 'js/exist_msg.js' %}"> </script> {% endcomment %}
 </head>
 <body>
   <header class="header">
     <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
-    <h1>KGISL INSTITUTE OF TECHNOLOGY</h1>
     <h2>ADMINISTRATIVE OFFICE</h2>
-    <h2>ACKNOWLEDGEMENT RECEIPT-PARENT COPY-REGULAR ADMISSION</h2>
+    <h2>CERTIFICATE ACKNOWLEDGEMENT RECEIPT - REGULAR ADMISSION</h2>
     <div class="search-bar">
-      <input type=" number" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO here..."  onkeypress="preventFormSubmission(event)">
-      <button class="search-button" onclick="searchReceipt()">Search</button>
+      <a href="{% url 'add' %}"><input type="button" class="nav-btn" id="new-button" value="NEW"></a>
+      <div id="search-container">
+        <input type="text" id="receipt-number" class="search-input" placeholder="Search your ADMISSION NO to view and edit..."  onkeypress="preventFormSubmission(event)">
+      </div>
+        <button class="search-button" onclick="searchReceipt()">Search</button>
+        <a href="{% url 'export_certificate_summary' %}" target="_blank"><input type="button" class="nav-btn" id="summary-button" value="SUMMARY"></a>
+      <a href="{% url 'login' %}"href="{% url 'login' %}"><input type="button" class="nav-btn" id="logout-button" value="LOGOUT"></a>
     </div>
   </header>
   <form action="{%  url 'add' %}" method="POST" id="myForm">
   <div class="info">
         <div class="form-row">
           <div class="form-column">
-            <label for="name_stu">NAME OF THE STUDENT:</label>
+            <label for="name_stu">NAME OF THE STUDENT</label>
             <input type="text" id="name_stu" name="name_stu" required>
           </div><br>
           <div class="form-column">
-            <label for="receipt">ADMISSION NO:</label>
+            <label for="receipt">ADMISSION NO</label>
             <input type="text" id="receipt" name="receipt" required />
             {% comment %} <div id="messageContainer"></div> {% endcomment %}
           </div>
           <div class="form-column">
-            <label for="name_prnt">NAME OF THE PARENT:</label>
+            <label for="name_prnt">NAME OF THE PARENT</label>
             <input type="text" id="name_prnt" name="name_prnt" required>
           </div>
           <div class="form-column">
-            <label for="dept">DEPARMENT:</label>
+            <label for="dept">DEPARTMENT</label>
             <div class="dropdown">
               <select id="dept" name="dept" required>
                 <option disabled selected>Select department</option>
@@ -45,6 +50,9 @@
                 <option value="ECE">ECE</option>
                 <option value="CSBS">CSBS</option>
                 <option value="MECH">MECH</option>
+                <option value="MBA">MBA</option>
+                <option value="CYS">CYS</option>
+                <option value="AI&ML">AI&ML</option>
               </select>
               <span class="dropdown-icon"></span>
               <style>
@@ -92,27 +100,31 @@
         </div>
         <div class="form-row">
           <div class="form-column">
-           <label for="contact1">CONTACT INFO:<br>STUDENT NO:</label>
+           <label for="contact1">CONTACT INFO:<br>STUDENT NO</label>
             <input type="text" id="contact1" name="contact1" required> 
           </div>
           <div class="form-column">
-            <br><label for="contact2">PARENT NO:</label>
+            <br><label for="contact2">PARENT NO</label>
             <input type="text" id="contact2" name="contact2" required>
           </div><br>
           <div class="form-column">
             <br><label for="email">EMAIL ID</label>
             <input type="email" class="email" id="email" name="email" required>
           </div>
-        </div>
-          
-          <div class="form-row">
-            <label for="quota">QUOTA:</label><br>
-            <input type="radio" id="mgmt" name="quota" value="mgmt" required>
-            <label for="mgmt">MANAGEMENT</label>
-            
-            <input type="radio" id="govt" name="quota" value="govt"required>
-            <label for="govt">GOVERNMENT</label>
+          <div class="form-column">
+            <label for="quota">QUOTA</label>
+            <div class="dropdown">
+              <select id="quota" name="quota" required>
+                <option selected disabled value="select">Select Quota</option>
+                <option value="govt">GOVERNMENT</option>
+                <option value="mgnt">MANAGEMENT</option>
+              </select>
+              <span class="dropdown-icon"></span>
+            </div>
           </div>
+        </div>
+
+        
         </div>
 
   </div>
@@ -131,15 +143,12 @@
           <tbody id="table-body">       
           
         </tbody>
-
-          
-          
         </table>
-        <button class="button" id="submit"> Submit </button>
+        <button class="button" id="submit"> Save </button>
       </form>
     </div>
 
-    <script>
+  <script>
 
     //for dept drop down box
     var deptSelect = document.getElementById('dept');
@@ -275,6 +284,9 @@
     populateSearchValue();
 
 
-      </script>
+  </script>
+  <footer class="footer">
+    © IPS Tech Team - 2023
+  </footer>
   </body>
   </html>
